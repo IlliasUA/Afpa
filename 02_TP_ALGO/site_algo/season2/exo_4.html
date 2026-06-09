@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice:</h5>
+                    <p>
+                        Ecrire un algorithme utilisant des variables de type chaîne de caractères, et affichant quatre variantes 
+                        possibles de la célèbre « belle marquise, vos beaux yeux me font mourir d’amour ». On ne se soucie pas de 
+                        la ponctuation, ni des majuscules. 
+                    </p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">
+VARIABLES a, b, c, d 
+DEBUT
+a=" belle marquise "
+b=" vos beaux yeux "
+c=" me font "
+d=" d’amour "
+ECRIRE d + c + b + a
+ECRIRE b + a + c + d
+ECRIRE c + d + a + b 
+ECRIRE a + c + b + d
+FIN
+                    </textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
+                    <button class="button_age">OK JavaScript</button>
+                    <button class="button_age">OK jQuery</button>
+                    <button class="button_age">OK PHP</button>
+                </div>
+                <div class="reponse_area">
+                    <p>Tu es majeur!</p>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>

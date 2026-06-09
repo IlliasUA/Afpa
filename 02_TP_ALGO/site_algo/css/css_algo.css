@@ -1,0 +1,205 @@
+.full_background {
+    background-image: url(../img/fullback.avif);
+}
+body {
+    width: 90%;
+    max-width: 1400px;
+    min-height: 2500px;
+    margin: 100px auto;
+    background-color: #d2d1c9;
+	font: 35px Calibri;
+	width: calc(100% - 100px);
+    border: 1px solid #494848;
+    border-radius: 10px;
+    box-shadow: 15px 0px 10px rgba(0, 0, 0, 0.5), 
+                15px 10px 30px rgb(0 0 0 / 50%), 
+                -15px -10px 10px rgb(0 0 0 / 50%)
+}
+
+/**********************************Header area************************************/
+
+header {
+    height: 200px;
+}
+.header_class {
+    display: flex;
+    justify-content: center;
+}
+h2 {
+    font-style: italic;
+}
+
+
+/***********************************Navigation area*******************************/
+
+.navbar {
+    border: 3px solid #494848;
+    border-radius: 10px 10px 0 0;
+    margin: 0 120px;
+    background-color: #d9d7d0;
+}
+.navbar > ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.navbar > ul > li {
+    flex: 1;
+    position: relative;
+    text-align: center;
+}
+.nav_link {
+    display: block;
+    padding: 15px 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 144px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #d9d7d0;
+    border: 3px solid #494848;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    z-index: 1000;
+}
+.dropdown:hover .submenu {
+    display: block;
+}
+.submenu li {
+    width: 100%;
+}
+.submenu a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.submenu a:hover {
+    background-color: #c8c6be;
+}
+/**************************section area**********************/
+.section_firstarea {
+    display: flex;
+    flex-direction: row;
+}
+.exercise_window {
+    flex: 1;
+    width: calc(100% - 120px);
+    margin-top: 156px;
+    margin-left: 120px;
+    margin-right: -160px;
+    min-height: 430px;
+    padding: 15px;
+    background-color: #1f1e1d;
+    border: 10px solid #5d3507;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.exercise_window h5 {
+    color: #d9d7d0;
+    margin-top: 0;
+    font-size: 32px;
+}
+
+.exercise_window p {
+    color: #d9d7d0;
+    font-size: 20px;
+    line-height: 1.6;
+}
+.prof_img {
+    position: relative;
+    right: 5px;
+    top: 205px; 
+    scale: 0.5;
+}
+/***********************section area: input areas*********************************************************/
+.blocksarea {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+    width: 83%;
+    margin: 0 auto;
+} 
+
+.algo_inp p, .js_inp p, .jq_inp p, .php_inp p {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    
+}
+.text {
+    color: #d9d7d0;;
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #1f1e1d;
+    border: 2px solid #494848;
+    border-radius: 10px;
+    resize: none;
+}
+/***********************section area: dialouge********************************/
+.dialogue_area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 84%;
+    margin: 20px auto;
+}
+.question_line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.question_line p {
+    margin: 0;
+    font-size: 20px;
+}
+.dialogue_area p {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.reponse_area {
+
+}
+#inp_small {
+    width: 200px;
+}
+.question_area input {
+    width: 400px;
+    padding: 8px 12px;
+    font-size: 20px;
+    border: 2px solid #494848;
+    border-radius: 8px;
+}
+.button_age {
+    padding: 12px 25px;
+    font-size: 20px;
+    background-color: #5d3507;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.button_age:hover {
+    background-color: #0e6407;
+}

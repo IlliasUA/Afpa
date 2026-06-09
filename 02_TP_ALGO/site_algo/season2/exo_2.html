@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice:</h5>
+                    <p>
+                        Ecrire un programme qui demande un nombre à l’utilisateur, puis qui calcule et  affiche le carré de ce  
+                        nombre?
+                    </p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">
+VARIABLES: nombre
+DEBUT
+    Ecrire "Entrez un nombre" 
+    Lire nombre
+    carre = nombre * nombre
+    Ecrire carre
+FIN
+
+                    </textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
+                    <button class="button_age">OK JavaScript</button>
+                    <button class="button_age">OK jQuery</button>
+                    <button class="button_age">OK PHP</button>
+                </div>
+                <div class="reponse_area">
+                    <p>Tu es majeur!</p>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>
