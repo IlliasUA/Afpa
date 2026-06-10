@@ -21,9 +21,9 @@
         <section>
             <div class="section_firstarea">
                 <div class="exercise_window">
-                    <h5>Exercice 3.1</h5>
+                    <h5>Exercice 3.4</h5>
                     <p>Ecrire un algorithme qui demande un nombre à l’utilisateur, et l’informe ensuite si ce nombre est positif ou négatif 
-                    (on laisse de côté le cas où le nombre vaut zéro).</p>
+(on inclut cette fois le traitement du cas où le nombre vaut zéro). </p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -33,15 +33,17 @@
                 <div class="algo_inp">
                     <p>Algorithmes</p>
                     <textarea class="text" placeholder="">
-VARIABLES number_user
+VARIABLES number_1
 
 DEBUT
     ECRIRE "Saise un nombre: "
-    LIRE number_user
-    SI  number_user >= 0 ALORS
-        ECRIRE "Votre nomber est positif"
-    SINON
+    LIRE number_1
+    SI number_1 > 0 ALORS
+        ECRIRE "Votre nomber est positif" 
+    SINON SI number_1 < 0 ALORS
         ECRIRE "Votre nomber est negatif"
+    SINON 
+        ECRIRE "Votre nomber est 0"
     FINSI
 FIN
                     </textarea>

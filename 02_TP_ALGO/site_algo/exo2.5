@@ -1,0 +1,199 @@
+3.1
+VARIABLES numbre_user, number_positive, numbre_negative
+
+DEBUT
+    number_positive="Votre nomber est positif"
+    numbre_negative="Votre nomber est negatif"
+    ECRIRE "Saise un nombre: "
+    LIRE numbre_user
+    SI number_user >= 0 ALORS
+    ECRIRE number_positive
+    SINON
+    ECRIRE numbre_negative
+FIN
+
+
+
+
+VARIABLES number_user
+
+DEBUT
+    ECRIRE "Saise un nombre: "
+    LIRE number_user
+    SI  number_user >= 0 ALORS
+        ECRIRE "Votre nomber est positif"
+    SINON
+        ECRIRE "Votre nomber est negatif"
+    FINSI
+FIN
+
+
+
+
+
+3.2
+
+VARIABLES num_1, num_2
+
+DEBUT
+    ECRIRE "Saise un nombre: "
+    LIRE num_1
+    ECRIRE "Saise un deuxième nombre: "
+    LIRE num_2
+    SI (num_1 > 0 ET num_2 > 0) OU (num_1 < 0 ET num_2 < 0) ALORS 
+        ECRIRE "Votre produit est positif"
+    SINON SI (num_1 > 0 ET num_2 < 0) OU (num_1 < 0 ET num_2 > 0) ALORS
+        ECRIRE "Votre produit est negatif"
+    FINSI
+FIN
+
+
+
+
+3.3
+
+VARIABLES nom_1, nom_2, nom_3
+
+DEBUT
+    ECRIRE "Saise un nom: "
+    LIRE nom_1
+    ECRIRE "Saise deuxième nom: "
+    LIRE nom_2
+    ECRIRE "Saise troixième nom: "
+    LIRE nom_3
+    SI nom_1 <= nom_2 ET nom_2 <= nom_3 ALORS
+        ECRIRE "Votre trois nom sont dans l’ordre alphabétique"
+    SINON 
+        ECRIRE "Votre trois nom ne sont pas dans l’ordre alphabétique"
+    FINSI
+FIN   
+
+
+
+3.4
+
+VARIABLES number_1
+
+DEBUT
+    ECRIRE "Saise un nombre: "
+    LIRE number_1
+    SI number_1 > 0 ALORS
+        ECRIRE "Votre nomber est positif" 
+    SINON SI number_1 < 0 ALORS
+        ECRIRE "Votre nomber est negatif"
+    SINON 
+        ECRIRE "Votre nomber est 0"
+    FINSI
+FIN
+
+
+3.5
+
+VARIABLES num_1, num_2
+
+DEBUT
+    ECRIRE "Saise un nombre: "
+    LIRE num_1
+    ECRIRE "Saise un deuxième nombre: "
+    LIRE num_2
+    SI (num_1 > 0 ET num_2 > 0) OU (num_1 < 0 ET num_2 < 0) ALORS
+        ECRIRE "Votre nomber est positif"
+    SINON SI (num_1 < 0 ET num_2 > 0) OU (num_1 > 0 ET num_2 < 0) ALORS
+        ECRIRE "Votre nomber est negatif"
+    SINON
+        ECRIRE "Votre nomber est nul"
+    FINSI
+FIN
+
+
+
+3.6
+
+VARIABLES age, poussin, pupille, minime, cadet  
+
+DEBUT
+    ECRIRE "Saise l’âge d’un enfant: "
+    LIRE age
+    poussin = age > 5 ET age < 8
+    pupille = age > 7 ET age < 10
+    minime = age > 9 ET age < 12
+    cadet = age >= 12
+    SI poussin ALORS
+        ECRIRE "Poussin de 6 à 7 ans "
+    SINON SI pupille ALORS
+        ECRIRE "Pupille de 8 à 9 ans"
+    SINON SI minime ALORS
+        ECRIRE "Minime de 10 à 11 ans"
+    SINON SI cadet ALORS   
+        ECRIRE "Cadet après 12 ans"
+    SINON 
+        ECRIRE "Saise l’âge a partir de 6 ans"
+    FINSI
+FIN
+
+
+
+3.6(A)
+VARIABLES age
+
+DEBUT
+    ECRIRE "Saisir l'âge d'un enfant : "
+    LIRE age
+
+    SI (age > 5) ET (age < 8) ALORS
+        ECRIRE "Poussin de 6 à 7 ans"
+    SINON SI (age > 7) ET (age < 10) ALORS
+        ECRIRE "Pupille de 8 à 9 ans"
+    SINON SI (age > 9) ET (age < 12) ALORS
+        ECRIRE "Minime de 10 à 11 ans"
+    SINON SI (age => 12) ALORS
+        ECRIRE "Cadet après 12 ans"
+    SINON
+        ECRIRE "Saisir l'âge à partir de 6 ans"
+    FINSI
+FIN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&&()
+||()
+!()

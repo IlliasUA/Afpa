@@ -21,9 +21,10 @@
         <section>
             <div class="section_firstarea">
                 <div class="exercise_window">
-                    <h5>Exercice 3.1</h5>
-                    <p>Ecrire un algorithme qui demande un nombre à l’utilisateur, et l’informe ensuite si ce nombre est positif ou négatif 
-                    (on laisse de côté le cas où le nombre vaut zéro).</p>
+                    <h5>Exercice 3.5</h5>
+                    <p>Ecrire un algorithme qui demande deux nombres à l’utilisateur et l’informe ensuite si le produit est négatif ou positif 
+(on inclut cette fois le traitement du cas où le produit peut être nul). Attention toutefois, on ne doit pas calculer le 
+produit!</p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -33,15 +34,19 @@
                 <div class="algo_inp">
                     <p>Algorithmes</p>
                     <textarea class="text" placeholder="">
-VARIABLES number_user
+VARIABLES num_1, num_2
 
 DEBUT
     ECRIRE "Saise un nombre: "
-    LIRE number_user
-    SI  number_user >= 0 ALORS
+    LIRE num_1
+    ECRIRE "Saise un deuxième nombre: "
+    LIRE num_2
+    SI (num_1 > 0 ET num_2 > 0) OU (num_1 < 0 ET num_2 < 0) ALORS
         ECRIRE "Votre nomber est positif"
-    SINON
+    SINON SI (num_1 < 0 ET num_2 > 0) OU (num_1 > 0 ET num_2 < 0) ALORS
         ECRIRE "Votre nomber est negatif"
+    SINON
+        ECRIRE "Votre nomber est nul"
     FINSI
 FIN
                     </textarea>

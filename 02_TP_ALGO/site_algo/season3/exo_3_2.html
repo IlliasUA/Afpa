@@ -21,8 +21,10 @@
         <section>
             <div class="section_firstarea">
                 <div class="exercise_window">
-                    <h5>Exercice:</h5>
-                    <p></p>
+                    <h5>Exercice 3.2</h5>
+                    <p>Ecrire un algorithme qui demande deux nombres à l’utilisateur et l’informe ensuite si leur produit est négatif ou 
+positif (on laisse de côté le cas où le produit est nul). Attention toutefois : on ne doit pas calculer le produit des deux 
+nombres.</p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -32,7 +34,19 @@
                 <div class="algo_inp">
                     <p>Algorithmes</p>
                     <textarea class="text" placeholder="">
+VARIABLES num_1, num_2
 
+DEBUT
+    ECRIRE "Saise un nombre: "
+    LIRE num_1
+    ECRIRE "Saise un deuxième nombre: "
+    LIRE num_2
+    SI (num_1 > 0 ET num_2 > 0) OU (num_1 < 0 ET num_2 < 0) ALORS 
+        ECRIRE "Votre produit est positif"
+    SINON SI (num_1 > 0 ET num_2 < 0) OU (num_1 < 0 ET num_2 > 0) ALORS
+        ECRIRE "Votre produit est negatif"
+    FINSI
+FIN
                     </textarea>
                 </div>
                 <div class="js_inp">

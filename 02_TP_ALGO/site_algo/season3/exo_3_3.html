@@ -21,8 +21,9 @@
         <section>
             <div class="section_firstarea">
                 <div class="exercise_window">
-                    <h5>Exercice:</h5>
-                    <p></p>
+                    <h5>Exercice 3.3</h5>
+                    <p>Ecrire un algorithme qui demande trois noms à l’utilisateur et l’informe ensuite s’ils sont rangés ou non dans l’ordre 
+alphabétique.</p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -32,7 +33,21 @@
                 <div class="algo_inp">
                     <p>Algorithmes</p>
                     <textarea class="text" placeholder="">
+VARIABLES nom_1, nom_2, nom_3
 
+DEBUT
+    ECRIRE "Saise un nom: "
+    LIRE nom_1
+    ECRIRE "Saise deuxième nom: "
+    LIRE nom_2
+    ECRIRE "Saise troixième nom: "
+    LIRE nom_3
+    SI nom_1 <= nom_2 ET nom_2 <= nom_3 ALORS
+        ECRIRE "Votre trois nom sont dans l’ordre alphabétique"
+    SINON 
+        ECRIRE "Votre trois nom ne sont pas dans l’ordre alphabétique"
+    FINSI
+FIN  
                     </textarea>
                 </div>
                 <div class="js_inp">
