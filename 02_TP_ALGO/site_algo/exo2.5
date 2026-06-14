@@ -139,7 +139,6 @@ VARIABLES age
 DEBUT
     ECRIRE "Saisir l'âge d'un enfant : "
     LIRE age
-
     SI (age > 5) ET (age < 8) ALORS
         ECRIRE "Poussin de 6 à 7 ans"
     SINON SI (age > 7) ET (age < 10) ALORS
@@ -157,30 +156,132 @@ FIN
 
 
 
+4.1
+VARIABLES tutu, toto
+
+DEBUT
+    ECRIRE "Saise Tutu"
+    LIRE tutu
+    ECRIRE "Saise Toto"
+    LIRE toto
+    ECRIRE "Saise Tata"
+    LIRE tata
+    SI tutu <= toto + 4 ET tata != "OK" ALORS
+        tutu -= 1
+    SINON  
+        tutu += 1
+    
+    FINSI
+    ECRIRE tutu
+FIN 
+
+
+4.2
+
+VARIABLES heures_1, minutes_1
+
+DEBUT 
+    ECRIRE "Saise l’heur"
+    LIRE heures_1
+    ECRIRE "Saise minutes"
+    LIRE minutes_1
+    SI heures_1 != 23 ET minutes_1 != 59 ALORS
+        minutes_1 += 1 
+    SINON SI heures_1 != 23 ET minutes_1 == 59 ALORS
+        heures_1 += 1
+        minutes_1 = 0
+    SINON 
+        heures_1 = 0
+        minutes_1 = 0
+    FINSI 
+    ECRIRE "Dans une minute, il sera ", heures_1, ": ", minutes_1
+FIN  
 
 
 
+4.2b
+
+VARIABLES heures_1, minutes_1
+
+DEBUT 
+    ECRIRE "Saise l’heur"
+    LIRE heures_1
+    ECRIRE "Saise minutes"
+    LIRE minutes_1
+        minutes_1++
+    SI minutes_1 == 60 ALORS
+        minutes_1 = 0
+        heures_1++
+    SINON SI heures_1 == 24 ALORS
+        heures_1 = 0
+        minutes_1 = 0
+    FINSI   
+    ECRIRE "Dans une minute, il sera ", heures_1, ": ", minutes_1
+FIN  
+
+
+4.3
+
+VARIABLES heures_1, minutes_1, secondes_1
+
+DEBUT 
+    ECRIRE "Saise l’heur"
+    LIRE heures_1
+    ECRIRE "Saise minutes"
+    LIRE minutes_1
+    ECRIRE "Saise secondes"
+    LIRE secondes_1
+        secondes_1++
+    SI secondes_1 == 60 ALORS
+        secondes_1 = 0
+        minutes_1++
+    SINON SI minutes_1 == 60 ALORS
+        secondes_1 = 0
+        minutes_1 = 0
+        heures_1++
+    SINON SI heures_1 == 24 ALORS
+        secondes_1 = 0
+        minutes_1 = 0
+        heures_1 = 0
+    FINSI    
+    ECRIRE "Dans une seconde, il sera ", heures_1, ": ", minutes_1, ": ", secondes_1
+FIN   
+
+
+4.4 
+
+VARIABLES  nombre_de_photocopies, facture
+
+DEBUT
+    ECRIRE "Saise nombre de photocopies"
+    LIRE nombre_de_photocopies
+    SI nombre_de_photocopies <= 10 ALORS
+        facture = nombre_de_photocopies * 0.1
+    SINON SI nombre_de_photocopies > 10 ET nombre_de_photocopies <= 30 ALORS
+        facture = 10 * 0.1 + (nombre_de_photocopies - 10) * 0.09
+    SINON SI nombre_de_photocopies > 30 ALORS
+        facture = 10 * 0.1 + 20 * 0.09 + (nombre_de_photocopies - 30) * 0.08     
+    FINSI
+    ECRIRE "Votre facture est ", facture
+FIN
 
 
 
+4.5
 
+VARIABLES sexe, age
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+DEBUT
+    ECRIRE "Saise votre sexe "
+    LIRE sexe
+    ECRIRE "Saise votre age"
+    LIRE age
+    SI (sexe == homme ET age >= 20) OU (sexe == femme ET (age >= 18 OU age <= 35)) ALORS
+        ECRIRE "Habitant est imposable"
+    SINON 
+        ECRIRE "Habitant est non imposable"
+    FINSI
+FIN   
 
 
 
