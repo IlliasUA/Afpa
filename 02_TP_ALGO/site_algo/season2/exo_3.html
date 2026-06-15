@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/script_2_3.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -51,7 +52,21 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">
+function myTtc() {
+    
+    let inp_small_nombre, inp_small_prix, inp_small_tva, resulta_ttc;
+    
+    inp_small_nombre = document.getElementById("inp_small_nombre").value;
+    inp_small_prix = document.getElementById("inp_small_prix").value;
+    inp_small_tva = document.getElementById("inp_small_tva").value;
+    
+    resulta_ttc = Math.round( (inp_small_prix * inp_small_nombre) * (1 + inp_small_tva / 100) );
+    
+    document.getElementById("resulta_ttc").innerHTML = `Prix total des vos articles est ${resulta_ttc}`;
+}
+
+</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
@@ -64,13 +79,15 @@ FIN
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
-                    <button class="button_age">OK JavaScript</button>
+                    <p>Saisi le nombre d’articles <input id="inp_small_nombre" name="inp_small_nombre" placeholder="nombre"></p>
+                    <p>Saisi le prix d’un d’articles <input id="inp_small_prix" name="inp_small_prix" placeholder="prix"></p>
+                    <p>Saisi TVA <input id="inp_small_tva" name="inp_small_tva" placeholder="prix"></p>
+                    <button class="button_age" onclick="myTtc()">OK JavaScript</button>
                     <button class="button_age">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <p>Tu es majeur!</p>
+                    <span id="resulta_ttc"></span>
                 </div>
             </div>
         </section>

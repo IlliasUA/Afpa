@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/script_2_5.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -48,7 +49,18 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">/*DEBUT */
+function myAge() {
+/*Variables*/
+    let anee_de_naissance, anee_actuelle, age;
+    
+    anee_de_naissance = document.getElementById("anee_de_naissance").value;
+    anee_actuelle = document.getElementById("anee_actuelle").value;
+    age = anee_actuelle - anee_de_naissance;
+    document.getElementById("votre_age").innerHTML = `Vous avez ${age} ans`;
+    return false
+}
+/*FIN*/</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
@@ -61,13 +73,14 @@ FIN
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
-                    <button class="button_age">OK JavaScript</button>
+                    <p>Votre année de naissance<input id="anee_de_naissance" name="anee_de_naissance" placeholder="année de naissance"></p>
+                    <p>Saise année currante<input id="anee_actuelle" name="anee_actuelle" placeholder="année currante"></p>
+                    <button class="button_age" onclick="myAge()">OK JavaScript</button>
                     <button class="button_age">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <p>Tu es majeur!</p>
+                    <span id="votre_age"></span>
                 </div>
             </div>
         </section>

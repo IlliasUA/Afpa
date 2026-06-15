@@ -285,6 +285,60 @@ FIN
 
 
 
+4.6
+
+VARIABLES score, votants
+
+DEBUT
+    ECRIRE "Saisie de score de votre candidat"
+    LIRE score
+    ECRIRE "Saisie de nombre de votants"
+    ECRIRE votants
+    SI (score / votants) * 100 > 50 ALORS
+        ECRIRE "Votre candidat est elu des le premier tour!"
+    SINON SI (score / votants) * 100 >= 12.5 ALORS
+             (score / votants) * 100 < 50 ALORS
+        ECRIRE "Votre candidat peut participier au second tour!"
+    SINON  
+        ECRIRE "Votre candidat est perdu"
+    FINSI
+FIN
+
+
+
+4.7
+
+VARIABLES age, date_du_permi, responsable_d_accident
+
+DEBUT
+    ECRIRE "Saise votre age"
+    LIRE age
+    SI       age < 25 ALORS
+             date_du_permi < 2 ALORS
+             !(responsable_d_accident) ALORS
+             rouge = "Vous allez être attribuée au tarif rouge" 
+             ECRIRE rouge
+    SINON SI age < 25 ET date_du_permi >= 2 ET !(responsable_d_accident) ALORS
+             age >= 25 ET date_du_permi < 2 ET !(responsable_d_accident) ALORS
+             orange = "Vous allez être attribuée au tarif orange"
+             ECRIRE orange
+    SINON SI age > 25 ALORS
+             date_du_permi > 2 ALORS
+             !(responsable_d_accident) ALORS
+             ECRIRE orange
+    SINON SI age > 25 ET date_du_permi >= 2 ET !(responsable_d_accident) ALORS
+             vert = "Vous allez être attribuée au tarif vert"
+             ECRIRE vert
+    SINON SI age > 25 ET date_du_permi >= 2 ET rouge ET responsable_d_accident ALORS
+             ECRIRE orange
+             
+
+
+             
+
+       
+         
+FIN
 
 
 
@@ -292,9 +346,4 @@ FIN
 
 
 
-
-
-
-&&()
-||()
-!()
+SINON ECRIRE "Désolé, mais vous ne pouvez pas être assuré!"

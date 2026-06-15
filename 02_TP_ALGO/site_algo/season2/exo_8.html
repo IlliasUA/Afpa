@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/script_2_8.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -47,7 +48,20 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">
+function myTotalMinutes() {
+
+    let inp_heures, inp_minutes, total;
+
+    inp_heures = document.getElementById("inp_heures").value;
+    inp_minutes = document.getElementById("inp_minutes").value;
+
+    total = inp_heures * 60 + Number(inp_minutes);
+    
+    document.getElementById("total_en_minutes").innerHTML = `${total} minutes`;
+    return false
+}
+</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
@@ -60,13 +74,14 @@ FIN
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
-                    <button class="button_age">OK JavaScript</button>
+                    <p>Saise un nombre d'heures<input id="inp_heures" name="inp_heures" placeholder="un nombre 0 a 23"></p>
+                    <p>Saise un nombre de minutes<input id="inp_minutes" name="inp_minutes" placeholder="un nombre 0 a 59"></p>
+                    <button class="button_age" onclick="myTotalMinutes()">OK JavaScript</button>
                     <button class="button_age">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <p>Tu es majeur!</p>
+                    <span id="total_en_minutes"></span>
                 </div>
             </div>
         </section>

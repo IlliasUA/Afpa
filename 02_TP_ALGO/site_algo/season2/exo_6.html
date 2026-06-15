@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/script_2_6.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -48,7 +49,19 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">/*DEBUT */
+function mySurface() {
+/*Variables*/
+    let inp_largeur, inp_hauteur, surface;
+
+    inp_largeur = document.getElementById("inp_largeur").value;
+    inp_hauteur = document.getElementById("inp_hauteur").value;
+    surface = inp_largeur * inp_hauteur;
+    document.getElementById("surface").innerHTML = `${surface} px`;
+    return false
+}
+/*FIN*/
+</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
@@ -61,13 +74,14 @@ FIN
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
-                    <button class="button_age">OK JavaScript</button>
+                    <p>Saise le largeur en px <input id="inp_largeur" name="inp_largeur" placeholder="px"></p>
+                    <p>Saise l'hauteur <input id="inp_hauteur" name="inp_hauteur" placeholder="px"></p>
+                    <button class="button_age" onclick="mySurface()">OK JavaScript</button>
                     <button class="button_age">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <p>Tu es majeur!</p>
+                    <span id="surface"></span>
                 </div>
             </div>
         </section>

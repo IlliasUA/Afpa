@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/script_2_2.js"></script>
+
         <title>Site algo</title>
     </head>
     
@@ -47,7 +49,17 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">
+function myCarre() {
+    
+    let inp_small, i_carre;
+    
+    inp_small = document.getElementById("inp_small").value;
+    i_carre = inp_small * inp_small;
+    document.getElementById("i_resultat").innerHTML = "Le carre de " + inp_small + " est " + i_carre;
+    return false 
+}
+                    </textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
@@ -60,13 +72,13 @@ FIN
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
-                    <button class="button_age">OK JavaScript</button>
+                    <p>Entrez un nombre <input type="text" name="inp_small" id="inp_small" placeholder="Votre nombre"></p>
+                    <button class="button_age" onclick="myCarre()">OK JavaScript</button>
                     <button class="button_age">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <p>Tu es majeur!</p>
+                    <span id="i_resultat"></span>
                 </div>
             </div>
         </section>
