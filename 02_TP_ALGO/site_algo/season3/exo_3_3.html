@@ -53,7 +53,17 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myRangeAlphabet() {
+    let i_nom1, i_nom2, i_nom3;
+    i_nom1 = document.getElementById("i_nom1").value;
+    i_nom2 = document.getElementById("i_nom2").value;
+    i_nom3 = document.getElementById("i_nom3").value;
+    if (i_nom1 <= i_nom2 && i_nom2 <= i_nom3) {
+        document.getElementById("resulta").innerHTML = `Votre trois nom sont dans l’ordre alphabétique`;
+    } else
+        document.getElementById("resulta").innerHTML = `Votre trois nom ne sont pas dans l’ordre alphabétique`;
+        return false
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
