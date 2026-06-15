@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/script_3.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -65,13 +66,15 @@ FIN
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
-                    <button class="button_age">OK JavaScript</button>
+                    <p>Saise un nom<input id="i_nom1" name="i_nom1" placeholder="nome"></p>
+                    <p>Saise deuxième nom<input id="i_nom2" name="i_nom2" placeholder="nome"></p>
+                    <p>Saise troixième nom<input id="i_nom3" name="i_nom3" placeholder="nome"></p>
+                    <button class="button_age" onclick="myRangeAlphabet()">OK JavaScript</button>
                     <button class="button_age">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <p>Tu es majeur!</p>
+                    <span id="resulta"></span>
                 </div>
             </div>
         </section>
