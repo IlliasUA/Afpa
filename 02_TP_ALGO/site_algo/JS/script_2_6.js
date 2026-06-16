@@ -1,6 +1,5 @@
-/*DEBUT */
 function mySurface() {
-/*Variables*/
+
     let inp_largeur, inp_hauteur, surface;
 
     inp_largeur = document.getElementById("inp_largeur").value;
@@ -9,4 +8,13 @@ function mySurface() {
     document.getElementById("surface").innerHTML = `${surface} px`;
     return false
 }
-/*FIN*/
+
+function mySurface_jq() {
+    let inp_largeur, inp_hauteur, surface;
+
+    inp_largeur = $("#inp_largeur").val();
+    inp_hauteur = $("#inp_hauteur").val();
+    surface = inp_largeur * inp_hauteur;
+    $("#surface").html(`(jq) ${surface} px`);
+    return false
+}

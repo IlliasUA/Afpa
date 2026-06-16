@@ -1,6 +1,6 @@
-/*DEBUT */
+
 function myTotalMinutes() {
-/*Variables*/
+
     let inp_heures, inp_minutes, total;
 
     inp_heures = document.getElementById("inp_heures").value;
@@ -9,4 +9,14 @@ function myTotalMinutes() {
     document.getElementById("total_en_minutes").innerHTML = `${total} minutes`;
     return false
 }
-/*FIN*/
+
+function myTotalMinutes_jq() {
+    let inp_heures, inp_minutes, total;
+    inp_heures = $("#inp_heures").val();
+    inp_minutes = $("#inp_minutes").val();
+    total = inp_heures * 60 + Number(inp_minutes);
+    $("#total_en_minutes").html(`(jq) ${total} minutes`);
+    return false
+}
+
+

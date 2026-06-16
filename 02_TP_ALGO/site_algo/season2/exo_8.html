@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/script_2_8.js"></script>
+        <script src="../JS/jquery.min.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -50,14 +51,10 @@ FIN
                     <p>JavaScript</p>
                     <textarea class="text" placeholder="">
 function myTotalMinutes() {
-
     let inp_heures, inp_minutes, total;
-
     inp_heures = document.getElementById("inp_heures").value;
     inp_minutes = document.getElementById("inp_minutes").value;
-
     total = inp_heures * 60 + Number(inp_minutes);
-    
     document.getElementById("total_en_minutes").innerHTML = `${total} minutes`;
     return false
 }
@@ -65,7 +62,14 @@ function myTotalMinutes() {
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myTotalMinutes_jq() {
+    let inp_heures, inp_minutes, total;
+    inp_heures = $("#inp_heures").val();
+    inp_minutes = $("#inp_minutes").val();
+    total = inp_heures * 60 + Number(inp_minutes);
+    $("#total_en_minutes").html(`(jq) ${total} minutes`);
+    return false
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
@@ -77,7 +81,7 @@ function myTotalMinutes() {
                     <p>Saise un nombre d'heures<input id="inp_heures" name="inp_heures" placeholder="un nombre 0 a 23"></p>
                     <p>Saise un nombre de minutes<input id="inp_minutes" name="inp_minutes" placeholder="un nombre 0 a 59"></p>
                     <button class="button_age" onclick="myTotalMinutes()">OK JavaScript</button>
-                    <button class="button_age">OK jQuery</button>
+                    <button class="button_age" onclick="myTotalMinutes_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">

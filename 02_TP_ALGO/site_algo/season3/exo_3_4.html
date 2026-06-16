@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_3.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -50,11 +52,33 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function NumbIncluZero() {
+    let i_num1;
+    i_num1 = document.getElementById("i_num1").value;
+    if(i_num1 > 0) {
+        document.getElementById("resulta").innerHTML = `Votre nomber est positif!`;
+    } else if(i_num1 < 0) {
+        document.getElementById("resulta").innerHTML = `Votre nomber est negatif!`;
+    } else {
+        document.getElementById("resulta").innerHTML = `Votre nomber est 0!`;
+        }
+        return false
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function NumbIncluZero_jq() {
+    let i_num1;
+    i_num1 = $("#i_num1").val();
+    if(i_num1 > 0) {
+        $("#resulta").html(`(jq) Votre nomber est positif!`);
+    } else if(i_num1 < 0) {
+        $("#resulta").html(`(jq) Votre nomber est negatif!`);
+    } else {
+        $("#resulta").html(`(jq) Votre nomber est nul!`);
+    }
+        return false
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
@@ -63,13 +87,13 @@ FIN
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
-                    <button class="button_age">OK JavaScript</button>
-                    <button class="button_age">OK jQuery</button>
+                    <p>Saise un nombre<input id="i_num1" name="i_num1" placeholder="nombre"></p>
+                    <button class="button_age" onclick="NumbIncluZero()">OK JavaScript</button>
+                    <button class="button_age" onclick="NumbIncluZero_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <p>Tu es majeur!</p>
+                    <span id="resulta"></span>
                 </div>
             </div>
         </section>

@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_2.js"></script>
 
         <title>Site algo</title>
@@ -63,7 +64,12 @@ function myCarre() {
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myCarre_jq() {
+    let inp_small = $("#inp_small").val();
+    let i_carre = inp_small * inp_small;
+    $("#i_resultat").html(`(jq) Le carré de ${inp_small} est ${i_carre}`);
+    return false 
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
@@ -74,7 +80,7 @@ function myCarre() {
                 <div class="question_area"> 
                     <p>Entrez un nombre <input type="text" name="inp_small" id="inp_small" placeholder="Votre nombre"></p>
                     <button class="button_age" onclick="myCarre()">OK JavaScript</button>
-                    <button class="button_age">OK jQuery</button>
+                    <button class="button_age" onclick="myCarre_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">

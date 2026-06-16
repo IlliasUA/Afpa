@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_4.js"></script>
         <title>Site algo</title>
     </head>
@@ -52,16 +53,15 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder="">/*DEBUT */
+                    <textarea class="text" placeholder="">
 function myText() {
-/*Variables*/
     let a, b, c, d, resulta;
-/*Lire*/
+
     a = " belle marquise ";
     b = " vos beaux yeux ";
     c = " me font ";
     d = " d’amour ";
-/*ECRIRE*/
+
     resulta= a + c + b + d + "<br>";
     resulta+= b + a + c + d + "<br>";
     resulta+= c + d + a + b + "<br>";
@@ -70,12 +70,25 @@ function myText() {
     document.getElementById("voir_resulta").innerHTML = resulta;
       
 }
-/*FIN*/
 </textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myText_jq() {
+    let a, b, c, d, resulta;
+
+    a = " belle marquise ";
+    b = " vos beaux yeux ";
+    c = " me font ";
+    d = " d’amour ";
+
+    resulta= a + c + b + d + "<br>";
+    resulta+= b + a + c + d + "<br>";
+    resulta+= c + d + a + b + "<br>";
+    resulta+= a + c + b + d;
+
+    $("#voir_resulta").html(`(jq) ${resulta}`);
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
@@ -85,7 +98,7 @@ function myText() {
             <div class="dialogue_area">
                 <div class="question_area"> 
                     <button class="button_age" onclick="myText()">OK JavaScript</button>
-                    <button class="button_age">OK jQuery</button>
+                    <button class="button_age" onclick="myText_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">

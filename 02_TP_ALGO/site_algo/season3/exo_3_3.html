@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_3.js"></script>
         <title>Site algo</title>
     </head>
@@ -67,7 +68,18 @@ FIN
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myRangeAlphabet_jq() {
+    let i_nom1, i_nom2, i_nom3;
+    i_nom1 = $("#i_nom1").val();
+    i_nom2 = $("#i_nom2").val();
+    i_nom3 = $("#i_nom3").val();
+    if (i_nom1 <= i_nom2 && i_nom2 <= i_nom3) {
+        $("#resulta").html(`(jq) Votre trois nom sont dans l’ordre alphabétique`);
+    } else {
+        $("#resulta").html(`(jq) Votre trois nom ne sont pas dans l’ordre alphabétique`);
+        }
+        return false
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
@@ -80,7 +92,7 @@ FIN
                     <p>Saise deuxième nom<input id="i_nom2" name="i_nom2" placeholder="nome"></p>
                     <p>Saise troixième nom<input id="i_nom3" name="i_nom3" placeholder="nome"></p>
                     <button class="button_age" onclick="myRangeAlphabet()">OK JavaScript</button>
-                    <button class="button_age">OK jQuery</button>
+                    <button class="button_age" onclick="myRangeAlphabet_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">

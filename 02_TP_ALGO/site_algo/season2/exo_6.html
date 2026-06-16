@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_6.js"></script>
         <title>Site algo</title>
     </head>
@@ -49,23 +50,27 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder="">/*DEBUT */
+                    <textarea class="text" placeholder="">
 function mySurface() {
-/*Variables*/
     let inp_largeur, inp_hauteur, surface;
-
     inp_largeur = document.getElementById("inp_largeur").value;
     inp_hauteur = document.getElementById("inp_hauteur").value;
     surface = inp_largeur * inp_hauteur;
     document.getElementById("surface").innerHTML = `${surface} px`;
     return false
 }
-/*FIN*/
 </textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function mySurface_jq() {
+    let inp_largeur, inp_hauteur, surface;
+    inp_largeur = $("#inp_largeur").val();
+    inp_hauteur = $("#inp_hauteur").val();
+    surface = inp_largeur * inp_hauteur;
+    $("#surface").html(`(jq) ${surface} px`);
+    return false
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
@@ -77,7 +82,7 @@ function mySurface() {
                     <p>Saise le largeur en px <input id="inp_largeur" name="inp_largeur" placeholder="px"></p>
                     <p>Saise l'hauteur <input id="inp_hauteur" name="inp_hauteur" placeholder="px"></p>
                     <button class="button_age" onclick="mySurface()">OK JavaScript</button>
-                    <button class="button_age">OK jQuery</button>
+                    <button class="button_age" onclick="mySurface_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">

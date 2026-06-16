@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
-        <script src="../JS/script_3.js"></script>
+        <script src="../JS/script_4.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -23,9 +23,13 @@
         <section>
             <div class="section_firstarea">
                 <div class="exercise_window">
-                    <h5>Exercice 3.1</h5>
-                    <p>Ecrire un algorithme qui demande un nombre à l’utilisateur, et l’informe ensuite si ce nombre est positif ou négatif 
-                    (on laisse de côté le cas où le nombre vaut zéro).</p>
+                    <h5>Exercice 4.1</h5>
+                    <p>Formulez un algorithme équivalent à l’algorithme suivant:<br>
+                    Si Tutu > Toto + 4 OU Tata = "OK" Alors <br> 
+                        Tutu ← Tutu + 1<br>
+                    Sinon<br>
+                    Tutu ← Tutu – 1 <br>
+                Finsi</p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -35,46 +39,56 @@
                 <div class="algo_inp">
                     <p>Algorithmes</p>
                     <textarea class="text" placeholder="">
-VARIABLES number_user
+VARIABLES tutu, toto
 
 DEBUT
-    ECRIRE "Saise un nombre: "
-    LIRE number_user
-    SI  number_user >= 0 ALORS
-        ECRIRE "Votre nomber est positif"
-    SINON
-        ECRIRE "Votre nomber est negatif"
+    ECRIRE "Saise Tutu"
+    LIRE tutu
+    ECRIRE "Saise Toto"
+    LIRE toto
+    ECRIRE "Saise Tata"
+    LIRE tata
+    SI tutu <= toto + 4 ET tata != "OK" ALORS
+        tutu -= 1
+    SINON  
+        tutu += 1
+    
     FINSI
-FIN
+    ECRIRE tutu
+FIN 
                     </textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
                     <textarea class="text" placeholder="">
-function myPosNegNumb() {
-
-    let inp_number;
-
-    inp_number = document.getElementById("inp_number").value;
-    if(inp_number >= 0) {
-        document.getElementById("resulta").innerHTML = `${inp_number} est positif`;
+function tutuFunc() {
+    let tutu, toto, tata;
+    tutu = document.getElementById("inp_tutu").value;
+    toto = document.getElementById("inp_toto").value;
+    tata = document.getElementById("inp_tata").value;
+    if((tutu <= toto + 4) && (tata != "OK")) {
+        tutu -= 1;
     } else {
-        document.getElementById("resulta").innerHTML = `${inp_number} est negatif`;
-    } 
+        tutu += 1;
+    }
+    document.getElementById("resulta").innerHTML = `${tutu}`;
     return false
 }
 </textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder="">function myPosNegNumb_jq() {
-    let inp_number;
-    inp_number = $("#inp_number").val();
-    if(inp_number >= 0) {
-        $("#resulta").html(`(jq) ${inp_number} est positif`);
+                    <textarea class="text" placeholder="">function tutuFunc_jq() {
+    let tutu, toto, tata;
+    tutu = $("#inp_tutu").val();
+    toto = $("#inp_toto").val();
+    tata = $("#inp_tata").val();
+    if((tutu <= toto + 4) && (tata != "OK")) {
+        tutu -= 1;
     } else {
-        $("#resulta").html(`(jq) ${inp_number} est negatif`);
-    } 
+        tutu += 1;
+    }
+    $("#resulta").html(`(jq) ${tutu}`);
     return false
 }</textarea>
                 </div>
@@ -85,9 +99,11 @@ function myPosNegNumb() {
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Saise un nombre<input id="inp_number" name="inp_number" placeholder="nombre"></p>
-                    <button class="button_age" onclick="myPosNegNumb()">OK JavaScript</button>
-                    <button class="button_age" onclick="myPosNegNumb_jq()">OK jQuery</button>
+                    <p>Saise Tutu<input id="inp_tutu" name="inp_tutu" placeholder="nombre"></p>
+                    <p>Saise Toto<input id="inp_toto" name="inp_toto" placeholder="nombre"></p>
+                    <p>Saise Tata<input id="inp_tata" name="inp_tata" placeholder="OK/NON"></p>
+                    <button class="button_age" onclick="tutuFunc()">OK JavaScript</button>
+                    <button class="button_age" onclick="tutuFunc_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">

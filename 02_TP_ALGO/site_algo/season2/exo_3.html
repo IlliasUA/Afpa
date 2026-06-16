@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_3.js"></script>
         <title>Site algo</title>
     </head>
@@ -54,15 +55,11 @@ FIN
                     <p>JavaScript</p>
                     <textarea class="text" placeholder="">
 function myTtc() {
-    
     let inp_small_nombre, inp_small_prix, inp_small_tva, resulta_ttc;
-    
     inp_small_nombre = document.getElementById("inp_small_nombre").value;
     inp_small_prix = document.getElementById("inp_small_prix").value;
     inp_small_tva = document.getElementById("inp_small_tva").value;
-    
     resulta_ttc = Math.round( (inp_small_prix * inp_small_nombre) * (1 + inp_small_tva / 100) );
-    
     document.getElementById("resulta_ttc").innerHTML = `Prix total des vos articles est ${resulta_ttc}`;
 }
 
@@ -70,7 +67,13 @@ function myTtc() {
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myTtc_jq() {
+    let inp_small_nombre = $("#inp_small_nombre").val();
+    let inp_small_prix  = $("#inp_small_prix").val();
+    let inp_small_tva  = $("#inp_small_tva").val();
+    let resulta_ttc = Math.round((inp_small_prix * inp_small_nombre) * (1 + inp_small_tva / 100));
+    $("#resulta_ttc").html(`(jq)Prix total des vos articles est ${resulta_ttc}`);
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
@@ -83,7 +86,7 @@ function myTtc() {
                     <p>Saisi le prix d’un d’articles <input id="inp_small_prix" name="inp_small_prix" placeholder="prix"></p>
                     <p>Saisi TVA <input id="inp_small_tva" name="inp_small_tva" placeholder="prix"></p>
                     <button class="button_age" onclick="myTtc()">OK JavaScript</button>
-                    <button class="button_age">OK jQuery</button>
+                    <button class="button_age" onclick="myTtc_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">

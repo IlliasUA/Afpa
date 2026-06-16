@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
-        <script src="../JS/script_2_5.js"></script>
+        <script src="../JS/script_4.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -23,11 +23,8 @@
         <section>
             <div class="section_firstarea">
                 <div class="exercise_window">
-                    <h5>Exercice 2.5:</h5>
-                    <p>
-                        Écrire un programme qui demande à l'utilisateur son année de naissance ainsi que l'année actuelle, puis qui calcule et affiche son âge.
-
-                    </p>
+                    <h5>Exercice 4.2</h5>
+                    <p></p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -36,32 +33,11 @@
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder="">
-VARIABLES anee_de_naissance, anee_actuelle, age
-DEBUT
-     ECRIRE "Votre année de naissance?"
-     LIRE anee_de_naissance
-     ECRIRE "Saise anee currante"                   
-     LIRE anee_actuelle
-     age=anee_actuelle - anee_de_naissance 
-     ECRIRE "Vous aves", age, "ans " 
-FIN 
-                    </textarea>
+                    <textarea class="text" placeholder=""></textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder="">/*DEBUT */
-function myAge() {
-/*Variables*/
-    let anee_de_naissance, anee_actuelle, age;
-    
-    anee_de_naissance = document.getElementById("anee_de_naissance").value;
-    anee_actuelle = document.getElementById("anee_actuelle").value;
-    age = anee_actuelle - anee_de_naissance;
-    document.getElementById("votre_age").innerHTML = `Vous avez ${age} ans`;
-    return false
-}
-/*FIN*/</textarea>
+                    <textarea class="text" placeholder=""></textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
@@ -74,14 +50,15 @@ function myAge() {
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Votre année de naissance<input id="anee_de_naissance" name="anee_de_naissance" placeholder="année de naissance"></p>
-                    <p>Saise année currante<input id="anee_actuelle" name="anee_actuelle" placeholder="année currante"></p>
-                    <button class="button_age" onclick="myAge()">OK JavaScript</button>
-                    <button class="button_age" onclick="myAge_jq()">OK jQuery</button>
+                    <p>Saise Tutu<input id="inp_tutu" name="inp_tutu" placeholder="nombre"></p>
+                    <p>Saise Toto<input id="inp_toto" name="inp_toto" placeholder="nombre"></p>
+                    <p>Saise Tata<input id="inp_tata" name="inp_tata" placeholder="OK/NON"></p>
+                    <button class="button_age" onclick="">OK JavaScript</button>
+                    <button class="button_age" onclick="">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <span id="votre_age"></span>
+                    <span id="resulta"></span>
                 </div>
             </div>
         </section>

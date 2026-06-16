@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_3.js"></script>
         <title>Site algo</title>
     </head>
     
@@ -82,11 +84,41 @@ FIN
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myCategorie() {
+    let age;
+    age = document.getElementById("i_age").value;
+    if(age > 5 && age < 8) {
+        document.getElementById("resulta").innerHTML = `Poussin de 6 à 7 ans`;
+    } else if (age > 7 && age < 10)  {
+        document.getElementById("resulta").innerHTML = `Pupille de 8 à 9 ans`;
+    } else if (age > 9 && age < 12) {
+        document.getElementById("resulta").innerHTML = `Minime de 10 à 11 ans`;
+    } else if (age >= 12) {
+        document.getElementById("resulta").innerHTML = `Cadet après 12 ans`;
+    } else {
+        document.getElementById("resulta").innerHTML = `Saisir l'âge à partir de 6 ans`;
+    }
+    return false
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myCategorie_jq() {
+    let age;
+    age = $("#age").val();
+    if(age > 5 && age < 8) {
+        $("#resulta").html(`(jq) Poussin de 6 à 7 ans`);
+    } else if (age > 7 && age < 10)  {
+        $("#resulta").html(`(jq) Pupille de 8 à 9 ans`);
+    } else if (age > 9 && age < 12) {
+        $("#resulta").html(`(jq) Minime de 10 à 11 ans`);
+    } else if (age >= 12) {
+        $("#resulta").html(`(jq) Cadet après 12 ans`);
+    } else {
+        $("#resulta").html(`(jq) Saisir l'âge à partir de 6 ans`);
+    }
+    return false
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
@@ -95,13 +127,13 @@ FIN
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Quel âge as-tu? <input id="inp_small" placeholder="Saisissez votre âge"></p>
-                    <button class="button_age">OK JavaScript</button>
-                    <button class="button_age">OK jQuery</button>
+                    <p>Saise l’âge d’un enfant<input id="i_age" name="i_age" placeholder="nomber"></p>
+                    <button class="button_age" onclick="myCategorie()">OK JavaScript</button>
+                    <button class="button_age" onclick="myCategorie_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <p>Tu es majeur!</p>
+                    <span id="resulta"></span>
                 </div>
             </div>
         </section>
