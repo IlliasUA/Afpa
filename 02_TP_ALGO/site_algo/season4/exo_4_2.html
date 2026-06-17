@@ -24,7 +24,11 @@
             <div class="section_firstarea">
                 <div class="exercise_window">
                     <h5>Exercice 4.2</h5>
-                    <p></p>
+                    <p>Cet algorithme est destiné à prédire l'avenir, et il doit être infaillible ! 
+Il lira au clavier l’heure et les minutes, et il affichera l’heure qu’il sera une minute plus tard. Par exemple, si 
+l'utilisateur tape 21 puis 32, l'algorithme doit répondre : 
+"Dans une minute, il sera 21 heure(s) 33". 
+NB : on suppose que l'utilisateur entre une heure valide. Pas besoin donc de la vérifier.</p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -33,15 +37,79 @@
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">4.2 VARIABLES heures_1, minutes_1
+
+DEBUT 
+    ECRIRE "Saise l’heur"
+    LIRE heures_1
+    ECRIRE "Saise minutes"
+    LIRE minutes_1
+        minutes_1++
+    SI minutes_1 == 60 ALORS
+        minutes_1 = 0
+        heures_1++
+    SINON SI heures_1 == 24 ALORS
+        heures_1 = 0
+        minutes_1 = 0
+    FINSI   
+    ECRIRE "Dans une minute, il sera ", heures_1, ": ", minutes_1
+FIN  
+                        
+                        
+4.2(a) VARIABLES heures_1, minutes_1
+
+DEBUT 
+    ECRIRE "Saise l’heur"
+    LIRE heures_1
+    ECRIRE "Saise minutes"
+    LIRE minutes_1
+    SI heures_1 != 23 ET minutes_1 != 59 ALORS
+        minutes_1 += 1 
+    SINON SI heures_1 != 23 ET minutes_1 == 59 ALORS
+        heures_1 += 1
+        minutes_1 = 0
+    SINON 
+        heures_1 = 0
+        minutes_1 = 0
+    FINSI 
+    ECRIRE "Dans une minute, il sera ", heures_1, ": ", minutes_1
+FIN  </textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function minutePlusTard() {
+    let minutes, heur;
+    minutes = document.getElementById("minutes").value;
+    heur = document.getElementById("heur").value;
+        minutes++;
+    if(minutes == 60) {
+        minutes = 0;
+        heur++;
+    } else if(heur == 24) {
+        heur = 0;
+        minutes = 0;
+    } 
+    document.getElementById("resulta").innerHTML = `Dans une minute, il sera ${heur} : ${minutes}`;
+    return false
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function minutePlusTard_jq() {
+    let minutes, heur;
+    minutes = $("#minutes").val();
+    heur = $("#minutes").val();
+    minutes++;
+    if(minutes == 60) {
+        minutes = 0;
+        heur++;
+    } else if(heur == 24) {
+        heur = 0;
+        minutes = 0;
+    }
+    $("#resulta").html(`(jq) Dans une minute, il sera ${heur} : ${minutes}`);
+    return false
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
@@ -50,11 +118,10 @@
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Saise Tutu<input id="inp_tutu" name="inp_tutu" placeholder="nombre"></p>
-                    <p>Saise Toto<input id="inp_toto" name="inp_toto" placeholder="nombre"></p>
-                    <p>Saise Tata<input id="inp_tata" name="inp_tata" placeholder="OK/NON"></p>
-                    <button class="button_age" onclick="">OK JavaScript</button>
-                    <button class="button_age" onclick="">OK jQuery</button>
+                    <p>Saise l’heur<input id="heur" name="heur" placeholder="nombre"></p>
+                    <p>Saise minutes<input id="minutes" name="minutes" placeholder="nombre"></p>
+                    <button class="button_age" onclick="minutePlusTard()">OK JavaScript</button>
+                    <button class="button_age" onclick="minutePlusTard_jq()">OK jQuery</button>
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">

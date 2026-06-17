@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_4.js"></script>
+        <script></script>
         <title>Site algo</title>
     </head>
     
@@ -92,7 +93,16 @@ function myText() {
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder=""> $a = " belle marquise ";
+    $b = " vos beaux yeux ";
+    $c = " me font ";
+    $d = " d’amour ";
+
+    $resulta= "(php)" . $a . $c . $b . $d . "<br>";
+    $resulta.= $b . $a . $c . $d . "<br>";
+    $resulta.= $c . $d . $a . $b . "<br>";
+    $resulta.= $a . $c . $b . $d;
+require "exo_4.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
@@ -102,7 +112,7 @@ function myText() {
                     <button class="button_age">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <span id="voir_resulta"></span>
+                    <span id="voir_resulta"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>

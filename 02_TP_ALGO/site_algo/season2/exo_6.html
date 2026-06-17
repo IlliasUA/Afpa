@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_6.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -74,19 +75,28 @@ function mySurface() {
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$surface = "";
+if(isset($_POST["inp_largeur"])) {
+    $inp_largeur = (int)$_POST["inp_largeur"];
+    $inp_hauteur = (int)$_POST["inp_hauteur"];
+    $res_surface = $inp_largeur * $inp_hauteur;
+    $surface = "(php) $res_surface px";
+}
+require "exo_6.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="POST" action="exo_6.php" name="formPHP">  
                     <p>Saise le largeur en px <input id="inp_largeur" name="inp_largeur" placeholder="px"></p>
                     <p>Saise l'hauteur <input id="inp_hauteur" name="inp_hauteur" placeholder="px"></p>
                     <button class="button_age" onclick="mySurface()">OK JavaScript</button>
                     <button class="button_age" onclick="mySurface_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="surface"></span>
+                    <span id="surface"><?php echo $surface ?></span>
                 </div>
             </div>
         </section>

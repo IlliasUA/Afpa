@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_4.js"></script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 4.4</h5>
+                    <p>Un magasin de reprographie facture 0,10 E les dix premières photocopies, 0,09 E les vingt suivantes et 0,08 E au
+delà. Ecrivez un algorithme qui demande à l’utilisateur le nombre de photocopies effectuées et qui affiche la facture 
+correspondante.</p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES  nombre_de_photocopies, facture
+
+DEBUT
+    ECRIRE "Saise nombre de photocopies"
+    LIRE nombre_de_photocopies
+    SI nombre_de_photocopies <= 10 ALORS
+        facture = nombre_de_photocopies * 0.1
+    SINON SI nombre_de_photocopies > 10 ET nombre_de_photocopies <= 30 ALORS
+        facture = 10 * 0.1 + (nombre_de_photocopies - 10) * 0.09
+    SINON SI nombre_de_photocopies > 30 ALORS
+        facture = 10 * 0.1 + 20 * 0.09 + (nombre_de_photocopies - 30) * 0.08     
+    FINSI
+    ECRIRE "Votre facture est ", facture
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <p>Saise nombre de photocopies<input id="nombre_de_photocopies" name="nombre_de_photocopies" placeholder="nombre"></p>
+                    <button class="button_age" onclick="myFacture()">OK JavaScript</button>
+                    <button class="button_age" onclick="myFacture_jq()">OK jQuery</button>
+                    <button class="button_age">OK PHP</button>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"></span>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>

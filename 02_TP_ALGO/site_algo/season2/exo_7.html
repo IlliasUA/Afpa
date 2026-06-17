@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_7.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -73,19 +74,27 @@ function myGreeting() {
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$greeting = "";
+if(isset($_POST["inp_prenom"])) {
+    $inp_prenom = $_POST["inp_prenom"];
+    $inp_nom = $_POST["inp_nom"];
+    $greeting = "(php) Bonjour $inp_prenom $inp_nom!";
+}
+require "exo_7.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="POST" action="exo_7.php" name="formPHP"> 
                     <p>Saise votre prenom<input id="inp_prenom" name="inp_prenom" placeholder="prenom"></p>
                     <p>Saise votre nom<input id="inp_nom" name="inp_nom" placeholder="nom"></p>
                     <button class="button_age" onclick="myGreeting()">OK JavaScript</button>
                     <button class="button_age" onclick="myGreeting_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="greeting"></span>
+                    <span id="greeting"><?php echo $greeting ?></span>
                 </div>
             </div>
         </section>

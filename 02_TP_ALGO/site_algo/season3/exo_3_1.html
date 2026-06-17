@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_3.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -84,14 +85,16 @@ function myPosNegNumb() {
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="POST" action="exo_3_1.php" name="formPHP"> 
                     <p>Saise un nombre<input id="inp_number" name="inp_number" placeholder="nombre"></p>
                     <button class="button_age" onclick="myPosNegNumb()">OK JavaScript</button>
                     <button class="button_age" onclick="myPosNegNumb_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    </form>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
                 </div>
                 <div class="reponse_area">
-                    <span id="resulta"></span>
+                    <span id="resulta"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_3.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -59,8 +60,8 @@ function myTtc() {
     inp_small_nombre = document.getElementById("inp_small_nombre").value;
     inp_small_prix = document.getElementById("inp_small_prix").value;
     inp_small_tva = document.getElementById("inp_small_tva").value;
-    resulta_ttc = Math.round( (inp_small_prix * inp_small_nombre) * (1 + inp_small_tva / 100) );
-    document.getElementById("resulta_ttc").innerHTML = `Prix total des vos articles est ${resulta_ttc}`;
+    resulta = Math.round( (inp_small_prix * inp_small_nombre) * (1 + inp_small_tva / 100) );
+    document.getElementById("resulta").innerHTML = `Prix total des vos articles est ${resulta}`;
 }
 
 </textarea>
@@ -71,26 +72,36 @@ function myTtc() {
     let inp_small_nombre = $("#inp_small_nombre").val();
     let inp_small_prix  = $("#inp_small_prix").val();
     let inp_small_tva  = $("#inp_small_tva").val();
-    let resulta_ttc = Math.round((inp_small_prix * inp_small_nombre) * (1 + inp_small_tva / 100));
-    $("#resulta_ttc").html(`(jq)Prix total des vos articles est ${resulta_ttc}`);
+    let resulta = Math.round((inp_small_prix * inp_small_nombre) * (1 + inp_small_tva / 100));
+    $("#resulta").html(`(jq)Prix total des vos articles est ${resulta}`);
 }</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder=""> $i_resultat = "";
+if((isset($_POST["inp_small_nombre"])) && (isset($_POST["inp_small_prix"])) && (isset($_POST["inp_small_tva"]))) {
+    $inp_small_nombre = $_POST["inp_small_nombre"];
+    $inp_small_prix = $_POST["inp_small_prix"];
+    $inp_small_tva = $_POST["inp_small_tva"];
+    $resulta_ttc = $inp_small_prix * $inp_small_nombre * (1 + $inp_small_tva / 100);
+    $resulta = "Prix total des vos articles est $resulta_ttc";
+} 
+require "exo_3.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="POST" action="exo_3.php" name="formPHP"> 
                     <p>Saisi le nombre d’articles <input id="inp_small_nombre" name="inp_small_nombre" placeholder="nombre"></p>
                     <p>Saisi le prix d’un d’articles <input id="inp_small_prix" name="inp_small_prix" placeholder="prix"></p>
                     <p>Saisi TVA <input id="inp_small_tva" name="inp_small_tva" placeholder="prix"></p>
                     <button class="button_age" onclick="myTtc()">OK JavaScript</button>
                     <button class="button_age" onclick="myTtc_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="exec_php()" type="submit">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="resulta_ttc"></span>
+                    <span id="resulta"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>

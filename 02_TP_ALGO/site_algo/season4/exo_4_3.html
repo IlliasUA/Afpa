@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_4.js"></script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 4.3</h5>
+                    <p>De même que le précédent, cet algorithme doit demander une heure et en afficher une autre. Mais cette fois, il doit 
+gérer également les secondes, et afficher l'heure qu'il sera une seconde plus tard. 
+Par exemple, si l'utilisateur tape 21, puis 32, puis 8, l'algorithme doit répondre : "Dans une seconde, il sera 21 
+heure(s), 32 minute(s) et 9 seconde(s)". 
+NB : là encore, on suppose que l'utilisateur entre une date valide.</p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES heures_1, minutes_1, secondes_1
+
+DEBUT 
+    ECRIRE "Saise l’heur"
+    LIRE heures_1
+    ECRIRE "Saise minutes"
+    LIRE minutes_1
+    ECRIRE "Saise secondes"
+    LIRE secondes_1
+        secondes_1++
+    SI secondes_1 == 60 ALORS
+        secondes_1 = 0
+        minutes_1++
+    SINON SI minutes_1 == 60 ALORS
+        secondes_1 = 0
+        minutes_1 = 0
+        heures_1++
+    SINON SI heures_1 == 24 ALORS
+        secondes_1 = 0
+        minutes_1 = 0
+        heures_1 = 0
+    FINSI    
+    ECRIRE "Dans une seconde, il sera ", heures_1, ": ", minutes_1, ": ", secondes_1
+FIN   </textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function secondePlusTard() {
+   let = heures_1, minutes_1, secondes_1;
+   heures_1 = document.getElementById("heures_1").value;
+   minutes_1 = document.getElementById("minutes_1").value;
+   secondes_1 = document.getElementById("secondes_1").value;
+        secondes_1++;
+   if(secondes_1 == 60) {
+        secondes_1 = 0;
+        minutes_1++;
+   } else if(minutes_1 == 60 ) {
+        secondes_1 = 0
+        minutes_1 = 0
+        heures_1++
+   } else if(heures_1 == 24) {
+        secondes_1 = 0
+        minutes_1 = 0
+        heures_1 = 0
+   }
+   document.getElementById("resulta").innerHTML = `Dans une seconde, il sera ${heures_1} : ${minutes_1} : ${secondes_1}`
+}</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function secondePlusTard_jq() {
+    let = heures_1, minutes_1, secondes_1;
+   heures_1 = $("#heures_1").val;
+   minutes_1 = $("#minutes_1").val;
+   secondes_1 = $("#secondes_1").val;
+        secondes_1++;
+   if(secondes_1 == 60) {
+        secondes_1 = 0;
+        minutes_1++;
+   } else if(minutes_1 == 60 ) {
+        secondes_1 = 0;
+        minutes_1 = 0;
+        heures_1++;
+   } else if(heures_1 == 24) {
+        secondes_1 = 0;
+        minutes_1 = 0;
+        heures_1 = 0;
+   }
+   $("#resulta").html = `(jQ) Dans une seconde, il sera ${heures_1} heur(s) ${minutes_1} minute(s) ${secondes_1} seconde(s)`;
+}</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <p>Saise l’heur<input id="heures_1" name="heures_1" placeholder="nombre"></p>
+                    <p>Saise minutes<input id="minutes_1" name="minutes_1" placeholder="nombre"></p>
+                    <p>Saise secondes<input id="secondes_1" name="secondes_1" placeholder="nombre"></p>
+                    <button class="button_age" onclick="secondePlusTard()">OK JavaScript</button>
+                    <button class="button_age" onclick="secondePlusTard_jq()">OK jQuery</button>
+                    <button class="button_age">OK PHP</button>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"></span>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>

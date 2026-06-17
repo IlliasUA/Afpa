@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_2.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
 
         <title>Site algo</title>
     </head>
@@ -73,18 +74,29 @@ function myCarre() {
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">
+$i_resultat = "";
+if(isset($_POST["inp_small"])) {
+    $inp_small = $_POST["inp_small"];
+    $carre = $inp_small * $inp_small;
+    $i_resultat = "Le carré de $inp_small est $carre";
+} 
+
+require "exo_2.html";
+</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <p>Entrez un nombre <input type="text" name="inp_small" id="inp_small" placeholder="Votre nombre"></p>
+                <form method="POST" action="exo_2.php" name="formPHP">
+                    <p>Entrez un nombre <input type="text" name="inp_small" id="inp_small" placeholder="Votre nombre"></p>                    
                     <button class="button_age" onclick="myCarre()">OK JavaScript</button>
                     <button class="button_age" onclick="myCarre_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" type="submit" onclick="exec_php()">OK PHP</button>
+                </form> 
                 </div>
                 <div class="reponse_area">
-                    <span id="i_resultat"></span>
+                    <span id="i_resultat"><?php echo $i_resultat ?></span>
                 </div>
             </div>
         </section>

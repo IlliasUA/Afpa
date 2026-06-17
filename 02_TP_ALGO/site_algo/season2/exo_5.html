@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_2_5.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -65,23 +66,41 @@ function myAge() {
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myAge_jq() {
+    let anee_de_naissance, anee_actuelle, age;
+
+    anee_de_naissance = $("#anee_de_naissance").val();
+    anee_actuelle = $("#anee_actuelle").val();
+    age = anee_actuelle - anee_de_naissance;
+    $("#votre_age").html(`(jq) Vous avez ${age} ans`);
+    return false
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta = "";
+if(isset($_POST["anee_de_naissance"])) {
+    $anee_de_naissance = (int)$_POST["anee_de_naissance"];
+    $anee_actuelle  = (int)$_POST["anee_actuelle"];
+    $age = $anee_actuelle - $anee_de_naissance;
+    $resulta = "(php) Vous avez $age ans";
+}
+require "exo_5.html";
+?></textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="POST" action="exo_5.php" name="formPHP"> 
                     <p>Votre année de naissance<input id="anee_de_naissance" name="anee_de_naissance" placeholder="année de naissance"></p>
                     <p>Saise année currante<input id="anee_actuelle" name="anee_actuelle" placeholder="année currante"></p>
                     <button class="button_age" onclick="myAge()">OK JavaScript</button>
                     <button class="button_age" onclick="myAge_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="exec_php()" type="submit">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="votre_age"></span>
+                    <span id="votre_age"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>

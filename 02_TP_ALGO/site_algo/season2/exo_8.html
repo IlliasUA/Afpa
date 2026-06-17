@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/script_2_8.js"></script>
         <script src="../JS/jquery.min.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -73,19 +74,28 @@ function myTotalMinutes() {
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$total_en_minutes = "";
+if(isset($_POST["inp_heures"])) {
+    $inp_heures = (int)$_POST["inp_heures"];
+    $inp_minutes = (int)$_POST["inp_minutes"];
+    $calc_total = $inp_heures * 60 + $inp_minutes;
+    $total_en_minutes = "(php) $calc_total minutes";
+}
+require "exo_8.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="POST" action="exo_8.php" name="formPHP">  
                     <p>Saise un nombre d'heures<input id="inp_heures" name="inp_heures" placeholder="un nombre 0 a 23"></p>
                     <p>Saise un nombre de minutes<input id="inp_minutes" name="inp_minutes" placeholder="un nombre 0 a 59"></p>
                     <button class="button_age" onclick="myTotalMinutes()">OK JavaScript</button>
                     <button class="button_age" onclick="myTotalMinutes_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="total_en_minutes"></span>
+                    <span id="total_en_minutes"><?php echo $total_en_minutes ?></span>
                 </div>
             </div>
         </section>
