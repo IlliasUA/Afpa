@@ -311,34 +311,20 @@ FIN
 VARIABLES age, date_du_permi, responsable_d_accident
 
 DEBUT
-    ECRIRE "Saise votre age"
+    ECRIRE "Saisez votre âge: "
     LIRE age
-    SI       age < 25 ALORS
-             date_du_permi < 2 ALORS
-             !(responsable_d_accident) ALORS
-             rouge = "Vous allez être attribuée au tarif rouge" 
-             ECRIRE rouge
-    SINON SI age < 25 ET date_du_permi >= 2 ET !(responsable_d_accident) ALORS
-             age >= 25 ET date_du_permi < 2 ET !(responsable_d_accident) ALORS
-             orange = "Vous allez être attribuée au tarif orange"
-             ECRIRE orange
-    SINON SI age > 25 ALORS
-             date_du_permi > 2 ALORS
-             !(responsable_d_accident) ALORS
-             ECRIRE orange
-    SINON SI age > 25 ET date_du_permi >= 2 ET !(responsable_d_accident) ALORS
-             vert = "Vous allez être attribuée au tarif vert"
-             ECRIRE vert
-    SINON SI age > 25 ET date_du_permi >= 2 ET rouge ET responsable_d_accident ALORS
-             ECRIRE orange
+    ECRIRE "Depuis combien d'années avez-vous le permis? "
+    LIRE annees_permis
+    ECRIRE "Nombre d'accidents provoqués: "
+    LIRE n_accidents
+    ECRIRE "Depuis combien d'années êtes-vous client? "
+    LIRE annees_client
 
 
 
              
 
        
-         
-FIN
 
 
 

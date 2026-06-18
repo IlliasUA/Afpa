@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_3.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -83,20 +84,33 @@ FIN
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta = "";
+if(isset($_POST["i_nom1"])) {
+    $i_nom1 = $_POST["i_nom1"];
+    $i_nom2 = $_POST["i_nom2"];
+    $i_nom3 = $_POST["i_nom3"];
+    if($i_nom1 <= $i_nom2 && $i_nom2 <= $i_nom3) {
+        $resulta = "(php) Votre trois nom sont dans l’ordre alphabétique";
+    } else {
+        $resulta = "(php) Votre trois nom ne sont pas dans l’ordre alphabétique";
+    }
+}
+require "exo_3_3.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="post" action="exo_3_3.php" name="formPHP"> 
                     <p>Saise un nom<input id="i_nom1" name="i_nom1" placeholder="nome"></p>
                     <p>Saise deuxième nom<input id="i_nom2" name="i_nom2" placeholder="nome"></p>
                     <p>Saise troixième nom<input id="i_nom3" name="i_nom3" placeholder="nome"></p>
-                    <button class="button_age" onclick="myRangeAlphabet()">OK JavaScript</button>
-                    <button class="button_age" onclick="myRangeAlphabet_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" type="button" onclick="myRangeAlphabet()">OK JavaScript</button>
+                    <button class="button_age" type="button" onclick="myRangeAlphabet_jq()">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="resulta"></span>
+                    <span id="resulta"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>

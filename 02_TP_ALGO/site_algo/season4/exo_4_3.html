@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_4.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -47,16 +48,13 @@ DEBUT
     ECRIRE "Saise secondes"
     LIRE secondes_1
         secondes_1++
-    SI secondes_1 == 60 ALORS
+    SI secondes_1 >= 60 ALORS
         secondes_1 = 0
         minutes_1++
-    SINON SI minutes_1 == 60 ALORS
-        secondes_1 = 0
+    SI minutes_1 >= 60 ALORS
         minutes_1 = 0
         heures_1++
-    SINON SI heures_1 == 24 ALORS
-        secondes_1 = 0
-        minutes_1 = 0
+    SI heures_1 >= 24 ALORS
         heures_1 = 0
     FINSI    
     ECRIRE "Dans une seconde, il sera ", heures_1, ": ", minutes_1, ": ", secondes_1
@@ -70,16 +68,13 @@ FIN   </textarea>
    minutes_1 = document.getElementById("minutes_1").value;
    secondes_1 = document.getElementById("secondes_1").value;
         secondes_1++;
-   if(secondes_1 == 60) {
+   if(secondes_1 >= 60) {
         secondes_1 = 0;
         minutes_1++;
-   } else if(minutes_1 == 60 ) {
-        secondes_1 = 0
+   } if(minutes_1 >= 60 ) {
         minutes_1 = 0
         heures_1++
-   } else if(heures_1 == 24) {
-        secondes_1 = 0
-        minutes_1 = 0
+   } if(heures_1 >= 24) {
         heures_1 = 0
    }
    document.getElementById("resulta").innerHTML = `Dans une seconde, il sera ${heures_1} : ${minutes_1} : ${secondes_1}`
@@ -93,37 +88,53 @@ FIN   </textarea>
    minutes_1 = $("#minutes_1").val;
    secondes_1 = $("#secondes_1").val;
         secondes_1++;
-   if(secondes_1 == 60) {
+  if(secondes_1 >= 60) {
         secondes_1 = 0;
         minutes_1++;
-   } else if(minutes_1 == 60 ) {
-        secondes_1 = 0;
-        minutes_1 = 0;
-        heures_1++;
-   } else if(heures_1 == 24) {
-        secondes_1 = 0;
-        minutes_1 = 0;
-        heures_1 = 0;
+   } if(minutes_1 >= 60 ) {
+        minutes_1 = 0
+        heures_1++
+   } if(heures_1 >= 24) {
+        heures_1 = 0
    }
    $("#resulta").html = `(jQ) Dans une seconde, il sera ${heures_1} heur(s) ${minutes_1} minute(s) ${secondes_1} seconde(s)`;
 }</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta= "";
+if(isset($_POST["heures_1"])) {
+    $heures_1= $_POST["heures_1"];
+    $minutes_1= $_POST["minutes_1"];
+    $secondes_1= $_POST["secondes_1"];
+        $secondes_1++;
+            if($secondes_1 >= 60) {
+                $secondes_1 = 0;
+                $minutes_1++;
+   }        if($minutes_1 >= 60) {
+                $minutes_1 = 0;
+                $heures_1++;
+   }        if($heures_1 >= 24) {
+                $heures_1 = 0;
+   }
+   $resulta= "(php) Dans une seconde, il sera $heures_1 heur(s) $minutes_1 minute(s) $secondes_1 seconde(s)";
+}
+require "exo_4_3.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="post" action="exo_4_3.php" name="formPHP"> 
                     <p>Saise l’heur<input id="heures_1" name="heures_1" placeholder="nombre"></p>
                     <p>Saise minutes<input id="minutes_1" name="minutes_1" placeholder="nombre"></p>
                     <p>Saise secondes<input id="secondes_1" name="secondes_1" placeholder="nombre"></p>
-                    <button class="button_age" onclick="secondePlusTard()">OK JavaScript</button>
-                    <button class="button_age" onclick="secondePlusTard_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="secondePlusTard()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="secondePlusTard_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="resulta"></span>
+                    <span id="resulta"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>

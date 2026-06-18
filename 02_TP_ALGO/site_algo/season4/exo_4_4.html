@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_4.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -52,26 +53,62 @@ FIN</textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myFacture() {
+    let nombre_de_photocopies, facture;
+    nombre_de_photocopies = Number(document.getElementById("nombre_de_photocopies").value);
+    if(nombre_de_photocopies <= 10) {
+        facture = nombre_de_photocopies * 0.1;
+    } else if((nombre_de_photocopies > 10) && (nombre_de_photocopies <= 30)) {
+        facture = 10 * 0.1 + (nombre_de_photocopies - 10) * 0.09;
+    } else if(nombre_de_photocopies > 30) {
+        facture = 10 * 0.1 + 20 * 0.09 + (nombre_de_photocopies - 30) * 0.08;
+    }
+    document.getElementById("resulta").innerHTML = `Votre facture est ${facture.toFixed(2)}`;
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myFacture_jq() {
+    let nombre_de_photocopies, facture;
+    nombre_de_photocopies = $("#nombre_de_photocopies").val();
+    if(nombre_de_photocopies <= 10) {
+        facture = nombre_de_photocopies * 0.1;
+    } else if((nombre_de_photocopies > 10) && (nombre_de_photocopies <= 30)) {
+        facture = 10 * 0.1 + (nombre_de_photocopies - 10) * 0.09;
+    } else if(nombre_de_photocopies > 30) {
+        facture = 10 * 0.1 + 20 * 0.09 + (nombre_de_photocopies - 30) * 0.08;
+    }
+    $("#resulta").html(`(jq) Votre facture est ${facture.toFixed(2)}`);
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta= "";
+if(isset($_POST["nombre_de_photocopies"])) {
+    $nombre_de_photocopies= $_POST["nombre_de_photocopies"];
+    if($nombre_de_photocopies <= 10) {
+        $facture = $nombre_de_photocopies * 0.1;
+    } else if(($nombre_de_photocopies > 10) && ($nombre_de_photocopies <= 30)) {
+        $facture = 10 * 0.1 + ($nombre_de_photocopies - 10) * 0.09;
+    } else if($nombre_de_photocopies > 30) {
+        $facture = 10 * 0.1 + 20 * 0.09 + ($nombre_de_photocopies - 30) * 0.08;
+    }
+    $resulta= "(php) Votre facture est " . number_format($facture, 2) . "";
+}
+require "exo_4_4.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
+                    <form method="post" action="exo_4_4.php" name="formPHP">
                     <p>Saise nombre de photocopies<input id="nombre_de_photocopies" name="nombre_de_photocopies" placeholder="nombre"></p>
-                    <button class="button_age" onclick="myFacture()">OK JavaScript</button>
-                    <button class="button_age" onclick="myFacture_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="myFacture()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myFacture_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="resulta"></span>
+                    <span id="resulta"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>

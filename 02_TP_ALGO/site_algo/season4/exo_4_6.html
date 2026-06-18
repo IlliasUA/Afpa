@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_4.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 4.6</h5>
+                    <p>Les élections législatives, en Guignolerie Septentrionale, obéissent à la règle suivante :
+lorsque l'un des candidats obtient plus de 50% des suffrages, il est élu dès le premier tour.
+en cas de deuxième tour, peuvent participer uniquement les candidats ayant obtenu au moins 12,5% des voix au premier tour.
+Vous devez écrire un algorithme qui permette la saisie des scores de quatre candidats au premier tour. 
+Cet algorithme traitera ensuite le candidat numéro 1 (et uniquement lui) : il dira s'il est élu, battu, s'il se trouve en ballottage favorable 
+(il participe au second tour en étant arrivé en tête à l'issue du premier tour) ou défavorable 
+(il participe au second tour sans avoir été en tête au premier tour).</p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES score, votants
+
+DEBUT
+    ECRIRE "Saisie de score de votre candidat"
+    LIRE score
+    ECRIRE "Saisie de nombre de votants"
+    ECRIRE votants
+    SI (score / votants) * 100 > 50 ALORS
+        ECRIRE "Votre candidat est elu des le premier tour!"
+    SINON SI (score / votants) * 100 >= 12.5 ALORS
+             (score / votants) * 100 < 50 ALORS
+        ECRIRE "Votre candidat peut participier au second tour!"
+    SINON  
+        ECRIRE "Votre candidat est perdu"
+    FINSI
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function myCandidat() {
+    let score, votants;
+    score= document.getElementById("score").value;
+    votants= document.getElementById("votants").value;
+    if((score / votants) * 100 > 50) {
+        document.getElementById("resulta").innerHTML = `Votre candidat est elu des le premier tour!`;
+    } else if((score / votants) * 100 >= 12.5) {
+        document.getElementById("resulta").innerHTML = `Votre candidat peut participier au second tour!`;
+    } else if((score / votants) * 100 <= 12.5) {
+        document.getElementById("resulta").innerHTML = `Votre candidat est perdu`;
+    }
+}</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function myCandidat_jq() {
+    let score, votants;
+    score= $("#score").val();
+    votants= $("#votants").val();
+    if((score / votants) * 100 > 50) {
+        $("#resulta").html(`(jq) Votre candidat est elu des le premier tour!`);
+    } else if((score / votants) * 100 >= 12.5) {
+        $("#resulta").html(`(jq) Votre candidat peut participier au second tour!`);
+    } else if((score / votants) * 100 <= 12.5) {
+        $("#resulta").html(`(jq) Votre candidat est perdu`);
+    }
+}</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder="">$resulta= "";
+if(isset($_POST["score"])) {
+    $score= $_POST["score"];
+    $votants= $_POST["votants"];
+    if(($score / $votants) * 100 > 50) {
+        $resulta= "(php) Votre candidat est elu des le premier tour!";
+    } else if(($score / $votants) * 100 >= 12.5) {
+        $resulta= "(php) Votre candidat peut participier au second tour!";
+    } else if(($score / $votants) * 100 <= 12.5) {
+        $resulta= "(php) Votre candidat est perdu";
+    }
+}
+require "exo_4_6.html";</textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_4_6.php" name="formPHP">
+                    <p>Saisie de score de votre candidat<input id="score" name="score" placeholder="quantité"></p>
+                    <p>Saisie de nombre de votants<input id="votants" name="votants" placeholder="nombre"></p>
+                    <button class="button_age" onclick="myCandidat()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myCandidat_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"><?php echo $resulta ?></span>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>

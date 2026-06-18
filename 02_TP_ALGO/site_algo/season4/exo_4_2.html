@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_4.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -45,12 +46,11 @@ DEBUT
     ECRIRE "Saise minutes"
     LIRE minutes_1
         minutes_1++
-    SI minutes_1 == 60 ALORS
+    SI minutes_1 >= 60 ALORS
         minutes_1 = 0
         heures_1++
-    SINON SI heures_1 == 24 ALORS
+    SI heures_1 >= 24 ALORS
         heures_1 = 0
-        minutes_1 = 0
     FINSI   
     ECRIRE "Dans une minute, il sera ", heures_1, ": ", minutes_1
 FIN  
@@ -82,14 +82,13 @@ FIN  </textarea>
     minutes = document.getElementById("minutes").value;
     heur = document.getElementById("heur").value;
         minutes++;
-    if(minutes == 60) {
+    if(minutes >= 60) {
         minutes = 0;
         heur++;
-    } else if(heur == 24) {
+    } if(heur >= 24) {
         heur = 0;
-        minutes = 0;
     } 
-    document.getElementById("resulta").innerHTML = `Dans une minute, il sera ${heur} : ${minutes}`;
+    document.getElementById("resulta").innerHTML = `Dans une minute, il sera ${heur} heur(s) ${minutes} minute(s)`;
     return false
 }</textarea>
                 </div>
@@ -98,34 +97,48 @@ FIN  </textarea>
                     <textarea class="text" placeholder="">function minutePlusTard_jq() {
     let minutes, heur;
     minutes = $("#minutes").val();
-    heur = $("#minutes").val();
+    heur = $("#heur").val();
     minutes++;
-    if(minutes == 60) {
+    if(minutes >= 60) {
         minutes = 0;
         heur++;
-    } else if(heur == 24) {
+    } if(heur >= 24) {
         heur = 0;
-        minutes = 0;
     }
-    $("#resulta").html(`(jq) Dans une minute, il sera ${heur} : ${minutes}`);
+    $("#resulta").html(`(jq) Dans une minute, il sera ${heur} heur(s) ${minutes} minute(s)`);
     return false
 }</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta= "";
+if(isset($_POST["heur"])) {
+    $heur= $_POST["heur"];
+    $minutes= $_POST["minutes"];
+    $minutes++;
+    if($minutes >= 60) {
+        $minutes = 0;
+        $heur++;
+    } if($heur == 24) {
+        $heur = 0;
+    }
+    $resulta= "(php) Dans une minute, il sera $heur heur(s)  $minutes minute(s)";
+}
+require "exo_4_2.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="post" action="exo_4_2.php" name="formPHP"> 
                     <p>Saise l’heur<input id="heur" name="heur" placeholder="nombre"></p>
                     <p>Saise minutes<input id="minutes" name="minutes" placeholder="nombre"></p>
-                    <button class="button_age" onclick="minutePlusTard()">OK JavaScript</button>
-                    <button class="button_age" onclick="minutePlusTard_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="minutePlusTard()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="minutePlusTard_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="resulta"></span>
+                    <span id="resulta"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_3.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -81,19 +82,31 @@ FIN
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta = "";
+if(isset($_POST["i_num1"])) {
+    $i_num1 = $_POST["i_num1"];
+    $i_num2 = $_POST["i_num2"];
+    if(($i_num1 > 0 && $i_num2 > 0) || ($i_num1 < 0 && $i_num2 < 0)) {
+        $resulta = "(php) Votre produit est positif";
+    } else {
+        $resulta = "(php) Votre produit est negatif";
+    }
+}
+require "exo_3_2.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
-                    <p>Saise un nombre<input id="i_num1" placeholder="un nomber"></p>
-                    <p>Saise un deuxième nombre<input id="i_num2" placeholder="un nomber"></p>
-                    <button class="button_age" onclick="myCalculeProduit()">OK JavaScript</button>
-                    <button class="button_age" onclick="myCalculeProduit_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                <div class="question_area">
+                    <form method="POST" action="exo_3_2.php" name="formPHP"> 
+                    <p>Saise un nombre<input id="i_num1" placeholder="un nomber" name="i_num1"></p>
+                    <p>Saise un deuxième nombre<input id="i_num2" placeholder="un nomber" name="i_num2"></p>
+                    <button class="button_age" onclick="myCalculeProduit()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myCalculeProduit_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="resulta"></p>
+                    <span id="resulta"><?php echo $resulta ?></p>
                 </div>
             </div>
         </section>

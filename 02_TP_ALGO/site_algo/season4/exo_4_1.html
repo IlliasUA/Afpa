@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_4.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -94,20 +95,34 @@ function tutuFunc() {
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta= "";
+if(isset($_POST["inp_tutu"])) {
+    $inp_tutu= $_POST["inp_tutu"];
+    $inp_toto= $_POST["inp_toto"];
+    $inp_tata= $_POST["inp_tata"];
+    if(($inp_tutu <= $inp_toto + 4) && ($inp_tata != "OK")) {
+        $inp_tutu -= 1;
+    } else {
+        $inp_tutu += 1;
+    }
+    $resulta= "(php) $inp_tutu";
+}
+require "exo_4_1.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="post" action="exo_4_1.php" name="formPHP"> 
                     <p>Saise Tutu<input id="inp_tutu" name="inp_tutu" placeholder="nombre"></p>
                     <p>Saise Toto<input id="inp_toto" name="inp_toto" placeholder="nombre"></p>
                     <p>Saise Tata<input id="inp_tata" name="inp_tata" placeholder="OK/NON"></p>
-                    <button class="button_age" onclick="tutuFunc()">OK JavaScript</button>
-                    <button class="button_age" onclick="tutuFunc_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="tutuFunc()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="tutuFunc_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="resulta"></span>
+                    <span id="resulta"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>

@@ -81,15 +81,25 @@ function myPosNegNumb() {
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta = "";
+if(isset($_POST["inp_number"])) {
+    $inp_number = (int)$_POST["inp_number"];
+    if($inp_number >= 0) {
+       $resulta= "(php) $inp_number est positif";
+    } else {
+       $resulta= "(php) $inp_number est négatif";
+    }
+}
+require "exo_3_1.html";
+?></textarea>
                 </div>
             </div>
             <div class="dialogue_area">
                 <div class="question_area">
                     <form method="POST" action="exo_3_1.php" name="formPHP"> 
                     <p>Saise un nombre<input id="inp_number" name="inp_number" placeholder="nombre"></p>
-                    <button class="button_age" onclick="myPosNegNumb()">OK JavaScript</button>
-                    <button class="button_age" onclick="myPosNegNumb_jq()">OK jQuery</button>
+                    <button class="button_age" onclick="myPosNegNumb()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myPosNegNumb_jq()" type="button">OK jQuery</button>
                     </form>
                     <button class="button_age" onclick="exec_php()">OK PHP</button>
                 </div>

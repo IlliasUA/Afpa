@@ -56,16 +56,18 @@ function NumbIncluZero() {
 /*3.5 */
 function ProduitIncluZero() {
     let i_num1, i_num2;
-    i_num1 = document.getElementById("i_num1").value;
+    i_num1 = Number(document.getElementById("i_num1").value);
+    i_num2 = Number(document.getElementById("i_num2").value);
     if((i_num1 > 0 && i_num2 > 0) || (i_num1 < 0 && i_num2 < 0)) {
         document.getElementById("resulta").innerHTML = `Votre nomber est positif!`;
     } else if((i_num1 < 0 && i_num2 > 0) || (i_num1 > 0 && i_num2 < 0)) {
         document.getElementById("resulta").innerHTML = `Votre nomber est negatif!`;
-    } else {
+    } else if(i_num1 == 0 || i_num2 == 0) {
         document.getElementById("resulta").innerHTML = `Votre nomber est nul!`;
+         }
+         return false
     }
-    return false
-}
+    
 
 /*3.6A*/
 function myCategorie() {

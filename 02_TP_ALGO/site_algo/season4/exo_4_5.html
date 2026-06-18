@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_4.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 4.5</h5>
+                    <p>Les habitants de Zorglub paient l’impôt selon les règles suivantes :
+les hommes de plus de 20 ans paient l’impôt
+les femmes paient l’impôt si elles ont entre 18 et 35 ans
+les autres ne paient pas d’impôt
+Le programme demandera donc l’âge et le sexe du Zorglubien, et se prononcera donc ensuite sur le fait que l’habitant est imposable.</p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES sexe, age
+
+DEBUT
+    ECRIRE "Saise votre sexe "
+    LIRE sexe
+    ECRIRE "Saise votre age"
+    LIRE age
+    SI (sexe == homme ET age >= 20) OU (sexe == femme ET (age >= 18 OU age <= 35)) ALORS
+        ECRIRE "Habitant est imposable"
+    SINON 
+        ECRIRE "Habitant est non imposable"
+    FINSI
+FIN   </textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function myImpo() {
+    let sexe, age;
+    sexe= document.getElementById("sexe").value;
+    age= Number(document.getElementById("age").value);
+    if((sexe == "homme" && age >= 20) || (sexe == "femme" && (age >= 18 && age <= 35))) {
+        document.getElementById("resulta").innerHTML = `Habitant est imposable`;
+    } else{
+        document.getElementById("resulta").innerHTML = `Habitant est non imposable`; 
+    }
+}</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function myImpo_jq() {
+    let sexe, age;
+    sexe= $("#sexe").val();
+    age= $("#age").val();
+    if((sexe == "homme" && age >= 20) || (sexe == "femme" && (age >= 18 && age <= 35))) {
+        $("#resulta").html(`(jq) Habitant est imposable`);
+    } else{
+        $("#resulta").html(`(jq) Habitant est non imposable`); 
+    }
+}</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder="">$resulta= "";
+if(isset($_POST["sexe"])) {
+    $sexe= $_POST["sexe"];
+    $age= $_POST["age"];
+    if(($sexe == "homme" && $age >= 20) || ($sexe == "femme" && ($age >= 18 && $age <= 35))) {
+        $resulta= "(php) Habitant est imposable";
+    } else {
+        $resulta= "(php) Habitant est non imposable";
+    }
+}
+require "exo_4_5.html";</textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_4_5.php" name="formPHP">
+                    <p>Saise votre sexe<input id="sexe" name="sexe" placeholder="homme/femme"></p>
+                    <p>Saise votre age<input id="age" name="age" placeholder="nombre"></p>
+                    <button class="button_age" onclick="myImpo()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myImpo_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"><?php echo $resulta ?></span>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>

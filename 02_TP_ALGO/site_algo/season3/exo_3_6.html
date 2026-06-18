@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/css_algo.css">
         <script src="../JS/jquery.min.js"></script>
         <script src="../JS/script_3.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
         <title>Site algo</title>
     </head>
     
@@ -122,18 +123,35 @@ FIN
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta= "";
+if(isset($_POST["i_age"])) {
+    $i_age= $_POST["i_age"];
+    if($i_age > 5 && $i_age < 8) {
+        $resulta= "(php) Poussin de 6 à 7 ans";
+    } else if($i_age > 7 && $i_age < 10)  {
+        $resulta= "(php) Pupille de 8 à 9 ans";
+    } else if ($i_age > 9 && $i_age < 12) {
+        $resulta= "(php) Minime de 10 à 11 ans";
+    } else if ($i_age >= 12) {
+        $resulta= "(php) Cadet après 12 ans";
+    } else {
+        $resulta= "(php) Saisir l'âge à partir de 6 ans";
+    }
+}
+require "exo_3_6.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
-                <div class="question_area"> 
+                <div class="question_area">
+                    <form method="post" action="exo_3_6.php" name="formPHP"> 
                     <p>Saise l’âge d’un enfant<input id="i_age" name="i_age" placeholder="nomber"></p>
-                    <button class="button_age" onclick="myCategorie()">OK JavaScript</button>
-                    <button class="button_age" onclick="myCategorie_jq()">OK jQuery</button>
-                    <button class="button_age">OK PHP</button>
+                    <button class="button_age" onclick="myCategorie()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myCategorie_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
                 </div>
                 <div class="reponse_area">
-                    <span id="resulta"></span>
+                    <span id="resulta"><?php echo $resulta ?></span>
                 </div>
             </div>
         </section>
