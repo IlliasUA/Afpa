@@ -39,28 +39,220 @@ Ecrire l'algorithme permettant de saisir les données nécessaires (sans contrô
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">VARIABLES age, annees_permis, accident, annees_client, tarif, rouge, orange, vert, blue
+rouge = "Tarif Rouge"
+orange = "Tarif Orange"
+vert = "Tarif Vert"
+blue = "Tarif Blue"
+DEBUT
+    ECRIRE "Saisez votre âge: "
+    LIRE age
+    ECRIRE "Depuis combien d'années avez-vous le permis? "
+    LIRE annees_permis
+    ECRIRE "Nombre d'accidents provoqués: "
+    LIRE accident
+    ECRIRE "Depuis combien d'années êtes-vous client? "
+    LIRE annees_client
+
+    SI (age < 25 ET annees_permis < 2) ALORS
+        SI (accident == 0) ALORS
+            tarif = rouge
+        SINON 
+            tarif = "Refuse!"
+    FINSI
+    SINON SI ((age < 25 ET annees_permis >= 2) OU (age >= 25 ET annees_permis < 2)) ALORS
+        SI (accident == 0) ALORS
+            tarif = orange
+        SINON SI (accident == 1) ALORS
+            tarif = rouge
+        SINON
+            tarif = "Refuse"
+        FINSI
+    SINON SI (age >= 25 ET annees_permis >= 2) ALORS
+        SI (accident == 0) ALORS
+            tarif = vert
+        SINON SI (accident == 1) ALORS
+            tarif = orange
+        SINON SI (accident == 2) ALORS
+             tarif = rouge
+        SINON
+            tarif = "Refuse"
+        FINSI
+    FINSI
+    SI (annees_client > 5 ET tarif != "Refuse") ALORS
+        SI (tarif == vert) ALORS
+            tarif = blue
+        SINON SI (tarif == orange) ALORS
+            tarif = vert
+        SINON SI (tarif == rouge) ALORS
+            tarif = orange
+        FINSI
+    FINSI
+    ECRIRE tarif</textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myAssurance() {
+    let age, annees_permis, accident, annees_client, tarif;
+    const rouge = "Tarif Rouge";
+    const orange = "Tarif Orange";
+    const vert = "Tarif Vert";
+    const blue = "Tarif Blue";
+
+    age= document.getElementById("age").value;
+    annees_permis= document.getElementById("annees_permis").value;
+    accident= document.getElementById("accident").value;
+    annees_client= document.getElementById("annees_client").value;
+
+    if(age < 25 && annees_permis < 2) {
+        if(accident == 0) {
+                tarif = rouge;
+        } else {
+                tarif = "Refuse!";
+            }
+    } else if ((age < 25 && annees_permis >= 2) || (age >= 25 && annees_permis < 2)) {
+        if (accident == 0) {
+                tarif = orange;
+            } else if (accident == 1) {
+                tarif = rouge;
+            } else {
+                tarif = "Refuse";
+            }
+    } else if (age >= 25 && annees_permis >= 2) {
+        if(accident == 0) {
+                tarif = vert;
+            } else if (accident == 1) {
+                tarif = orange;
+            } else if (accident == 2) {
+                tarif = rouge;
+            } else {
+                tarif = "Refuse";
+            }
+    }
+    if(annees_client > 5 && tarif != "Refuse") {
+        if(tarif == vert) {
+            tarif = blue;
+        } else if(tarif == orange) {
+            tarif = vert
+        } else if(tarif == rouge) {
+            tarif = orange;
+        }
+    }
+    document.getElementById("resulta").innerHTML = tarif;
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myAssurance_jq() {
+    let age, annees_permis, accident, annees_client, tarif;
+    const rouge = "Tarif Rouge";  
+    const orange = "Tarif Orange";
+    const vert = "Tarif Vert";
+    const blue = "Tarif Blue";
+
+    age= $("#age").val();
+    annees_permis= $("#annees_permis").val();
+    accident= $("#accident").val();
+    annees_client= $("#annees_client").val();
+
+    if(age < 25 && annees_permis < 2) {
+        if(accident == 0) {
+                tarif = rouge;
+        } else {
+                tarif = "Refuse!";
+            }
+    } else if ((age < 25 && annees_permis >= 2) || (age >= 25 && annees_permis < 2)) {
+        if (accident == 0) {
+                tarif = orange;
+            } else if (accident == 1) {
+                tarif = rouge;
+            } else {
+                tarif = "Refuse";
+            }
+    } else if (age >= 25 && annees_permis >= 2) {
+        if(accident == 0) {
+                tarif = vert;
+            } else if (accident == 1) {
+                tarif = orange;
+            } else if (accident == 2) {
+                tarif = rouge;
+            } else {
+                tarif = "Refuse";
+            }
+    }
+    if(annees_client > 5 && tarif != "Refuse") {
+        if(tarif == vert) {
+            tarif = blue;
+        } else if(tarif == orange) {
+            tarif = vert
+        } else if(tarif == rouge) {
+            tarif = orange;
+        }
+    }
+    $("#resulta").html(`(JQ) ${tarif}`);
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta= "";
+if(isset($_POST["age"])) {
+    $age= $_POST["age"];
+    $annees_permis= $_POST["annees_permis"];
+    $accident= $_POST["accident"];
+    $annees_client= $_POST["annees_client"];
+    $rouge = "Tarif Rouge";  
+    $orange = "Tarif Orange";
+    $vert = "Tarif Vert";
+    $blue = "Tarif Blue";
+
+    if($age < 25 && $annees_permis < 2) {
+        if($accident == 0) {
+                $tarif = $rouge;
+        } else {
+                $tarif = "Refuse!";
+            }
+    } else if (($age < 25 && $annees_permis >= 2) || ($age >= 25 && $annees_permis < 2)) {
+        if ($accident == 0) {
+                $tarif = $orange;
+            } else if ($accident == 1) {
+                $tarif = $rouge;
+            } else {
+                $tarif = "Refuse";
+            }
+    } else if ($age >= 25 && $annees_permis >= 2) {
+        if($accident == 0) {
+                $tarif = $vert;
+            } else if ($accident == 1) {
+                $tarif = $orange;
+            } else if ($accident == 2) {
+                $tarif = $rouge;
+            } else {
+                $tarif = "Refuse";
+            }
+    }
+    if($annees_client > 5 && $tarif != "Refuse") {
+        if($tarif == $vert) {
+            $tarif = $blue;
+        } else if($tarif == $orange) {
+            $tarif = $vert;
+        } else if($tarif == $rouge) {
+            $tarif = $orange;
+        }
+    }
+    $resulta= "(php) . $tarif"; 
+}
+require "exo_4_7.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
                     <form method="post" action="exo_4_7.php" name="formPHP">
-                    <p>Saisie de score de votre candidat<input id="score" name="score" placeholder="quantité"></p>
-                    <p>Saisie de nombre de votants<input id="votants" name="votants" placeholder="nombre"></p>
-                    <button class="button_age" onclick="myCandidat()" type="button">OK JavaScript</button>
-                    <button class="button_age" onclick="myCandidat_jq()" type="button">OK jQuery</button>
+                    <p>Saisez votre âge<input id="age" name="age" placeholder="age"></p>
+                    <p>Depuis combien d'années avez-vous le permis?<input id="annees_permis" name="annees_permis" placeholder="années de le permis"></p>
+                    <p>Nombre d'accidents provoqués<input id="accident" name="accident" placeholder="nombre"></p>
+                    <p>Depuis combien d'années êtes-vous client?<input id="annees_client" name="annees_client" placeholder="d'années client"></p>
+                    <button class="button_age" onclick="myAssurance()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myAssurance_jq()" type="button">OK jQuery</button>
                     <button class="button_age" onclick="exec_php()">OK PHP</button>
                     </form>
                 </div>

@@ -152,30 +152,216 @@ function myImpo_jq() {
     }
 }
 
-/* 4.6 JS*/
+
+/* 4.6(A) JS*/
 function myCandidat() {
-    let score, votants;
-    score= document.getElementById("score").value;
-    votants= document.getElementById("votants").value;
-    if((score / votants) * 100 > 50) {
-        document.getElementById("resulta").innerHTML = `Votre candidat est elu des le premier tour!`;
-    } else if((score / votants) * 100 >= 12.5) {
-        document.getElementById("resulta").innerHTML = `Votre candidat peut participier au second tour!`;
-    } else if((score / votants) * 100 <= 12.5) {
-        document.getElementById("resulta").innerHTML = `Votre candidat est perdu`;
+    let score_1, score_2, score_3, score_4, votants;
+    score_1= Number(document.getElementById("score_1").value);
+    score_2= Number(document.getElementById("score_2").value);
+    score_3= Number(document.getElementById("score_3").value);
+    score_4= Number(document.getElementById("score_4").value);
+
+    votants= score_1 + score_2 + score_3 + score_4;
+    if(((score_1 / votants) * 100 >= 12.5) && ((score_1 / votants) * 100 <= 50)) {
+        if (score_1 > score_2 && score_1 > score_3 && score_1 > score_4) {
+            document.getElementById("resulta").innerHTML = "Candidat 1 participe au second tour en étant arrivé en tête";
+        } else { 
+            document.getElementById("resulta").innerHTML = "Candidat 1 participe au second tour sans avoir été en tête";
+        }
+    }
+    if((score_1 / votants) * 100 > 50) {
+        document.getElementById("resulta").innerHTML = "Candidat 1 est elu des le premier tour!";
+    } else if((score_1 / votants) * 100 < 12.5) {
+        document.getElementById("resulta").innerHTML = "Candidat 1 est perdu";
     }
 }
 
-/* 4.6 JQ*/
+
+/* 4.6(A) Jq*/
 function myCandidat_jq() {
-    let score, votants;
-    score= $("#score").val();
-    votants= $("#votants").val();
-    if((score / votants) * 100 > 50) {
-        $("#resulta").html(`(jq) Votre candidat est elu des le premier tour!`);
-    } else if((score / votants) * 100 >= 12.5) {
-        $("#resulta").html(`(jq) Votre candidat peut participier au second tour!`);
-    } else if((score / votants) * 100 <= 12.5) {
-        $("#resulta").html(`(jq) Votre candidat est perdu`);
+    let score_1, score_2, score_3, score_4, votants;
+    score_1= Number($("#score_1").val());
+    score_2= Number($("#score_2").val());
+    score_3= Number($("#score_3").val());
+    score_4= Number($("#score_4").val());
+
+    votants= score_1 + score_2 + score_3 + score_4;
+    if(((score_1 / votants) * 100 >= 12.5) && ((score_1 / votants) * 100 <= 50)) {
+        if (score_1 > score_2 && score_1 > score_3 && score_1 > score_4) {
+            $("#resulta").html("(JQ) Candidat 1 participe au second tour en étant arrivé en tête");
+        } else { 
+            $("#resulta").html("(JQ) Candidat 1 participe au second tour sans avoir été en tête");
+        }
+    }
+    if((score_1 / votants) * 100 > 50) {
+        $("#resulta").html("(JQ) Candidat 1 est elu des le premier tour!");
+    } else if((score_1 / votants) * 100 < 12.5) {
+        $("#resulta").html("(JQ) Candidat 1 est perdu");
+    }
+}
+
+
+/* 4.7 JS*/
+function myAssurance() {
+    let age, annees_permis, accident, annees_client, tarif;
+    const rouge = "Tarif Rouge";
+    const orange = "Tarif Orange";
+    const vert = "Tarif Vert";
+    const blue = "Tarif Blue";
+
+    age= document.getElementById("age").value;
+    annees_permis= document.getElementById("annees_permis").value;
+    accident= document.getElementById("accident").value;
+    annees_client= document.getElementById("annees_client").value;
+
+    if(age < 25 && annees_permis < 2) {
+        if(accident == 0) {
+                tarif = rouge;
+        } else {
+                tarif = "Refuse!";
+            }
+    } else if ((age < 25 && annees_permis >= 2) || (age >= 25 && annees_permis < 2)) {
+        if (accident == 0) {
+                tarif = orange;
+            } else if (accident == 1) {
+                tarif = rouge;
+            } else {
+                tarif = "Refuse";
+            }
+    } else if (age >= 25 && annees_permis >= 2) {
+        if(accident == 0) {
+                tarif = vert;
+            } else if (accident == 1) {
+                tarif = orange;
+            } else if (accident == 2) {
+                tarif = rouge;
+            } else {
+                tarif = "Refuse";
+            }
+    }
+    if(annees_client > 5 && tarif != "Refuse") {
+        if(tarif == vert) {
+            tarif = blue;
+        } else if(tarif == orange) {
+            tarif = vert
+        } else if(tarif == rouge) {
+            tarif = orange;
+        }
+    }
+    document.getElementById("resulta").innerHTML = tarif;
+}
+
+
+/* 4.7 Jq*/
+function myAssurance_jq() {
+    let age, annees_permis, accident, annees_client, tarif;
+    const rouge = "Tarif Rouge";  
+    const orange = "Tarif Orange";
+    const vert = "Tarif Vert";
+    const blue = "Tarif Blue";
+
+    age= $("#age").val();
+    annees_permis= $("#annees_permis").val();
+    accident= $("#accident").val();
+    annees_client= $("#annees_client").val();
+
+    if(age < 25 && annees_permis < 2) {
+        if(accident == 0) {
+                tarif = rouge;
+        } else {
+                tarif = "Refuse!";
+            }
+    } else if ((age < 25 && annees_permis >= 2) || (age >= 25 && annees_permis < 2)) {
+        if (accident == 0) {
+                tarif = orange;
+            } else if (accident == 1) {
+                tarif = rouge;
+            } else {
+                tarif = "Refuse";
+            }
+    } else if (age >= 25 && annees_permis >= 2) {
+        if(accident == 0) {
+                tarif = vert;
+            } else if (accident == 1) {
+                tarif = orange;
+            } else if (accident == 2) {
+                tarif = rouge;
+            } else {
+                tarif = "Refuse";
+            }
+    }
+    if(annees_client > 5 && tarif != "Refuse") {
+        if(tarif == vert) {
+            tarif = blue;
+        } else if(tarif == orange) {
+            tarif = vert
+        } else if(tarif == rouge) {
+            tarif = orange;
+        }
+    }
+    $("#resulta").html(`(JQ) ${tarif}`);
+}
+
+
+/* 4.8 JS*/
+function myDate() {
+    let jour, mois, anees, bis_anees, v_jour, v_mois, v_date;
+    jour= Number(document.getElementById("jour").value);
+    mois= Number(document.getElementById("mois").value);
+    anees= Number(document.getElementById("anees").value);
+
+    v_jour= jour >= 1 && jour <= 31;
+    v_mois= mois >= 1 && mois <= 12;
+    bis_anees = (anees % 400 == 0) || ((anees % 4 == 0) && (anees % 100 != 0));
+    if (v_mois) {
+        if (mois == 2) {
+            if (bis_anees) {
+                v_jour= (jour >= 1 && jour <= 29);
+                } else if (!(bis_anees)) { 
+                v_jour= (jour >= 1 && jour <= 28);
+                }
+            } else if (mois == 4 || mois == 6 || mois == 9 || mois == 11) {
+                v_jour= (jour >= 1 && jour <= 30);
+            } else {
+                v_jour= (jour >= 1 && jour <= 31);
+        }
+    }
+    v_date= v_jour && v_mois;
+    if (v_date) {
+        document.getElementById("resulta").innerHTML = `Votre date: ${jour} / ${mois} / ${anees} est valide!`;
+    } else { 
+        document.getElementById("resulta").innerHTML = `Votre date: ${jour} / ${mois} / ${anees} est NON valide!`;
+    }
+}
+
+
+/* 4.8 Jq*/
+function myDate_jq() {
+    let jour, mois, anees, bis_anees, v_jour, v_mois, v_date;
+    jour= $("#jour").val();
+    mois= $("#mois").val();
+    anees= $("#anees").val();
+
+    v_jour= jour >= 1 && jour <= 31;
+    v_mois= mois >= 1 && mois <= 12;
+    bis_anees = (anees % 400 == 0) || ((anees % 4 == 0) && (anees % 100 != 0));
+    if (v_mois) {
+        if (mois == 2) {
+            if (bis_anees) {
+                v_jour= (jour >= 1 && jour <= 29);
+                } else if (!(bis_anees)) { 
+                v_jour= (jour >= 1 && jour <= 28);
+                }
+            } else if (mois == 4 || mois == 6 || mois == 9 || mois == 11) {
+                v_jour= (jour >= 1 && jour <= 30);
+            } else {
+                v_jour= (jour >= 1 && jour <= 31);
+        }
+    }
+    v_date= v_jour && v_mois;
+    if (v_date) {
+        $("#resulta").html(`(JQ) Votre date: ${jour} / ${mois} / ${anees} est valide!`);
+    } else { 
+        $("#resulta").html(`(JQ) Votre date: ${jour} / ${mois} / ${anees} est NON valide!`);
     }
 }

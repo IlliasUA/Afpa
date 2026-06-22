@@ -40,65 +40,102 @@ Cet algorithme traitera ensuite le candidat numéro 1 (et uniquement lui) : il d
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder="">VARIABLES score, votants
+                    <textarea class="text" placeholder="">VARIABLES score_1, score_2, score_3, score_4, votants
 
 DEBUT
-    ECRIRE "Saisie de score de votre candidat"
-    LIRE score
-    ECRIRE "Saisie de nombre de votants"
-    ECRIRE votants
-    SI (score / votants) * 100 > 50 ALORS
-        ECRIRE "Votre candidat est elu des le premier tour!"
-    SINON SI (score / votants) * 100 >= 12.5 ALORS
-             (score / votants) * 100 < 50 ALORS
-        ECRIRE "Votre candidat peut participier au second tour!"
-    SINON  
-        ECRIRE "Votre candidat est perdu"
+    ECRIRE "Saisie de score de candidat 1"
+    LIRE score_1
+    ECRIRE "Saisie de score de candidat 2"
+    LIRE score_2
+    ECRIRE "Saisie de score de candidat 3"
+    LIRE score_3
+    ECRIRE "Saisie de score de candidat 4"
+    LIRE score_4
+    
+    votants = score_1 + score_2 + score_3 + score_4
+    
+    SI ((score_1 / votants) * 100 >= 12.5) ET ((score_1 / votants) * 100 <= 50) ALORS
+        SI score_1 > score_2 ET score_1 > score_3 ET score_1 > score_4 ALORS
+            ECRIRE "Candidat 1 participe au second tour en étant arrivé en tête à l'issue du premier tour"
+        SINON 
+            ECRIRE "Candidat 1 participe au second tour sans avoir été en tête au premier tour"
+    FINSI
+    SI (score_1 / votants) * 100 > 50 ALORS
+        ECRIRE "Candidat 1 est elu des le premier tour!"
+    
+    SINON SI (score_1 / votants) * 100 < 12.5 ALORS
+        ECRIRE "Candidat 1 est perdu"
     FINSI
 FIN</textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
                     <textarea class="text" placeholder="">function myCandidat() {
-    let score, votants;
-    score= document.getElementById("score").value;
-    votants= document.getElementById("votants").value;
-    if((score / votants) * 100 > 50) {
-        document.getElementById("resulta").innerHTML = `Votre candidat est elu des le premier tour!`;
-    } else if((score / votants) * 100 >= 12.5) {
-        document.getElementById("resulta").innerHTML = `Votre candidat peut participier au second tour!`;
-    } else if((score / votants) * 100 <= 12.5) {
-        document.getElementById("resulta").innerHTML = `Votre candidat est perdu`;
+    let score_1, score_2, score_3, score_4, votants;
+    score_1= Number(document.getElementById("score_1").value);
+    score_2= Number(document.getElementById("score_2").value);
+    score_3= Number(document.getElementById("score_3").value);
+    score_4= Number(document.getElementById("score_4").value);
+
+    votants= score_1 + score_2 + score_3 + score_4;
+    if(((score_1 / votants) * 100 >= 12.5) && ((score_1 / votants) * 100 <= 50)) {
+        if (score_1 > score_2 && score_1 > score_3 && score_1 > score_4) {
+            document.getElementById("resulta").innerHTML = "Candidat 1 participe au second tour en étant arrivé en tête";
+        } else { 
+            document.getElementById("resulta").innerHTML = "Candidat 1 participe au second tour sans avoir été en tête";
+        }
+    }
+    if((score_1 / votants) * 100 > 50) {
+        document.getElementById("resulta").innerHTML = "Candidat 1 est elu des le premier tour!";
+    } else if((score_1 / votants) * 100 < 12.5) {
+        document.getElementById("resulta").innerHTML = "Candidat 1 est perdu";
     }
 }</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
                     <textarea class="text" placeholder="">function myCandidat_jq() {
-    let score, votants;
-    score= $("#score").val();
-    votants= $("#votants").val();
-    if((score / votants) * 100 > 50) {
-        $("#resulta").html(`(jq) Votre candidat est elu des le premier tour!`);
-    } else if((score / votants) * 100 >= 12.5) {
-        $("#resulta").html(`(jq) Votre candidat peut participier au second tour!`);
-    } else if((score / votants) * 100 <= 12.5) {
-        $("#resulta").html(`(jq) Votre candidat est perdu`);
+    let score_1, score_2, score_3, score_4, votants;
+    score_1= Number($("#score_1").val());
+    score_2= Number($("#score_2").val());
+    score_3= Number($("#score_3").val());
+    score_4= Number($("#score_4").val());
+
+    votants= score_1 + score_2 + score_3 + score_4;
+    if(((score_1 / votants) * 100 >= 12.5) && ((score_1 / votants) * 100 <= 50)) {
+        if (score_1 > score_2 && score_1 > score_3 && score_1 > score_4) {
+            $("#resulta").html("(JQ) Candidat 1 participe au second tour en étant arrivé en tête");
+        } else { 
+            $("#resulta").html("(JQ) Candidat 1 participe au second tour sans avoir été en tête");
+        }
+    }
+    if((score_1 / votants) * 100 > 50) {
+        $("#resulta").html("(JQ) Candidat 1 est elu des le premier tour!");
+    } else if((score_1 / votants) * 100 < 12.5) {
+        $("#resulta").html("(JQ) Candidat 1 est perdu");
     }
 }</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
                     <textarea class="text" placeholder="">$resulta= "";
-if(isset($_POST["score"])) {
-    $score= $_POST["score"];
-    $votants= $_POST["votants"];
-    if(($score / $votants) * 100 > 50) {
-        $resulta= "(php) Votre candidat est elu des le premier tour!";
-    } else if(($score / $votants) * 100 >= 12.5) {
-        $resulta= "(php) Votre candidat peut participier au second tour!";
-    } else if(($score / $votants) * 100 <= 12.5) {
-        $resulta= "(php) Votre candidat est perdu";
+if(isset($_POST["score_1"])) {
+    $score_1= $_POST["score_1"];
+    $score_2= $_POST["score_2"];
+    $score_3= $_POST["score_3"];
+    $score_4= $_POST["score_4"];
+    $votants= $score_1 + $score_2 + $score_3 + $score_4;
+    if((($score_1 / $votants) * 100 >= 12.5) && (($score_1 / $votants) * 100 <= 50)) {
+        if ($score_1 > $score_2 && $score_1 > $score_3 && $score_1 > $score_4) {
+            $resulta= "Candidat 1 participe au second tour en étant arrivé en tête";
+        } else { 
+            $resulta= "Candidat 1 participe au second tour sans avoir été en tête";
+            }
+    }
+    if(($score_1 / $votants) * 100 > 50) {
+        $resulta= "Candidat 1 est elu des le premier tour!";
+    } else if(($score_1 / $votants) * 100 < 12.5) {
+        $resulta= "Candidat 1 est perdu";
     }
 }
 require "exo_4_6.html";</textarea>
@@ -107,8 +144,10 @@ require "exo_4_6.html";</textarea>
             <div class="dialogue_area">
                 <div class="question_area"> 
                     <form method="post" action="exo_4_6.php" name="formPHP">
-                    <p>Saisie de score de votre candidat<input id="score" name="score" placeholder="quantité"></p>
-                    <p>Saisie de nombre de votants<input id="votants" name="votants" placeholder="nombre"></p>
+                    <p>Saisie de score de votre candidat<input id="score_1" name="score_1" placeholder="score"></p>
+                    <p>Saisie de score de votre candidat<input id="score_2" name="score_2" placeholder="score"></p>
+                    <p>Saisie de score de votre candidat<input id="score_3" name="score_3" placeholder="score"></p>
+                    <p>Saisie de score de votre candidat<input id="score_4" name="score_4" placeholder="score"></p>
                     <button class="button_age" onclick="myCandidat()" type="button">OK JavaScript</button>
                     <button class="button_age" onclick="myCandidat_jq()" type="button">OK jQuery</button>
                     <button class="button_age" onclick="exec_php()">OK PHP</button>

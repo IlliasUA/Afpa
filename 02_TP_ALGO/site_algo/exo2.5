@@ -285,46 +285,137 @@ FIN
 
 
 
+
 4.6
 
-VARIABLES score, votants
+VARIABLES score_1, score_2, score_3, score_4, votants
 
 DEBUT
-    ECRIRE "Saisie de score de votre candidat"
-    LIRE score
-    ECRIRE "Saisie de nombre de votants"
-    ECRIRE votants
-    SI (score / votants) * 100 > 50 ALORS
-        ECRIRE "Votre candidat est elu des le premier tour!"
-    SINON SI (score / votants) * 100 >= 12.5 ALORS
-             (score / votants) * 100 < 50 ALORS
-        ECRIRE "Votre candidat peut participier au second tour!"
-    SINON  
-        ECRIRE "Votre candidat est perdu"
+    ECRIRE "Saisie de score de candidat 1"
+    LIRE score_1
+    ECRIRE "Saisie de score de candidat 2"
+    LIRE score_2
+    ECRIRE "Saisie de score de candidat 3"
+    LIRE score_3
+    ECRIRE "Saisie de score de candidat 4"
+    LIRE score_4
+    
+    votants = score_1 + score_2 + score_3 + score_4
+    
+    SI ((score_1 / votants) * 100 >= 12.5) ET ((score_1 / votants) * 100 <= 50) ALORS
+        SI score_1 > score_2 ET score_1 > score_3 ET score_1 > score_4 ALORS
+            ECRIRE "Candidat 1 participe au second tour en étant arrivé en tête à l'issue du premier tour"
+        SINON 
+            ECRIRE "Candidat 1 participe au second tour sans avoir été en tête au premier tour"
+    FINSI
+    SI (score_1 / votants) * 100 > 50 ALORS
+        ECRIRE "Candidat 1 est elu des le premier tour!"
+    
+    SINON SI (score_1 / votants) * 100 < 12.5 ALORS
+        ECRIRE "Candidat 1 est perdu"
     FINSI
 FIN
 
 
 
+
+
+
+
 4.7
 
-VARIABLES age, date_du_permi, responsable_d_accident
-
+VARIABLES age, annees_permis, accident, annees_client, tarif, rouge, orange, vert, blue
+    rouge = "Tarif Rouge"
+    orange = "Tarif Orange"
+    vert = "Tarif Vert"
+    blue = "Tarif Blue"
 DEBUT
     ECRIRE "Saisez votre âge: "
     LIRE age
     ECRIRE "Depuis combien d'années avez-vous le permis? "
     LIRE annees_permis
     ECRIRE "Nombre d'accidents provoqués: "
-    LIRE n_accidents
+    LIRE accident
     ECRIRE "Depuis combien d'années êtes-vous client? "
     LIRE annees_client
 
-
-
+    SI (age < 25 ET annees_permis < 2) ALORS
+        SI (accident == 0) ALORS
+            tarif = rouge
+        SINON 
+            tarif = "Refuse!"
+    FINSI
+    SINON SI ((age < 25 ET annees_permis >= 2) OU (age >= 25 ET annees_permis < 2)) ALORS
+        SI (accident == 0) ALORS
+            tarif = orange
+        SINON SI (accident == 1) ALORS
+            tarif = rouge
+        SINON
+            tarif = "Refuse"
+        FINSI
+    SINON SI (age >= 25 ET annees_permis >= 2) ALORS
+        SI (accident == 0) ALORS
+            tarif = vert
+        SINON SI (accident == 1) ALORS
+            tarif = orange
+        SINON SI (accident == 2) ALORS
+             tarif = rouge
+        SINON
+            tarif = "Refuse"
+        FINSI
+    FINSI
+    SI (annees_client > 5 ET tarif != "Refuse") ALORS
+        SI (tarif == vert) ALORS
+            tarif = blue
+        SINON SI (tarif == orange) ALORS
+            tarif = vert
+        SINON SI (tarif == rouge) ALORS
+            tarif = orange
+        FINSI
+    FINSI
+    ECRIRE tarif
+FIN
              
 
-       
+   4.8
+VARIABLES jour, mois, anees, bis_anees, v_jour, v_mois, v_date;
+DEBUT   
+    ECRIRE "Saisez le jour "
+    LIRE jour
+    ECRIRE "Saisez le mois "
+    LIRE mois
+    ECRIRE "Saisez l'année "
+    LIRE anees
+
+    v_jour= jour >= 1 ET jour <= 31
+    v_mois= mois >= 1 ET mois <= 12
+    bis_anees= ((anees % 400) OU ((anees % 4) ET !(anees % 100)))
+
+    SI v_mois ALORS
+        SI mois == 2 ALORS
+            SI bis_anees ALORS
+                v_jour= (jour >= 1 ET jour <= 29)
+            SINON 
+                v_jour= (jour >= 1 ET jour <= 28)
+            FINSI
+        SINON SI (mois == 4 OU mois == 6 OU mois == 9 OU mois == 11) ALORS
+                v_jour= (jour >= 1 ET jour <= 30)
+            SINON
+                v_jour= (jour >= 1 ET jour <= 31)
+            FINSI
+        FINSI
+    FINSI
+    v_date= v_jour ET v_mois
+    SI v_date ALORS
+        ECRIRE "Votre date: " + jour + "/" + mois + "/" + anees + " est valide!"
+    SINON 
+        ECRIRE "Votre date est non valide!"
+    FINSI
+FIN
+
+
+
+    
 
 
 

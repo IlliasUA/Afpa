@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_4.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 4.8</h5>
+                    <p>Ecrivez un algorithme qui a près avoir demandé un numéro de jour, de mois et d'année à l'utilisateur, renvoie s'il s'agit ou non d'une date valide.<br>
+Cet exercice est certes d’un manque d’originalité affligeant, mais après tout, en algorithmique comme ailleurs, il faut connaître ses classiques ! Et quand on a fait cela une fois dans sa vie, on apprécie pleinement l’existence d’un type numérique « date » dans certains langages….<br>
+Il n'est sans doute pas inutile de rappeler rapidement que le mois de février compte 28 jours, sauf si l’année est bissextile, auquel cas il en compte 29. L’année est bissextile si elle est divisible par quatre. Toutefois, les années divisibles par 100 ne sont pas bissextiles, mais les années divisibles par 400 le sont. Ouf!<br>
+Un dernier petit détail : vous ne savez pas, pour l’instant, exprimer correctement en pseudo-code l’idée qu’un nombre A est divisible par un nombre B. Aussi, vous vous contenterez d’écrire en bons télégraphistes que A divisible par B se dit « A dp B ».</p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES jour, mois, anees, bis_anees, v_jour, v_mois, v_date;
+DEBUT   
+    ECRIRE "Saisez le jour "
+    LIRE jour
+    ECRIRE "Saisez le mois "
+    LIRE mois
+    ECRIRE "Saisez l'année "
+    LIRE anees
+
+    v_jour= (jour >= 1 ET jour <= 31)
+    v_mois= mois >= 1 ET mois <= 12
+    bis_anees= ((anees % 400) OU ((anees % 4) ET !(anees % 100)))
+
+    SI v_mois ALORS
+        SI mois == 2 ALORS
+            SI bis_anees ALORS
+                v_jour= (jour >= 1 ET jour <= 29)
+            SINON 
+                v_jour= (jour >= 1 ET jour <= 28)
+            FINSI
+        SINON SI (mois == 4 OU mois == 6 OU mois == 9 OU mois == 11) ALORS
+                v_jour= (jour >= 1 ET jour <= 30)
+            SINON
+                v_jour= (jour >= 1 ET jour <= 31)
+            FINSI
+        FINSI
+    FINSI
+    v_date= v_jour ET v_mois
+    SI v_date ALORS
+        ECRIRE "Votre date: " + jour + "/" + mois + "/" + anees + " est valide!"
+    SINON 
+        ECRIRE "Votre date est non valide!"
+    FINSI
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function myDate() {
+    let jour, mois, anees, bis_anees, v_jour, v_mois, v_date;
+    jour= Number(document.getElementById("jour").value);
+    mois= Number(document.getElementById("mois").value);
+    anees= Number(document.getElementById("anees").value);
+
+    v_jour= jour >= 1 && jour <= 31;
+    v_mois= mois >= 1 && mois <= 12;
+    bis_anees = (anees % 400 == 0) || ((anees % 4 == 0) && (anees % 100 != 0));
+    if (v_mois) {
+        if (mois == 2) {
+            if (bis_anees) {
+                v_jour= (jour >= 1 && jour <= 29);
+                } else if (!(bis_anees)) { 
+                v_jour= (jour >= 1 && jour <= 28);
+                }
+            } else if (mois == 4 || mois == 6 || mois == 9 || mois == 11) {
+                v_jour= (jour >= 1 && jour <= 30);
+            } else {
+                v_jour= (jour >= 1 && jour <= 31);
+        }
+    }
+    v_date= v_jour && v_mois;
+    if (v_date) {
+        document.getElementById("resulta").innerHTML = `Votre date: ${jour} / ${mois} / ${anees} est valide!`;
+    } else { 
+        document.getElementById("resulta").innerHTML = `Votre date: ${jour} / ${mois} / ${anees} est NON valide!`;
+    }
+}</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function myDate_jq() {
+    let jour, mois, anees, bis_anees, v_jour, v_mois, v_date;
+    jour= $("#jour").val();
+    mois= $("#mois").val();
+    anees= $("#anees").val();
+
+    v_jour= jour >= 1 && jour <= 31;
+    v_mois= mois >= 1 && mois <= 12;
+    bis_anees = (anees % 400 == 0) || ((anees % 4 == 0) && (anees % 100 != 0));
+    if (v_mois) {
+        if (mois == 2) {
+            if (bis_anees) {
+                v_jour= (jour >= 1 && jour <= 29);
+                } else if (!(bis_anees)) { 
+                v_jour= (jour >= 1 && jour <= 28);
+                }
+            } else if (mois == 4 || mois == 6 || mois == 9 || mois == 11) {
+                v_jour= (jour >= 1 && jour <= 30);
+            } else {
+                v_jour= (jour >= 1 && jour <= 31);
+        }
+    }
+    v_date= v_jour && v_mois;
+    if (v_date) {
+        $("#resulta").html(`(JQ) Votre date: ${jour} / ${mois} / ${anees} est valide!`);
+    } else { 
+        $("#resulta").html(`(JQ) Votre date: ${jour} / ${mois} / ${anees} est NON valide!`);
+    }
+}</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder="">$resulta= "";
+        if(isset($_POST["jour"])) {
+            $jour= $_POST["jour"];
+            $mois= $_POST["mois"];
+            $anees= $_POST["anees"];
+            $v_jour= $jour >= 1 && $jour <= 31;
+            $v_mois= $mois >= 1 && $mois <= 12;
+            $bis_anees = ($anees % 400 == 0) || (($anees % 4 == 0) && ($anees % 100 != 0));
+
+            if ($v_mois) {
+                if ($mois == 2) {
+                    if ($bis_anees) {
+                        $v_jour= ($jour >= 1 && $jour <= 29);
+                    } else if (!($bis_anees)) { 
+                        $v_jour= ($jour >= 1 && $jour <= 28);
+                    }
+                } else if ($mois == 4 || $mois == 6 || $mois == 9 || $mois == 11) {
+                    $v_jour= ($jour >= 1 && $jour <= 30);
+                    } else {
+                    $v_jour= ($jour >= 1 && $jour <= 31);
+                }
+                
+            }
+            $v_date= $v_jour && $v_mois;
+            if ($v_date) {
+                $resulta= "(php) Votre date: $jour / $mois / $anees est valide!";
+            } else { 
+                $resulta= "(php) Votre date: $jour / $mois / $anees est NON valide!";
+            }
+        } 
+    require "exo_4_8.html";
+?></textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_4_8.php" name="formPHP">
+                    <p>Saisez le jour<input id="jour" name="jour" placeholder="jour"></p>
+                    <p>Saisez le mois<input id="mois" name="mois" placeholder="mois"></p>
+                    <p>Saisez l'année<input id="anees" name="anees" placeholder="anees"></p>
+                    <button class="button_age" onclick="myDate()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myDate_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"><?php echo $resulta ?></span>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>
