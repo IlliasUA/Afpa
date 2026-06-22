@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_5.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 5.1</h5>
+                    <p>Ecrire un algorithme qui demande à l’utilisateur un nombre compris entre 1 et 3 jusqu’à ce que la réponse convienne. </p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">DEBUT
+      VARIABLES iNombre en NUMERIQUE
+      
+      ECRIRE "Nombre entre 1 et 3"
+      LIRE iNombre
+      
+      TANTQUE iNombre < 1 OU iNombre > 3 FAIRE
+            ECRIRE "Saisie erronée. Recommoncez"
+            LIRE iNombre
+      FINTANTQUE
+      
+      ECRIRE "Saisie OK"
+
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function myNomberCompris() {
+    let iNombre;
+    iNombre = document.getElementById("iNombre").value;
+    if ((iNombre < 1) || (iNombre > 3)) {
+         document.getElementById("resulta").innerHTML = `Saisie erronée. Recommoncez`;
+    } else {
+         document.getElementById("resulta").innerHTML= "Saisie OK";
+    }
+}</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function myNomberCompris_jq() {
+    let iNombre;
+    iNombre = $("#iNombre").val();
+    if ((iNombre < 1) || (iNombre > 3)) {
+         document.getElementById("resulta").innerHTML = `Saisie erronée. Recommoncez`;
+    } else {
+        $("#resulta").html(`(jq) Saisie OK`);
+    }
+}</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder="">$resulta= "";
+if(isset($_POST["iNombre"])) {
+    $iNombre= $_POST["iNombre"];
+    if (($iNombre < 1) || ($iNombre > 3)) {
+        $resulta= "(php) Saisie erronée. Recommoncez";
+    } else {
+        $resulta= "(php) Saisie OK";
+    }
+}
+require "exo_5_2.html";</textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_5_1.php" name="formPHP">
+                    <p>Saisie un nombre entre 1 et 3<input id="iNombre" name="iNombre" placeholder="votre nombre"></p>
+                    <button class="button_age" onclick="myNomberCompris()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myNomberCompris_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"><?php echo $resulta ?></span>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>
