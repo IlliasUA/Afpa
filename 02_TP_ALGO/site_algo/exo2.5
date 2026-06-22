@@ -287,44 +287,174 @@ FIN
 
 4.6
 
-VARIABLES score, votants
+VARIABLES score_1, score_2, score_3, score_4, votants
 
 DEBUT
-    ECRIRE "Saisie de score de votre candidat"
-    LIRE score
-    ECRIRE "Saisie de nombre de votants"
-    ECRIRE votants
-    SI (score / votants) * 100 > 50 ALORS
-        ECRIRE "Votre candidat est elu des le premier tour!"
-    SINON SI (score / votants) * 100 >= 12.5 ALORS
-             (score / votants) * 100 < 50 ALORS
-        ECRIRE "Votre candidat peut participier au second tour!"
+    ECRIRE "Saisie de score de candidat 1"
+    LIRE score_1
+    ECRIRE "Saisie de score de candidat 2"
+    LIRE score_2
+    ECRIRE "Saisie de score de candidat 3"
+    LIRE score_3
+    ECRIRE "Saisie de score de candidat 4"
+    LIRE score_4
+
+    votants = score_1 + score_2 + score_3 + score_4; 
+
+    SI ((score_1 / votants) * 100 >= 12.5) ET ((score_1 / votants) * 100 <= 50) ALORS
+        SI (score_1 > score_2 ET score_1 > score_3 ET score_1 > score_4) ALORS 
+            ECRIRE "Votre candidat peut participier au second tour en tan que lider!"
+        SINON SI (score_1 <= score_2 OU score_1 <= score_3 OU score_1 <= score_4) ALORS 
+            ECRIRE "Votre candidat participe au second tour sans avoir été en tête"
+        FINSI
+    SINON SI (score_1 / votants) * 100 > 50 ALORS
+        ECRIRE "Votre candidat est élu!"
     SINON  
         ECRIRE "Votre candidat est perdu"
     FINSI
 FIN
 
 
+4.7(A)
 
-4.7
-
-VARIABLES age, date_du_permi, responsable_d_accident
+VARIABLES age, annees_permi, accident, aneess_client, blue, vert, orange, rouge
 
 DEBUT
     ECRIRE "Saisez votre âge: "
     LIRE age
     ECRIRE "Depuis combien d'années avez-vous le permis? "
-    LIRE annees_permis
+    LIRE annees_permi
     ECRIRE "Nombre d'accidents provoqués: "
-    LIRE n_accidents
+    LIRE accident
     ECRIRE "Depuis combien d'années êtes-vous client? "
-    LIRE annees_client
+    LIRE aneess_client
+
+    rouge = "Tarif rouge"
+    orange = "Tarif orange"
+    vert = "Tarif vert"
+    blue = "Tarif blue"
+
+    SI (age < 25 ET annees_permi < 2 ET accident == 0) OU 
+        (age < 25 ET annees_permi >= 2 ET accident == 1) OU 
+        (age >= 25 ET annees_permi < 2 ET accident == 1) OU 
+        (age >= 25 ET annees_permi >= 2 ET accident == 2) ALORS
+        ECRIRE rouge
+    SINON SI (age < 25 ET annees_permi >= 2 ET accident == 0) OU 
+        (age >= 25 ET annees_permi < 2 ET accident == 0) OU 
+        (age >= 25 ET annees_permi >= 2 ET accident == 1) ALORS
+        ECRIRE orange
+    SINON SI (age >= 25 ET annees_permi >= 2 ET accident == 0) ALORS
+        ECRIRE vert
+    SINON
+        ECRIRE "Refuse!"
+    FINSI
+
+    SI annees_client >= 5 ALORS
+            SI rouge ALORS
+                ECRIRE orange
+            SINON SI orange ALORS
+                ECRIRE vert
+            SINON SI vert ALORS
+                ECRIRE blue
+            FINSI
+        FINSI
+    FINSI
+FIN
+
+
+4.7(B)             
+
+VARIABLES age, annees_permi, accident, aneess_client, point, blue, vert, orange, rouge
+
+DEBUT
+    ECRIRE "Saisez votre âge: "
+    LIRE age
+    ECRIRE "Depuis combien d'années avez-vous le permis? "
+    LIRE annees_permi
+    ECRIRE "Nombre d'accidents provoqués: "
+    LIRE accident
+    ECRIRE "Depuis combien d'années êtes-vous client? "
+    LIRE aneess_client
+
+    rouge = "Tarif rouge"
+    orange = "Tarif orange"
+    vert = "Tarif vert"
+    blue = "Tarif blue"
+
+    SI (age >= 25) ALORS 
+        point += 1
+    FINSI
+    SI (annees_permi >= 2) ALORS
+        point += 1
+    FINSI
+    SI (accident == 1) ALORS
+        point -= 1
+    FINSI
+    SI (accident == 2) ALORS
+        point -= 2
+    FINSI
+
+    SI (point == 0) ALORS
+        ECRIRE rouge
+    SINON SI (point == 1) ALORS
+        ECRIRE orange
+    SINON SI (point == 2) ALORS
+        ECRIRE vert
+    SINON 
+        ECRIRE "Refuse!"
+    FINSI
+
+    SI (point == 2 ET aneess_client >= 5) ALORS
+        SI rouge ALORS
+            ECRIRE orange
+        SINON SI orange ALORS
+            ECRIRE vert
+        SINON SI vert ALORS
+            ECRIRE blue 
+        FINSI
+    FINSI
 
 
 
-             
+DEBUT
+    ECRIRE "Saisez votre âge: "
+    LIRE age
+    ECRIRE "Depuis combien d'années avez-vous le permis? "
+    LIRE annees_permi
+    ECRIRE "Nombre d'accidents provoqués: "
+    LIRE accident
+    ECRIRE "Depuis combien d'années êtes-vous client? "
+    LIRE aneess_client
 
-       
+    rouge = "Tarif rouge"
+    orange = "Tarif orange"
+    vert = "Tarif vert"
+    blue = "Tarif blue"
+
+    SI (age >= 25) ALORS 
+        point += 1
+    FINSI
+    SI (annees_permi >= 2) ALORS
+        point += 1
+    FINSI
+
+    point -= accident
+
+    SI (point >= 0 ET aneess_client >= 5) ALORS
+        point += 1
+    FINSI
+
+    SI (point == 0) ALORS
+        ECRIRE rouge
+    SINON SI (point == 1) ALORS
+        ECRIRE orange
+    SINON SI (point == 2) ALORS
+        ECRIRE vert
+    SINON SI (point == 3) ALORS
+        ECRIRE blue
+    SINON 
+        ECRIRE "Refuse!"
+    FINSI
 
 
 
@@ -333,3 +463,148 @@ DEBUT
 
 
 
+
+
+
+
+
+
+4.8(A)
+
+VARIABLES jour, mois, annee, bis_annee v_jour, v_mois, v_annee
+
+DEBUT
+    ECRIRE "Saisez le jour: "
+    LIRE jour
+    ECRIRE "Saisez le mois: "
+    LIRE mois
+    ECRIRE "Saisez le annee: "
+    LIRE annee
+
+    bis_annee = (annee % 400 == 0) OU (annee % 4 == 0 ET !(annee % 100 == 0))
+    
+    v_jour = jour >= 1 ET jour <= 31
+    v_mois = mois >= 1 ET mois <= 12
+
+    SI (v_mois) ALORS
+        SI (mois == 2) ALORS
+            SI (bis_annee) ALORS
+                    v_jour = jour >= 1 ET jour <= 29
+            SINON SI 
+                    v_jour = jour >= 1 ET jour <= 28
+            FINSI
+        SINON SI (mois == 4 OU mois == 6 OU mois == 9 OU mois == 11) ALORS
+            v_jour = jour >= 1 ET jour <= 30
+        FINSI
+    FINSI
+
+    SI (v_jour ET v_mois) ALORS
+        ECRIRE "Votre date est valide"
+    SINON
+        ECRIRE "Votre date est NON valide"
+    FINSI
+FIN
+
+
+
+
+4.8(B)
+
+VARIABLES jour, mois, annee, bis_annee 
+
+DEBUT
+    ECRIRE "Saisez le jour: "
+    LIRE jour
+    ECRIRE "Saisez le mois: "
+    LIRE mois
+    ECRIRE "Saisez le annee: "
+    LIRE annee
+
+    bis_annee = (annee % 400 == 0) OU (annee % 4 == 0 ET !(annee % 100 == 0))
+
+    k_1 = (mois > 0 ET mois <= 12) ET (mois != 2 ET mois != 4 ET mois != 6 ET mois != 4 ET mois != 9 ET mois != 11) ET (jour > 0 ET jour <= 31)
+    k_2 = (mois == 2 ET bis_annee) ET (jour > 0 ET jour <= 29)
+    k_3 = (mois == 2 ET !bis_annee) ET (jour > 0 ET jour <= 28)
+    k_4 = (mois == 4 OU mois == 6 OU mois == 9 OU mois == 11) ET (jour > 0 ET jour <= 30)
+
+    SI (k_1 OU k_2 OU k_3 OU k_4) ALORS
+        ECRIRE "Votre date est valide!"
+    SINON 
+        ECRIRE "Votre datre est NON valide"
+    FINSI
+FIN
+
+
+5.1
+DEBUT
+      VARIABLES iNombre en NUMERIQUE
+      
+      ECRIRE "Nombre entre 1 et 3"
+      LIRE iNombre
+      
+      TANTQUE iNombre < 1 OU iNombre > 3 FAIRE
+            ECRIRE "Saisie erronée. Recommoncez"
+            LIRE iNombre
+      FINTANTQUE
+      
+      ECRIRE "Saisie OK"
+
+FIN
+
+
+
+5.2(A)
+DEBUT
+    VARIABLES iNombre en NUMERIQUE
+
+    ECRIRE "Nombre entre 10 et 20"
+    LIRE iNombre
+
+    TANTQUE iNombre < 10 FAIRE
+        ECRIRE "Plus grand!"
+        LIRE iNombre
+    FINTANTQUE
+    TANTQUE iNombre > 20 FAIRE
+        ECRIRE "Plus petit!"
+        LIRE iNombre
+    FINTANTQUE
+
+    ECRIRE "Saisie OK"
+FIN
+
+
+5.2(B)
+
+DEBUT
+    VARIABLES iNombre en NUMERIQUE
+
+    LIRE iNombreHasard <- random[1..100] 
+    ECRIRE "Nombre entre 1 et 100"
+    LIRE iNombre
+
+    TANTQUE iNombre < iNombreHasard FAIRE
+        ECRIRE "Plus grand!"
+        LIRE iNombre
+    FINTANTQUE
+    TANTQUE iNombre > iNombreHasard FAIRE
+        ECRIRE "Plus petit!"
+        LIRE iNombre
+    FINTANTQUE
+
+    ECRIRE "Saisie OK"
+FIN
+
+
+5.3
+DEBUT
+    VARIABLES iNombre, iCompteur en NUMERIQUE
+
+    ECRIRE "Saise un nombre de départ"
+    LIRE iNombre
+
+    TANTQUE (iCompteur <- 10)
+        iNombre <- iNombrei + 1
+        ECRIRE iNombre
+        iCompteur <- iCompteur + 1
+    FINTANTQUE
+FIN
