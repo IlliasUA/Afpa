@@ -522,38 +522,44 @@ FIN
 
 5.2(B)
 
-DEBUT
-    VARIABLES iNombre en NUMERIQUE
+VARIABLES iNombreHasard <- random[1..100]
 
-    LIRE iNombreHasard <- random[1..100] 
+DEBUT
+    VARIABLES iNombre, iCount en NUMERIQUE
+     
     ECRIRE "Nombre entre 1 et 100"
     LIRE iNombre
+    iCount ++
 
-    TANTQUE iNombre < iNombreHasard FAIRE
-        ECRIRE "Plus grand!"
-        LIRE iNombre
+    TANTQUE (iNombre != iNombreHasard) FAIRE
+        SI iNombre < iNombreHasard
+            ECRIRE "Plus grand!"
+            LIRE iNombre
+        SINON SI iNombre > iNombreHasard FAIRE
+            ECRIRE "Plus petit!"
+            LIRE iNombre
+        SINON
+            ECRIRE "Saisie OK"
+            iCount ++ 
     FINTANTQUE
-    TANTQUE iNombre > iNombreHasard FAIRE
-        ECRIRE "Plus petit!"
-        LIRE iNombre
-    FINTANTQUE
-
-    ECRIRE "Saisie OK"
 FIN
 
 
 5.3
 DEBUT
-    VARIABLES iNombre, iCompteur en NUMERIQUE
+    VARIABLES iNombre, resultat, iCompteur en NUMERIQUE
 
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
+    LIRE iCompteur <- 0
+    LIRE resultat <- "" 
 
-    TANTQUE (iCompteur <- 10)
-        iNombre <- iNombrei + 1
-        ECRIRE iNombre
+    TANTQUE iCompteur < 10 FAIRE
+        iNombre <- iNombre + 1
+        resultat <- iNombre
         iCompteur <- iCompteur + 1
     FINTANTQUE
+    ECRIRE resultat
 FIN
 
 

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_5.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 5.2(b)</h5>
+                    <p>Ecrire un algorithme qui choisit un nombre au hasard compris entre 1 et 100.  
+Pour ceci, on utilise la fonction :  
+iNombreHasard <-  random[1..100] 
+Demander à l'utilisateur de trouver le nombre. On fera apparaître un message : « Plus petit ! », et inversement, 
+« Plus grand ! » jusqu’à ce que l'utilisateur ait trouvé et afficher en combien de coups.</p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES iNombreHasard <- random[1..100]
+
+DEBUT
+    VARIABLES iNombre, iCount en NUMERIQUE
+     
+    ECRIRE "Nombre entre 1 et 100"
+    LIRE iNombre
+    iCount ++
+
+    TANTQUE (iNombre != iNombreHasard) FAIRE
+        SI iNombre < iNombreHasard
+            ECRIRE "Plus grand!"
+            LIRE iNombre
+        SINON SI iNombre > iNombreHasard FAIRE
+            ECRIRE "Plus petit!"
+            LIRE iNombre
+        SINON
+            ECRIRE "Saisie OK"
+            iCount ++ 
+    FINTANTQUE
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">let iNombreHasard = Math.floor(Math.random() * 100) + 1;
+function myNomberCompris_5_2b () {
+    let iNombre = Number(document.getElementById("iNombre").value);
+    if (iNombre < iNombreHasard) {
+         document.getElementById("resulta").innerHTML= "Plus grand!";
+    } else if (iNombre > iNombreHasard) {
+         document.getElementById("resulta").innerHTML= "Plus petit!";
+    } else if (iNombre == iNombreHasard) {
+         document.getElementById("resulta").innerHTML= "Saisie OK";
+    }
+}</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">let iNombreHasard = Math.floor(Math.random() * 100) + 1;
+function myNomberCompris_5_2b () {
+    let iNombre = $("#iNombre").val();
+    if (iNombre < iNombreHasard) {
+        $("#resulta").html(`(jq) Plus grand!`);
+    } else if (iNombre > iNombreHasard) {
+        $("#resulta").html(`(jq) Plus petit!`);
+    } else if (iNombre == iNombreHasard) {
+        $("#resulta").html(`(jq) Saisie OK!`);
+    }
+}</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_5_2b.php" name="formPHP">
+                    <p>Ttrouver le nombre entre 1 et 100<input id="iNombre" name="iNombre" placeholder="votre nombre"></p>
+                    <button class="button_age" onclick="myNomberCompris_5_2b ()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myNomberCompris_5_2b_jq ()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"><?php echo $resulta ?></span>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>

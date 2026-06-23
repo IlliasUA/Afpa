@@ -21,10 +21,10 @@ function myNomberCompris_jq() {
 }
 
 
-/* 5.2* JS*/
+/* 5.2 JS*/ 
 function myNomberCompris_5_2 () {
     let iNombre;
-    iNombre = document.getElementById("iNombre").value;
+    iNombre = Number(document.getElementById("iNombre").value);
     if (iNombre < 10) {
          document.getElementById("resulta").innerHTML= "Plus grand!";
     } else if (iNombre > 20) {
@@ -37,7 +37,7 @@ function myNomberCompris_5_2 () {
 /* 5.2* JQ*/
 function myNomberCompris_5_2_jq () {
     let iNombre;
-    iNombre = $("#iNombre").val();
+    iNombre = Number($("#iNombre").val());
     if (iNombre < 10) {
          $("#resulta").html(`(jq) Plus grand!`);
     } else if (iNombre > 20) {
@@ -46,3 +46,60 @@ function myNomberCompris_5_2_jq () {
          $("#resulta").html(`(jq) Saisie OK`);
     }
 }
+
+/*5.2  JS (B)*/
+let iNombreHasard = Math.floor(Math.random() * 100) + 1; 
+
+function myNomberCompris_5_2b () {
+    let iNombre = Number(document.getElementById("iNombre").value);
+    if (iNombre < iNombreHasard) {
+         document.getElementById("resulta").innerHTML= "Plus grand!";
+    } else if (iNombre > iNombreHasard) {
+         document.getElementById("resulta").innerHTML= "Plus petit!";
+    } else {
+         document.getElementById("resulta").innerHTML= "Saisie OK";
+    }
+}
+
+
+/*5.2  jq (B)*/
+
+function myNomberCompris_5_2b_jq () {
+    let iNombre = $("#iNombre").val();
+    if (iNombre < iNombreHasard) {
+        $("#resulta").html(`(jq) Plus grand!`);
+    } else if (iNombre > iNombreHasard) {
+        $("#resulta").html(`(jq) Plus petit!`);
+    } else if (iNombre == iNombreHasard) {
+        $("#resulta").html(`(jq) Saisie OK!`);
+    }
+}
+
+
+/* 5.3*/
+function myNomberDepart () {
+     let iNombre = Number(document.getElementById("iNombre").value);
+     let iCompteur = 0;
+     let resultat = ""; 
+
+     while(iCompteur < 10) {
+         iNombre ++;
+         resultat += iNombre + " ";
+         iCompteur ++;
+     } 
+     document.getElementById("resultat").innerHTML= resultat;
+}  
+
+/* 5.3*/
+function myNomberDepart_jq () {
+     let iNombre = Number($("#iNombre").val());
+     let iCompteur = 0;
+     let resultat = ""; 
+
+     while(iCompteur < 10) {
+         iNombre ++;
+         resultat += iNombre + " ";
+         iCompteur ++;
+     } 
+     $("#resultat").html(`(jq) ${resultat}`);
+}  

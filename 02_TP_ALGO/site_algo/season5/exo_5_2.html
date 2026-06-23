@@ -57,6 +57,27 @@ DEBUT
         LIRE iNombre
     FINTANTQUE
 
+    5.2(B)
+
+DEBUT
+    VARIABLES iNombre en NUMERIQUE
+
+    LIRE iNombreHasard <- random[1..100] 
+    ECRIRE "Nombre entre 1 et 100"
+    LIRE iNombre
+
+    TANTQUE iNombre < iNombreHasard FAIRE
+        ECRIRE "Plus grand!"
+        LIRE iNombre
+    FINTANTQUE
+    TANTQUE iNombre > iNombreHasard FAIRE
+        ECRIRE "Plus petit!"
+        LIRE iNombre
+    FINTANTQUE
+
+    ECRIRE "Saisie OK"
+FIN
+
     ECRIRE "Saisie OK"
 FIN</textarea>
                 </div>
@@ -108,7 +129,7 @@ require "exo_5_2.html";</textarea>
                 <div class="question_area"> 
                     <form method="post" action="exo_5_2.php" name="formPHP">
                     <p>Saisie nombre entre 10 et 20<input id="iNombre" name="iNombre" placeholder="votre nombre"></p>
-                    <button class="button_age" onclick="myNomberCompris_5_2()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myNomberCompris_5_2()"  type="button">OK JavaScript</button>
                     <button class="button_age" onclick="myNomberCompris_5_2_jq()" type="button">OK jQuery</button>
                     <button class="button_age" onclick="exec_php()">OK PHP</button>
                     </form>

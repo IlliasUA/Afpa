@@ -88,7 +88,50 @@ DEBUT
             tarif = orange
         FINSI
     FINSI
-    ECRIRE tarif</textarea>
+    ECRIRE tarif
+
+4.7 B 
+DEBUT
+    ECRIRE "Saisez votre âge: "
+    LIRE age
+    ECRIRE "Depuis combien d'années avez-vous le permis? "
+    LIRE annees_permi
+    ECRIRE "Nombre d'accidents provoqués: "
+    LIRE accident
+    ECRIRE "Depuis combien d'années êtes-vous client? "
+    LIRE aneess_client
+
+    rouge = "Tarif rouge"
+    orange = "Tarif orange"
+    vert = "Tarif vert"
+    blue = "Tarif blue"
+
+    SI (age >= 25) ALORS 
+        point += 1
+    FINSI
+    SI (annees_permi >= 2) ALORS
+        point += 1
+    FINSI
+
+    point -= accident
+
+    SI (point >= 0 ET aneess_client >= 5) ALORS
+        point += 1
+    FINSI
+
+    SI (point == 0) ALORS
+        ECRIRE rouge
+    SINON SI (point == 1) ALORS
+        ECRIRE orange
+    SINON SI (point == 2) ALORS
+        ECRIRE vert
+    SINON SI (point == 3) ALORS
+        ECRIRE blue
+    SINON 
+        ECRIRE "Refuse!"
+    FINSI
+
+></textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>

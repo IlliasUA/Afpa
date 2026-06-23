@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_5.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 5.3</h5>
+                    <p>Ecrire un algorithme qui demande un nombre de départ, et qui ensuite affiche les dix nombres suivants. Par 
+exemple, si l'utilisateur entre le nombre 17, le programme affichera les nombres de 18 à 27.</p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">DEBUT
+    VARIABLES iNombre, resultat, iCompteur en NUMERIQUE
+
+    ECRIRE "Saise un nombre de départ"
+    LIRE iNombre
+    LIRE iCompteur <- 0
+    LIRE resultat <- "" 
+
+    TANTQUE iCompteur < 10 FAIRE
+        iNombre <- iNombre + 1
+        resultat <- iNombre
+        iCompteur <- iCompteur + 1
+    FINTANTQUE
+    ECRIRE resultat
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function myNomberDepart () {
+     let iNombre = Number(document.getElementById("iNombre").value);
+     let iCompteur = 0;
+     let resultat = ""; 
+
+     while(iCompteur < 10) {
+         iNombre ++;
+         resultat += iNombre + " ";
+         iCompteur ++;
+     } 
+     document.getElementById("resultat").innerHTML= resultat;
+}  </textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function myNomberDepart_jq () {
+     let iNombre = Number($("#iNombre").val());
+     let iCompteur = 0;
+     let resultat = ""; 
+
+     while(iCompteur < 10) {
+         iNombre ++;
+         resultat += iNombre + " ";
+         iCompteur ++;
+     } 
+     $("#resultat").html(`(jq) ${resultat}`);
+}  </textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder="">
+    $resultat = "";
+    
+    if(isset($_POST["iNombre"])) {
+        $iNombre= (int)$_POST["iNombre"];
+        $iCompteur = 0;
+        while($iCompteur < 10) {
+            $iNombre ++;
+            $resultat .= $iNombre . " ";
+            $iCompteur ++;
+        }
+        $resultat= "(php)  $resultat"; 
+    }
+    require "exo_5_3.html";
+</textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_5_3.php" name="formPHP">
+                    <p>Saise un nombre de départ<input id="iNombre" name="iNombre" placeholder="votre nombre"></p>
+                    <button class="button_age" onclick="myNomberDepart ()"  type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myNomberDepart_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resultat"><?php echo $resultat ?></span>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>

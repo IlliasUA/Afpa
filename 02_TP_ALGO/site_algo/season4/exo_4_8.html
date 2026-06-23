@@ -70,6 +70,32 @@ DEBUT
     SINON 
         ECRIRE "Votre date est non valide!"
     FINSI
+FIN
+
+4.8(B)
+
+VARIABLES jour, mois, annee, bis_annee 
+
+DEBUT
+    ECRIRE "Saisez le jour: "
+    LIRE jour
+    ECRIRE "Saisez le mois: "
+    LIRE mois
+    ECRIRE "Saisez le annee: "
+    LIRE annee
+
+    bis_annee = (annee % 400 == 0) OU (annee % 4 == 0 ET !(annee % 100 == 0))
+
+    k_1 = (mois > 0 ET mois <= 12) ET (mois != 2 ET mois != 4 ET mois != 6 ET mois != 4 ET mois != 9 ET mois != 11) ET (jour > 0 ET jour <= 31)
+    k_2 = (mois == 2 ET bis_annee) ET (jour > 0 ET jour <= 29)
+    k_3 = (mois == 2 ET !bis_annee) ET (jour > 0 ET jour <= 28)
+    k_4 = (mois == 4 OU mois == 6 OU mois == 9 OU mois == 11) ET (jour > 0 ET jour <= 30)
+
+    SI (k_1 OU k_2 OU k_3 OU k_4) ALORS
+        ECRIRE "Votre date est valide!"
+    SINON 
+        ECRIRE "Votre datre est NON valide"
+    FINSI
 FIN</textarea>
                 </div>
                 <div class="js_inp">
