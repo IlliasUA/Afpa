@@ -105,28 +105,101 @@ function myNomberDepart_jq () {
 }  
 
 /* 5.4 js*/
-function myNomberDepart_jq_pour () {
-     let iNombre = document.getElementsById("iNombre").value;
+function myNomberDepart_js_pour () {
+     let iNombre = document.getElementById("iNombre").value;
      let iCompteur = 0;
      let resultat = ""; 
 
-     for (iCompteur=0; iCompteur<10; iCompteur++)    {
+     for (i=0; iCompteur<10; iCompteur++)    {
          iNombre ++;
          resultat += iNombre + " ";
      }
      document.getElementById("resultat").innerHTML= resultat;
 }  
 /* 5.4 jq*/
-function myNomberDepart_js_pour () {
+function myNomberDepart_jq_pour () {
      let iNombre = Number($("#iNombre").val());
      let iCompteur = 0;
      let resultat = ""; 
 
-     for (iCompteur=0; iCompteur<10; iCompteur++)    {
+     for (i=0; iCompteur<10; iCompteur++)    {
          iNombre ++;
          resultat += iNombre + " ";
      }
-     
      $("#resultat").html(`(jq) ${resultat}`);
 }  
 
+/* 5.5 js*/
+function myTableMultiplication () {
+     let iNombre = Number(document.getElementById("iNombre").value);
+     let resultat = ""; 
+     for (i=1; i<=10; i++) {
+          resultat += `${iNombre} x ${i} = ${iNombre * i}<br>`
+          document.getElementById("resultat").innerHTML= resultat;
+     }
+}
+
+
+/* 5.5 jq*/
+function myTableMultiplication_jq () {
+     let iNombre = Number($("#iNombre").val());
+     let resultat = ""; 
+     for (i=1; i<=10; i++) {
+          resultat += `${iNombre} x  ${i} = ${iNombre * i}<br>`
+          $("#resultat").html(`(jq) ${resultat}`);
+     }
+}
+
+/* 5.6 js*/
+function myCalculeNombre_js () {
+     let iNombre = Number(document.getElementById("iNombre").value);
+     let resultat = 0; 
+     for (i=1; i<=iNombre; i++) {
+          resultat += i; 
+          document.getElementById("resultat").innerHTML= resultat;
+     }
+}
+
+
+/* 5.6 jq*/
+function myCalculeNombre_jq () {
+     let iNombre = Number($("#iNombre").val());
+     let resultat = 0; 
+     for (i=1; i<=iNombre; i++) {
+          resultat += i; 
+          $("#resultat").html(`(jq) ${resultat}`);
+     }
+}
+
+/* 5.7 js*/
+function myFactorielle_js () {
+     let iNombre = Number(document.getElementById("iNombre").value);
+     let decomposition = "";
+     let resultat = 1;
+      
+     for (i=1; i<=iNombre; i++) {
+          decomposition +=i;
+          resultat *=i;
+          if (i < iNombre) {
+              decomposition += " * "; 
+          document.getElementById("resultat").innerHTML= `${iNombre}! = ${decomposition} ${iNombre} = ${resultat * iNombre} `;
+          }
+     }
+}
+
+/* 5.7 jq*/
+
+function myFactorielle_jq () {
+     let iNombre = Number($("#iNombre").val());
+     let decomposition = "";
+     let resultat = 1;
+      
+     for (i=1; i<=iNombre; i++) {
+          decomposition +=i;
+          resultat *=i;
+          if (i < iNombre) {
+              decomposition += " * "; 
+          $("#resultat").html(`(jq) ${iNombre}! = ${decomposition} ${iNombre} = ${resultat * iNombre}`);
+          }
+     }
+}

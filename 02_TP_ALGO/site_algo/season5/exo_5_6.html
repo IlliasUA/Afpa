@@ -24,8 +24,12 @@
         <section>
             <div class="section_firstarea">
                 <div class="exercise_window">
-                    <h5>Exercice 5.4</h5>
-                    <p>Réécrire l'algorithme précédent, en utilisant cette fois l'instruction Pour. </p>
+                    <h5>Exercice 5.6</h5>
+                    <p>Ecrire un algorithme qui demande un nombre de départ, et qui calcule la somme des entiers jusqu’à ce nombre. Par 
+exemple, si l’on entre 5, le programme doit calculer : 
+1 + 2 + 3 + 4 + 5 = 15<br> 
+NB : on souhaite afficher uniquement le résultat, pas la décomposition du calcul. 
+ </p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -34,79 +38,60 @@
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder="">VARIABLES iNombre, resultat, iCompteur en NUMERIQUE
-DEBUT 
+                    <textarea class="text" placeholder="">VARIABLES iNombre, resultat
+DEBUT
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-    iCompteur = 0
-    resultat = "" 
-
-    POUR (i = iNombre JUSQU'A i < 10 INCREMENT i++) {
-        iNombre = iNombre + 1
-        resultat += iNombre   
-    }
+    resultat = 0
+    POUR (i = 1) JUSQU'A (i <= iNombre) INCREMENT (i++) ALORS
+        resultat += i
+        ECRIRE resultat
     FINPOUR
 FIN</textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder="">
-function myNomberDepart_js_pour () {
-     let iNombre = document.getElementById("iNombre").value;
-     let iCompteur = 0;
-     let resultat = ""; 
-
-     for (i=0; iCompteur<10; iCompteur++)    {
-         iNombre ++;
-         resultat += iNombre + " ";
+                    <textarea class="text" placeholder="">function myCalculeNombre_js () {
+     let iNombre = Number(document.getElementById("iNombre").value);
+     let resultat = 0; 
+     for (i=1; i<=iNombre; i++) {
+          resultat += i; 
+          document.getElementById("resultat").innerHTML= resultat;
      }
-     document.getElementById("resultat").innerHTML= resultat;
-}
-
-                    </textarea>
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder="">
-function myNomberDepart_jq_pour () {
+                    <textarea class="text" placeholder="">function myCalculeNombre_jq () {
      let iNombre = Number($("#iNombre").val());
-     let iCompteur = 0;
-     let resultat = ""; 
-
-     for (i=0; iCompteur<10; iCompteur++)    {
-         iNombre ++;
-         resultat += iNombre + " ";
+     let resultat = 0; 
+     for (i=1; i<=iNombre; i++) {
+          resultat += i; 
+          $("#resultat").html(`(jq) ${resultat}`);
      }
-     $("#resultat").html(`(jq) ${resultat}`);
-}  
-
-                    </textarea>
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder="">$resultat = "";
+                    <textarea class="text" placeholder="">$resultat= "";
     
     if(isset($_POST["iNombre"])) {
-        $iNombre= (int)$_POST["iNombre"];
-        $iCompteur = 0;
-        for($i = $iNombre; $i < 10; $i++) {
-            $iNombre++;
-            $resultat .= $iNombre . " ";
-            $iCompteur++;
+        $iNombre= $_POST["iNombre"];
+        $sum= 0;  
+        for ($i = 1; $i <= $iNombre; $i++) {
+            $sum += $i;
         }
-        $resultat= "(php)  $resultat"; 
+        $resultat= "(php) " . $sum; 
     }
-    require "exo_5_4.html";
-   
-</textarea>
+    require "exo_5_6.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <form method="post" action="exo_5_4.php" name="formPHP">
+                    <form method="post" action="exo_5_6.php" name="formPHP">
                     <p>Saise un nombre de départ<input id="iNombre" name="iNombre" placeholder="votre nombre"></p>
-                    <button class="button_age" onclick="myNomberDepart_js_pour ()" type="button">OK JavaScript</button>
-                    <button class="button_age" onclick="myNomberDepart_jq_pour ()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="myCalculeNombre_js ()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myCalculeNombre_jq ()" type="button">OK jQuery</button>
                     <button class="button_age" onclick="exec_php()">OK PHP</button>
                     </form>
                 </div>

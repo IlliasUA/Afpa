@@ -24,8 +24,10 @@
         <section>
             <div class="section_firstarea">
                 <div class="exercise_window">
-                    <h5>Exercice 5.4</h5>
-                    <p>Réécrire l'algorithme précédent, en utilisant cette fois l'instruction Pour. </p>
+                    <h5>Exercice 5.7</h5>
+                    <p>Ecrire un algorithme qui demande un nombre de départ, et qui calcule sa factorielle.<br> 
+NB : la factorielle de 8, notée 8 !, vaut<br>  
+1 x 2 x 3 x 4 x 5 x 6 x 7 x 8</p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -34,79 +36,52 @@
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder="">VARIABLES iNombre, resultat, iCompteur en NUMERIQUE
-DEBUT 
+                    <textarea class="text" placeholder="">VARIABLES iNombre, resultat, decomposition
+DEBUT
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-    iCompteur = 0
-    resultat = "" 
-
-    POUR (i = iNombre JUSQU'A i < 10 INCREMENT i++) {
-        iNombre = iNombre + 1
-        resultat += iNombre   
-    }
+        decomposition += i 
+    POUR (i=1) JUSQU'A (i<=iNombre) INCREMENT (i++) ALOSRS
+          decomposition +=i  
+          resultat *=i
+          SI (i < iNombre) ALORS
+            decomposition += " x " 
+    ECRIRE (iNombre) + "! = " + (decomposition) + (iNombre) + " = " + (resultat * iNombre)
     FINPOUR
-FIN</textarea>
+FIN   </textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder="">
-function myNomberDepart_js_pour () {
-     let iNombre = document.getElementById("iNombre").value;
-     let iCompteur = 0;
-     let resultat = ""; 
-
-     for (i=0; iCompteur<10; iCompteur++)    {
-         iNombre ++;
-         resultat += iNombre + " ";
+                    <textarea class="text" placeholder="">function myFactorielle_js () {
+     let iNombre = Number(document.getElementById("iNombre").value);
+     let decomposition = "";
+     let resultat = 1;
+      
+     for (i=1; i<=iNombre; i++) {
+          decomposition +=i;
+          resultat *=i;
+          if (i < iNombre) {
+              decomposition += " * "; 
+          document.getElementById("resultat").innerHTML= `${iNombre}! = ${decomposition} ${iNombre} = ${resultat * iNombre} `;
+          }
      }
-     document.getElementById("resultat").innerHTML= resultat;
-}
-
-                    </textarea>
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder="">
-function myNomberDepart_jq_pour () {
-     let iNombre = Number($("#iNombre").val());
-     let iCompteur = 0;
-     let resultat = ""; 
-
-     for (i=0; iCompteur<10; iCompteur++)    {
-         iNombre ++;
-         resultat += iNombre + " ";
-     }
-     $("#resultat").html(`(jq) ${resultat}`);
-}  
-
-                    </textarea>
+                    <textarea class="text" placeholder=""></textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder="">$resultat = "";
-    
-    if(isset($_POST["iNombre"])) {
-        $iNombre= (int)$_POST["iNombre"];
-        $iCompteur = 0;
-        for($i = $iNombre; $i < 10; $i++) {
-            $iNombre++;
-            $resultat .= $iNombre . " ";
-            $iCompteur++;
-        }
-        $resultat= "(php)  $resultat"; 
-    }
-    require "exo_5_4.html";
-   
-</textarea>
+                    <textarea class="text" placeholder=""></textarea>
                 </div>
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <form method="post" action="exo_5_4.php" name="formPHP">
+                    <form method="post" action="exo_5_7.php" name="formPHP">
                     <p>Saise un nombre de départ<input id="iNombre" name="iNombre" placeholder="votre nombre"></p>
-                    <button class="button_age" onclick="myNomberDepart_js_pour ()" type="button">OK JavaScript</button>
-                    <button class="button_age" onclick="myNomberDepart_jq_pour ()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="myFactorielle_js ()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myFactorielle_jq ()" type="button">OK jQuery</button>
                     <button class="button_age" onclick="exec_php()">OK PHP</button>
                     </form>
                 </div>

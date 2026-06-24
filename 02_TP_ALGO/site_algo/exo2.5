@@ -551,20 +551,69 @@ DEBUT
 
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-    LIRE iCompteur <- 0
-    LIRE resultat <- "" 
+    iCompteur = 0
+    resultat = "" 
 
-    TANTQUE iCompteur < 10 FAIRE
-        iNombre <- iNombre + 1
-        resultat <- iNombre
-        iCompteur <- iCompteur + 1
+    TANTQUE (iCompteur < 10) FAIRE
+        iNombre = iNombre + 1
+        resultat = resultat + iNombre + "<br>"
+        iCompteur = iCompteur + 1
     FINTANTQUE
     ECRIRE resultat
 FIN
 
 
+5.4
+VARIABLES iNombre, resultat, iCompteur en NUMERIQUE
+DEBUT 
+    ECRIRE "Saise un nombre de départ"
+    LIRE iNombre
+    iCompteur = 0
+    resultat = "" 
+
+    POUR (i = iNombre) JUSQU'A (i < 10) INCREMENT (i++) ALORS
+        iNombre = iNombre + 1
+        resultat += iNombre   
+    FINPOUR
+FIN
+
+5.5
+
+VARIABLES iNombre, resultat
+DEBUT
+    ECRIRE "Saise un nombre de départ"
+    LIRE iNombre
+    resultat = ""
+    POUR (i = 1) JUSQU'A (i <= 10) INCREMENT (i++) ALORS
+        resultat += "iNombre * i = iNombre * i" 
+        ECRIRE resultat
+    FINPOUR
+FIN
 
 
+5.6
+VARIABLES iNombre, resultat
+DEBUT
+    ECRIRE "Saise un nombre de départ"
+    LIRE iNombre
+    resultat = 0
+    POUR (i = 1) JUSQU'A (i <= iNombre) INCREMENT (i++) ALORS
+        resultat += i
+        ECRIRE resultat
+    FINPOUR
+FIN
 
-
-
+5,.7
+VARIABLES iNombre, resultat, decomposition
+DEBUT
+    ECRIRE "Saise un nombre de départ"
+    LIRE iNombre
+        decomposition += i 
+    POUR (i=1) JUSQU'A (i<=iNombre) INCREMENT (i++) ALOSRS
+          decomposition +=i  
+          resultat *=i
+          SI (i < iNombre) ALORS
+            decomposition += " x " 
+    ECRIRE (iNombre) + "! = " + (decomposition) + (iNombre) + " = " + (resultat * iNombre)
+    FINPOUR
+FIN     

@@ -9,7 +9,7 @@
             $resultat .= $iNombre . " ";
             $iCompteur ++;
         }
-        $resultat= "(php)  $resultat"; 
+        $resultat= "(php)" .  $resultat; 
     }
     require "exo_5_3.html";
 ?>
