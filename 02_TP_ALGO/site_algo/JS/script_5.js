@@ -90,7 +90,7 @@ function myNomberDepart () {
      document.getElementById("resultat").innerHTML= resultat;
 }  
 
-/* 5.3*/
+/* 5.3 jq*/
 function myNomberDepart_jq () {
      let iNombre = Number($("#iNombre").val());
      let iCompteur = 0;
@@ -103,3 +103,30 @@ function myNomberDepart_jq () {
      } 
      $("#resultat").html(`(jq) ${resultat}`);
 }  
+
+/* 5.4 js*/
+function myNomberDepart_jq_pour () {
+     let iNombre = document.getElementsById("iNombre").value;
+     let iCompteur = 0;
+     let resultat = ""; 
+
+     for (iCompteur=0; iCompteur<10; iCompteur++)    {
+         iNombre ++;
+         resultat += iNombre + " ";
+     }
+     document.getElementById("resultat").innerHTML= resultat;
+}  
+/* 5.4 jq*/
+function myNomberDepart_js_pour () {
+     let iNombre = Number($("#iNombre").val());
+     let iCompteur = 0;
+     let resultat = ""; 
+
+     for (iCompteur=0; iCompteur<10; iCompteur++)    {
+         iNombre ++;
+         resultat += iNombre + " ";
+     }
+     
+     $("#resultat").html(`(jq) ${resultat}`);
+}  
+
