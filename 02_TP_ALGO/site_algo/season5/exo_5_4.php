@@ -3,11 +3,9 @@
     
     if(isset($_POST["iNombre"])) {
         $iNombre= (int)$_POST["iNombre"];
-        $iCompteur = 0;
         for($i = 0; $i < 10; $i++) {
             $iNombre++;
             $resultat .= $iNombre . " ";
-            $iCompteur++;
         }
         $resultat= "(php) " . $resultat; 
     }

@@ -484,7 +484,7 @@ FIN
 
 5.1
 DEBUT
-      VARIABLES iNombre en NUMERIQUE
+      VARIABLES iNombre
       
       ECRIRE "Nombre entre 1 et 3"
       LIRE iNombre
@@ -502,7 +502,7 @@ FIN
 
 5.2(A)
 DEBUT
-    VARIABLES iNombre en NUMERIQUE
+    VARIABLES iNombre
 
     ECRIRE "Nombre entre 10 et 20"
     LIRE iNombre
@@ -547,73 +547,127 @@ FIN
 
 5.3
 DEBUT
-    VARIABLES iNombre, resultat, iCompteur en NUMERIQUE
+    VARIABLES iNombre; resultat = ""; i = 0;
 
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-    iCompteur = 0
-    resultat = "" 
-
-    TANTQUE (iCompteur < 10) FAIRE
-        iNombre = iNombre + 1
-        resultat = resultat + iNombre + "<br>"
-        iCompteur = iCompteur + 1
+    
+    TANTQUE (i < 10) FAIRE
+              iNombre = iNombre + 1
+    ECRIRE    
+              resultat = resultat + iNombre + "<br>"
+              i++
     FINTANTQUE
     ECRIRE resultat
 FIN
 
 
 5.4
-VARIABLES iNombre, resultat, iCompteur en NUMERIQUE
+VARIABLES iNombre; resultat = ""; iCompteur = 0;
 DEBUT 
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
     iCompteur = 0
-    resultat = "" 
 
-    POUR (i = iNombre) JUSQU'A (i < 10) INCREMENT (i++) ALORS
-        iNombre = iNombre + 1
-        resultat += iNombre   
+    POUR (i = iNombre) A (i < 10) INCREMENT (i++) FAIRE
+        iNombre ++;
+        resultat += iNombre + " ";
+    ECRIRE    
+        resultat   
     FINPOUR
 FIN
 
 5.5
 
-VARIABLES iNombre, resultat
+VARIABLES iNombre, resultat= "";
 DEBUT
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-    resultat = ""
-    POUR (i = 1) JUSQU'A (i <= 10) INCREMENT (i++) ALORS
+    POUR (i = 1) A (i <= 10) INCREMENT (i++) FAIRE
         resultat += "iNombre * i = iNombre * i" 
-        ECRIRE resultat
+    ECRIRE
+        resultat
     FINPOUR
 FIN
 
 
 5.6
-VARIABLES iNombre, resultat
+VARIABLES iNombre; resultat = 0; nomb_de_pas= "";
 DEBUT
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-    resultat = 0
-    POUR (i = 1) JUSQU'A (i <= iNombre) INCREMENT (i++) ALORS
+    POUR (i = 1) JUSQU'A (i <= iNombre) INCREMENT (i++) FAIRE
         resultat += i
-        ECRIRE resultat
+        nomb_de_pas += i
+        SI (i < iNombre) ALORS {
+              nomb_de_pas += " + ";  
+          }
+        ECRIRE nomb_de_pas + " = " + resultat
     FINPOUR
 FIN
 
-5,.7
-VARIABLES iNombre, resultat, decomposition
+
+5.7
+VARIABLES iNombre; resultat= 0; nomb_de_pas= "";
 DEBUT
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-        decomposition += i 
-    POUR (i=1) JUSQU'A (i<=iNombre) INCREMENT (i++) ALOSRS
-          decomposition +=i  
+        nomb_de_pas += i 
+    POUR (i=1) A (i<=iNombre) INCREMENT (i++) FAIRE
+          nomb_de_pas +=i  
           resultat *=i
           SI (i < iNombre) ALORS
-            decomposition += " x " 
-    ECRIRE (iNombre) + "! = " + (decomposition) + (iNombre) + " = " + (resultat * iNombre)
+            nomb_de_pas += " * "; 
+    ECRIRE iNombre + "! = " + nomb_de_pas + " = " + resultat
     FINPOUR
 FIN     
+
+
+
+5.8
+VARIABLES iNombre, max
+DEBUT
+    ECRIRE "Saise nombre 1"
+        LIRE max
+    POUR (i=1) A (i<=20) INCREMENT (i++) FAIRE
+    ECRIRE "Saise nombre + i"
+        LIRE iNombre + i
+        SI max < iNombre + i ALORS
+            max = iNombre + i
+        FINSI
+    FINPOUR
+        ECRIRE max + "est plus grand numéro" 
+FIN
+
+
+5.8b
+VARIABLES iNombre, max, iCount
+DEBUT
+    ECRIRE "Saise nombre 1"
+        LIRE max
+        iCount = 1
+    POUR (i=1) A (i<=20) INCREMENT (i++) FAIRE
+        ECRIRE "Saise nombre + i"
+            LIRE iNombre + i
+            SI max < iNombre + i ALORS
+                max = iNombre + i
+                iCount = i
+        FINSI
+    FINPOUR
+        ECRIRE max + "est plus grand numéro avec le champ de saisie n°" + iCount 
+FIN
+
+5.9
+VARIABLES iNombre, max
+DEBUT
+    ECRIRE "Saise nombre 1"
+        LIRE max
+    POUR (i=1) A (i<=20) INCREMENT (i++) FAIRE
+        ECRIRE "Saise nombre + i"
+            LIRE iNombre + i
+            SI max < iNombre + i ALORS
+                max = iNombre + i
+        FINSI
+    FINPOUR
+        ECRIRE max + "est plus grand numéro"
+FIN

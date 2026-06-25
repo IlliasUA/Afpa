@@ -3,15 +3,15 @@
     
     if(isset($_POST["iNombre"])) {
         $iNombre= $_POST["iNombre"];
-        $decomposition = "";
-        $resultat = 1;  
+        $nomb_de_pas = "";
+        $sum = 1;  
         for ($i=1; $i<=$iNombre; $i++) {
-            $decomposition .= $i;
-            $resultat *= $i;
+            $nomb_de_pas .= $i;
+            $sum *= $i;
             if($i < $iNombre) {
-                $decomposition .= " * ";                
-                $resultat= "(php) " . $iNombre . "! = " . $decomposition . $iNombre . " = " . $resultat * $iNombre; 
-            }
+                $nomb_de_pas .= " * ";                
+                }
+                $resultat= "(php) " . $iNombre . "! = " . $nomb_de_pas . " = " . $sum; 
         }
     }
     require "exo_5_7.html";

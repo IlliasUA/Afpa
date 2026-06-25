@@ -34,17 +34,16 @@
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder="">VARIABLES iNombre, resultat, iCompteur en NUMERIQUE
+                    <textarea class="text" placeholder="">VARIABLES iNombre; resultat = ""; iCompteur = 0;
 DEBUT 
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
     iCompteur = 0
-    resultat = "" 
 
-    POUR (i = iNombre JUSQU'A i < 10 INCREMENT i++) {
+    POUR (i = iNombre) A (i < 10) INCREMENT (i++) FAIRE
         iNombre = iNombre + 1
+    ECRIRE    
         resultat += iNombre   
-    }
     FINPOUR
 FIN</textarea>
                 </div>
@@ -53,16 +52,14 @@ FIN</textarea>
                     <textarea class="text" placeholder="">
 function myNomberDepart_js_pour () {
      let iNombre = document.getElementById("iNombre").value;
-     let iCompteur = 0;
      let resultat = ""; 
 
-     for (i=0; iCompteur<10; iCompteur++)    {
+     for (i=0; i<10; i++)    {
          iNombre ++;
          resultat += iNombre + " ";
      }
      document.getElementById("resultat").innerHTML= resultat;
-}
-
+}  
                     </textarea>
                 </div>
                 <div class="jq_inp">
@@ -70,34 +67,28 @@ function myNomberDepart_js_pour () {
                     <textarea class="text" placeholder="">
 function myNomberDepart_jq_pour () {
      let iNombre = Number($("#iNombre").val());
-     let iCompteur = 0;
      let resultat = ""; 
 
-     for (i=0; iCompteur<10; iCompteur++)    {
+     for (i=0; i<10; i++)    {
          iNombre ++;
          resultat += iNombre + " ";
      }
      $("#resultat").html(`(jq) ${resultat}`);
-}  
-
-                    </textarea>
+}  </textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder="">$resultat = "";
+                    <textarea class="text" placeholder=""> $resultat = "";
     
     if(isset($_POST["iNombre"])) {
         $iNombre= (int)$_POST["iNombre"];
-        $iCompteur = 0;
-        for($i = $iNombre; $i < 10; $i++) {
+        for($i = 0; $i < 10; $i++) {
             $iNombre++;
             $resultat .= $iNombre . " ";
-            $iCompteur++;
         }
-        $resultat= "(php)  $resultat"; 
+        $resultat= "(php) " . $resultat; 
     }
     require "exo_5_4.html";
-   
 </textarea>
                 </div>
             </div>

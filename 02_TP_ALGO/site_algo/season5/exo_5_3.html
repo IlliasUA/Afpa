@@ -36,17 +36,16 @@ exemple, si l'utilisateur entre le nombre 17, le programme affichera les nombres
                 <div class="algo_inp">
                     <p>Algorithmes</p>
                     <textarea class="text" placeholder="">DEBUT
-    VARIABLES iNombre, resultat, iCompteur en NUMERIQUE
+    VARIABLES iNombre; resultat = ""; i = 0;
 
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-    LIRE iCompteur <- 0
-    LIRE resultat <- "" 
-
-    TANTQUE iCompteur < 10 FAIRE
-        iNombre <- iNombre + 1
-        resultat <- iNombre
-        iCompteur <- iCompteur + 1
+    
+    TANTQUE (i < 10) FAIRE
+              iNombre = iNombre + 1
+    ECRIRE    
+              resultat = resultat + iNombre + "<br>"
+              i++
     FINTANTQUE
     ECRIRE resultat
 FIN</textarea>
@@ -55,13 +54,13 @@ FIN</textarea>
                     <p>JavaScript</p>
                     <textarea class="text" placeholder="">function myNomberDepart () {
      let iNombre = Number(document.getElementById("iNombre").value);
-     let iCompteur = 0;
+     let i = 0;
      let resultat = ""; 
 
-     while(iCompteur < 10) {
+     while(i < 10) {
          iNombre ++;
          resultat += iNombre + " ";
-         iCompteur ++;
+         i++;
      } 
      document.getElementById("resultat").innerHTML= resultat;
 }  </textarea>
@@ -70,16 +69,16 @@ FIN</textarea>
                     <p>jQuery</p>
                     <textarea class="text" placeholder="">function myNomberDepart_jq () {
      let iNombre = Number($("#iNombre").val());
-     let iCompteur = 0;
+     let i = 0;
      let resultat = ""; 
 
      while(iCompteur < 10) {
-         iNombre ++;
+         iNombre++;
          resultat += iNombre + " ";
-         iCompteur ++;
+         i++;
      } 
      $("#resultat").html(`(jq) ${resultat}`);
-}   </textarea>
+}  </textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>

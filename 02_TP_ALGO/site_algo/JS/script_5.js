@@ -79,13 +79,13 @@ function myNomberCompris_5_2b_jq () {
 /* 5.3*/
 function myNomberDepart () {
      let iNombre = Number(document.getElementById("iNombre").value);
-     let iCompteur = 0;
+     let i = 0;
      let resultat = ""; 
 
-     while(iCompteur < 10) {
+     while(i < 10) {
          iNombre ++;
          resultat += iNombre + " ";
-         iCompteur ++;
+         i++;
      } 
      document.getElementById("resultat").innerHTML= resultat;
 }  
@@ -93,13 +93,13 @@ function myNomberDepart () {
 /* 5.3 jq*/
 function myNomberDepart_jq () {
      let iNombre = Number($("#iNombre").val());
-     let iCompteur = 0;
+     let i = 0;
      let resultat = ""; 
 
-     while(iCompteur < 10) {
-         iNombre ++;
+     while(i < 10) {
+         iNombre++;
          resultat += iNombre + " ";
-         iCompteur ++;
+         i++;
      } 
      $("#resultat").html(`(jq) ${resultat}`);
 }  
@@ -107,10 +107,9 @@ function myNomberDepart_jq () {
 /* 5.4 js*/
 function myNomberDepart_js_pour () {
      let iNombre = document.getElementById("iNombre").value;
-     let iCompteur = 0;
      let resultat = ""; 
 
-     for (i=0; iCompteur<10; iCompteur++)    {
+     for (i=0; i<10; i++)    {
          iNombre ++;
          resultat += iNombre + " ";
      }
@@ -119,10 +118,9 @@ function myNomberDepart_js_pour () {
 /* 5.4 jq*/
 function myNomberDepart_jq_pour () {
      let iNombre = Number($("#iNombre").val());
-     let iCompteur = 0;
      let resultat = ""; 
 
-     for (i=0; iCompteur<10; iCompteur++)    {
+     for (i=0; i<10; i++)    {
          iNombre ++;
          resultat += iNombre + " ";
      }
@@ -153,37 +151,46 @@ function myTableMultiplication_jq () {
 /* 5.6 js*/
 function myCalculeNombre_js () {
      let iNombre = Number(document.getElementById("iNombre").value);
-     let resultat = 0; 
+     let resultat = 0;
+     let nomb_de_pas = "";
      for (i=1; i<=iNombre; i++) {
-          resultat += i; 
-          document.getElementById("resultat").innerHTML= resultat;
+          resultat += i;
+          nomb_de_pas += i;
+          if (i < iNombre) {
+              nomb_de_pas += " + ";  
+          }
+     document.getElementById("resultat").innerHTML=`${nomb_de_pas} = ${resultat}`;
      }
 }
-
 
 /* 5.6 jq*/
 function myCalculeNombre_jq () {
      let iNombre = Number($("#iNombre").val());
-     let resultat = 0; 
+     let resultat = 0;
+     nomb_de_pas = ""; 
      for (i=1; i<=iNombre; i++) {
-          resultat += i; 
-          $("#resultat").html(`(jq) ${resultat}`);
+          resultat += i;
+          nomb_de_pas += i;
+          if (i < iNombre) {
+              nomb_de_pas += " + ";  
+          } 
+     $("#resultat").html(`(jq) ${nomb_de_pas} = ${resultat}`);
      }
 }
 
 /* 5.7 js*/
 function myFactorielle_js () {
      let iNombre = Number(document.getElementById("iNombre").value);
-     let decomposition = "";
+     let nomb_de_pas = "";
      let resultat = 1;
       
      for (i=1; i<=iNombre; i++) {
-          decomposition +=i;
+          nomb_de_pas +=i;
           resultat *=i;
           if (i < iNombre) {
-              decomposition += " * "; 
-          document.getElementById("resultat").innerHTML= `${iNombre}! = ${decomposition} ${iNombre} = ${resultat * iNombre} `;
+              nomb_de_pas += " * "; 
           }
+          document.getElementById("resultat").innerHTML= `${iNombre}! = ${nomb_de_pas} = ${resultat} `;
      }
 }
 
@@ -191,15 +198,70 @@ function myFactorielle_js () {
 
 function myFactorielle_jq () {
      let iNombre = Number($("#iNombre").val());
-     let decomposition = "";
+     let nomb_de_pas = "";
      let resultat = 1;
       
      for (i=1; i<=iNombre; i++) {
-          decomposition +=i;
+          nomb_de_pas +=i;
           resultat *=i;
           if (i < iNombre) {
-              decomposition += " * "; 
-          $("#resultat").html(`(jq) ${iNombre}! = ${decomposition} ${iNombre} = ${resultat * iNombre}`);
+              nomb_de_pas += " * "; 
           }
+          $("#resultat").html(`(jq) ${iNombre}! = ${nomb_de_pas} = ${resultat}`);
      }
+}
+
+/* 5.8 js*/
+function myNomberMax () {
+     let max = Number(document.getElementById("iNombre1").value);
+     for (i=1; i<= 20; i++)    {
+          let iNombre = Number(document.getElementById("iNombre" + i).value);
+
+          if (max < iNombre) {
+                 max = iNombre;
+               }
+     }
+     document.getElementById("resultat").innerHTML=`${max} est plus grand numéro`;
+}
+
+/* 5.8 jq*/
+function myNomberMax_jq () {
+     let max = Number($("#iNombre1").val());
+     for (i=1; i<= 20; i++)    {
+          let iNombre = Number($("#iNombre" + i).val());
+
+          if (max < iNombre) {
+                 max = iNombre;
+               }
+     }
+     $("#resultat").html(`(jq) ${max} est plus grand numéro`);
+}
+
+/* 5.8b js*/
+function myNomberMax_b () {
+     let max = Number(document.getElementById("iNombre1").value);
+     let iCount;
+     for (i=1; i<= 20; i++) {
+          let iNombre = Number(document.getElementById("iNombre" + i).value);
+          iCount = 1;
+          if (max < iNombre) {
+                 max = iNombre;
+                 iCount = i;
+               }
+     }
+     document.getElementById("resultat").innerHTML=`${max} est plus grand numéro avec le champ de saisie n° ${iCount}`;
+}
+
+function myNomberMax_b_jq () {
+     let max = Number($("#iNombre1").val());
+     let iCount;
+     for (i=1; i<= 20; i++)    {
+          let iNombre = Number($("#iNombre" + i).val());
+          iCount = 1;
+          if (max < iNombre) {
+                 max = iNombre;
+                 iCount = i;
+               }
+     }
+     $("#resultat").html(`(jq) ${max} est plus grand numéro avec le champ de saisie n° ${iCount}`);
 }

@@ -36,44 +36,72 @@ NB : la factorielle de 8, notée 8 !, vaut<br>
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder="">VARIABLES iNombre, resultat, decomposition
+                    <textarea class="text" placeholder="">VARIABLES iNombre; resultat= 0; nomb_de_pas= "";
 DEBUT
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-        decomposition += i 
-    POUR (i=1) JUSQU'A (i<=iNombre) INCREMENT (i++) ALOSRS
-          decomposition +=i  
+        nomb_de_pas += i 
+    POUR (i=1) A (i<=iNombre) INCREMENT (i++) FAIRE
+          nomb_de_pas +=i  
           resultat *=i
           SI (i < iNombre) ALORS
-            decomposition += " x " 
-    ECRIRE (iNombre) + "! = " + (decomposition) + (iNombre) + " = " + (resultat * iNombre)
+            nomb_de_pas += " * "; 
+    ECRIRE iNombre + "! = " + nomb_de_pas + " = " + resultat
     FINPOUR
-FIN   </textarea>
+FIN     </textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
                     <textarea class="text" placeholder="">function myFactorielle_js () {
      let iNombre = Number(document.getElementById("iNombre").value);
-     let decomposition = "";
+     let nomb_de_pas = "";
      let resultat = 1;
       
      for (i=1; i<=iNombre; i++) {
-          decomposition +=i;
+          nomb_de_pas +=i;
           resultat *=i;
           if (i < iNombre) {
-              decomposition += " * "; 
-          document.getElementById("resultat").innerHTML= `${iNombre}! = ${decomposition} ${iNombre} = ${resultat * iNombre} `;
+              nomb_de_pas += " * "; 
           }
+          document.getElementById("resultat").innerHTML= `${iNombre}! = ${nomb_de_pas} = ${resultat} `;
      }
 }</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myFactorielle_jq () {
+     let iNombre = Number($("#iNombre").val());
+     let nomb_de_pas = "";
+     let resultat = 1;
+      
+     for (i=1; i<=iNombre; i++) {
+          nomb_de_pas +=i;
+          resultat *=i;
+          if (i < iNombre) {
+              nomb_de_pas += " * "; 
+          }
+          $("#resultat").html(`(jq) ${iNombre}! = ${nomb_de_pas} = ${resultat}`);
+     }
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder=""> $resultat= "";
+    
+    if(isset($_POST["iNombre"])) {
+        $iNombre= $_POST["iNombre"];
+        $nomb_de_pas = "";
+        $sum = 1;  
+        for ($i=1; $i<=$iNombre; $i++) {
+            $nomb_de_pas .= $i;
+            $sum *= $i;
+            if($i < $iNombre) {
+                $nomb_de_pas .= " * ";                
+                }
+                $resultat= "(php) " . $iNombre . "! = " . $nomb_de_pas . " = " . $sum; 
+        }
+    }
+    require "exo_5_7.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
