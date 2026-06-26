@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_5.js"></script>
+        <script src="../JS/global.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 5.10
+                    </h5>
+                    <p>Lire la suite des prix (en euros entiers et terminée par zéro) des achats d’un client. Calculer la somme qu’il doit, lire la 
+somme qu’il paye, et simuler la remise de la monnaie en affichant les textes "10 Euros", "5 Euros" et "1 Euro" autant 
+de fois qu’il y a de coupures de chaque sorte à rendre.
+</p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_5_10.php" name="formPHP">
+                        <div id="div_formulaire"></div>
+                    <p>Combien d'articles avez-vous?<input id="fArticles" name="fArticles" placeholder="nombre d'articles"></p>
+                    <button class="button_cree_form" onclick="myFormulaire ()" type="button">Créer la formulaire</button>
+                    <button class="button_cree_form" onclick="calculeMontant ()" type="button">Calculer montant TOTAL</button>
+                    <button class="button_age" onclick="myArticles ()" type="button">Rendre en JavaScript</button>
+                    <button class="button_age" onclick="myArticles_jq ()" type="button">Rendre en jQuery</button>
+                    <button class="button_age" onclick="exec_php()">Rendre en PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resultat"><?php echo $resultat ?></span>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script>
+        
+    function myFormulaire () {
+        let fArticles = Number(document.getElementById("fArticles").value);
+        let sHTML= "";
+            for (i=1; i<=fArticles; i++) {
+                sHTML+= `<p>Entrez le prix l'article n° ${i}</p>`;
+                sHTML+= `<p><input type="text" class="input-articles" name="iNombre${i}" id="iNombre${i}"><span>€</span></p>`;
+            }
+        document.getElementById("div_formulaire").innerHTML= sHTML;
+        }
+
+    function calculeMontant () {
+        let fArticles = Number(document.getElementById("fArticles").value);
+        let sHTMLvalue= "";
+        let valueInputsArticles = document.querySelectorAll(`.input-articles`);
+        sommeDevoir = 0;
+            for (i=1; i<=fArticles; i++) {
+                sommeDevoir += Number(valueInputsArticles[i-1].value);
+            }
+        sHTMLvalue = `<p>Vous devez: ${sommeDevoir}€</p>`;
+        sHTMLvalue+= `<p><input type="text" class="input-somme" name="sNombre" id="sNombre" placeholder="Somme donnée"><span>€</span></p>`;
+        document.getElementById("div_formulaire").innerHTML= sHTMLvalue;
+    }
+    </script>
+</html>

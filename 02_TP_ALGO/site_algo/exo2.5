@@ -658,16 +658,39 @@ DEBUT
 FIN
 
 5.9
-VARIABLES iNombre, max
+VARIABLES iNombre, fNombre, max, iCount
 DEBUT
+    ECRIRE "Combien des nombre vous souhaites saisir"
+    LIRE fNombre    
     ECRIRE "Saise nombre 1"
         LIRE max
-    POUR (i=1) A (i<=20) INCREMENT (i++) FAIRE
+        iCount = 1
+    POUR (i=1) A (i<=fNombre) INCREMENT (i++) FAIRE
         ECRIRE "Saise nombre + i"
             LIRE iNombre + i
             SI max < iNombre + i ALORS
                 max = iNombre + i
+                iCount = i
         FINSI
     FINPOUR
-        ECRIRE max + "est plus grand numéro"
+        ECRIRE max + "est plus grand numéro avec le champ de saisie n°" + iCount 
+FIN
+
+5.10
+VARIABLES iNombre, fNombre, max, iCount
+DEBUT
+    ECRIRE "Combien des nombre vous souhaites saisir"
+    LIRE fNombre    
+    ECRIRE "Saise nombre 1"
+        LIRE max
+        iCount = 1
+    POUR (i=1) A (i<=fNombre) INCREMENT (i++) FAIRE
+        ECRIRE "Saise nombre + i"
+            LIRE iNombre + i
+            SI max < iNombre + i ALORS
+                max = iNombre + i
+                iCount = i
+        FINSI
+    FINPOUR
+        ECRIRE max + "est plus grand numéro avec le champ de saisie n°" + iCount 
 FIN

@@ -15,5 +15,5 @@
         }
             $resultat= "(php) " . $max . " est plus grand numéro avec le champ de saisie n°" . $iCount; 
     }
-    require "exo_5_9.html";
+    require "exo_5_10.html";
 ?>

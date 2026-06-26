@@ -27,7 +27,7 @@
                     <h5>Exercice 5.9
                     </h5>
                     <p>Réécrire l’algorithme précédent, mais cette fois-ci on ne connaît pas d’avance combien l’utilisateur souhaite saisir de 
-nombres. La saisie des nombres s’arrête lorsque l’utilisateur entre un zéro.
+nombres.
 </p>
                 </div>
                 <div class="prof_img">
@@ -37,27 +37,87 @@ nombres. La saisie des nombres s’arrête lorsque l’utilisateur entre un zér
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">VARIABLES iNombre, fNombre, max, iCount
+DEBUT
+    ECRIRE "Combien des nombre vous souhaites saisir"
+    LIRE fNombre    
+    ECRIRE "Saise nombre 1"
+        LIRE max
+        iCount = 1
+    POUR (i=1) A (i<=fNombre) INCREMENT (i++) FAIRE
+        ECRIRE "Saise nombre + i"
+            LIRE iNombre + i
+            SI max < iNombre + i ALORS
+                max = iNombre + i
+                iCount = i
+        FINSI
+    FINPOUR
+        ECRIRE max + "est plus grand numéro avec le champ de saisie n°" + iCount 
+FIN</textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myNomberMax59 () {
+     let max = Number(document.getElementById("iNombre1").value);
+     let fNombre = Number(document.getElementById("fNombre").value);
+     let iCount;
+     for (i=1; i <= fNombre; i++) {
+          let iNombre = Number(document.getElementById("iNombre" + i).value);
+          iCount = 1;
+          if (max < iNombre) {
+                 max = iNombre;
+                 iCount = i;
+               }
+     }
+     document.getElementById("resultat").innerHTML=`${max} est plus grand numéro avec le champ de saisie n° ${iCount}`;
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myNomberMax59_jq () {
+     let max = Number($("#iNombre1").val());
+     let fNombre = Number($("#fNombre").val());
+     let iCount;
+     for (i=1; i <= fNombre; i++) {
+          let iNombre = Number($("#iNombre" + i).val());
+          iCount = 1;
+          if (max < iNombre) {
+                 max = iNombre;
+                 iCount = i;
+               }
+     }
+     $("#resultat").html(`(jq) ${max} est plus grand numéro avec le champ de saisie n° ${iCount}`);
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder=""> $resultat= "";
+    
+    if(isset($_POST["iNombre1"])) {
+        $max= $_POST["iNombre1"];
+        $fNombre= $_POST["fNombre"];
+        $iCount= 1;
+        for ($i=1; $i<=$fNombre; $i++) {
+            $iNombre = $_POST["iNombre" . $i];
+
+            if($max < $iNombre) {
+                $max = $iNombre;
+                $iCount = $i;                
+                }
+        }
+            $resultat= "(php) " . $max . " est plus grand numéro avec le champ de saisie n°" . $iCount; 
+    }
+    require "exo_5_9.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
                     <form method="post" action="exo_5_9.php" name="formPHP">
                         <div id="div_formulaire"></div>
-                    <button class="button_age" onclick="myNomberMax_b ()" type="button">OK JavaScript</button>
-                    <button class="button_age" onclick="myNomberMax_b_jq ()" type="button">OK jQuery</button>
+                    <p>Combien  de nombres vous souhaite saisir?<input id="fNombre" name="fNombre" placeholder="nombre de saisir"></p>
+                    <button class="button_cree_form" onclick="myFormulaire ()" type="button">Créer la formulaire</button>
+                    <button class="button_age" onclick="myNomberMax59 ()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myNomberMax59_jq ()" type="button">OK jQuery</button>
                     <button class="button_age" onclick="exec_php()">OK PHP</button>
                     </form>
                 </div>
@@ -66,14 +126,16 @@ nombres. La saisie des nombres s’arrête lorsque l’utilisateur entre un zér
                 </div>
             </div>
         </section>
-    </body>   
+    </body>
     <script>
-    const iNombreZero = 0;
-    let sHTML= "";
-        for (i=1; i != iNombreZero; i++) {
+    function myFormulaire () {
+     let sHTML= "";
+     let fNombre = Number(document.getElementById("fNombre").value);
+     for (i=1; i<=fNombre; i++) {
             sHTML+= `<p>Entrez le nombre n° ${i}</p>`;
             sHTML+= `<p><input type="text" name="iNombre${i}" id="iNombre${i}"></p>`;
         }
     document.getElementById("div_formulaire").innerHTML= sHTML;
-</script> 
+    } 
+    </script>
 </html>

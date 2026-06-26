@@ -203,3 +203,17 @@ h2 {
 .button_age:hover {
     background-color: #0e6407;
 }
+
+.button_cree_form {
+    padding: 12px 25px;
+    font-size: 20px;
+    background-color: #4a80e3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.button_cree_form:hover {
+    background-color: #3b9f81;
+}

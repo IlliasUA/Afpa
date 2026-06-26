@@ -252,6 +252,7 @@ function myNomberMax_b () {
      document.getElementById("resultat").innerHTML=`${max} est plus grand numéro avec le champ de saisie n° ${iCount}`;
 }
 
+/* 5.8b jq*/
 function myNomberMax_b_jq () {
      let max = Number($("#iNombre1").val());
      let iCount;
@@ -264,4 +265,29 @@ function myNomberMax_b_jq () {
                }
      }
      $("#resultat").html(`(jq) ${max} est plus grand numéro avec le champ de saisie n° ${iCount}`);
+}
+
+
+/* 5.9 js*/
+function myNomberMax59 () {
+     let max = Number(document.getElementById("iNombre1").value);
+     let fNombre = Number(document.getElementById("fNombre").value);
+     let iCount;
+     for (i=1; i <= fNombre; i++) {
+          let iNombre = Number(document.getElementById("iNombre" + i).value);
+          iCount = 1;
+          if (max < iNombre) {
+                 max = iNombre;
+                 iCount = i;
+               }
+     }
+     document.getElementById("resultat").innerHTML=`${max} est plus grand numéro avec le champ de saisie n° ${iCount}`;
+}
+
+
+/* 5.10 js*/
+function myArticles () {
+     let sommeDonnee = document.getElementById("sNombre");
+     let votreMonnaie = sommeDevoir - sommeDonnee;
+     document.getElementById("resultat").innerHTML=`Votre monnaie est ${votreMonnaie}`;
 }
