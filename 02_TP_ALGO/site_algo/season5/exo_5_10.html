@@ -43,15 +43,120 @@ de fois qu’il y a de coupures de chaque sorte à rendre.
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myArticles () {
+     let sommeDonnee = Number(document.getElementById("sNombre").value);
+     let sommeDevoir = window.sommeDevoir;
+     let nBillet10 = 0;
+     let nBillet5 = 0;
+     let nBillet1 = 0;
+     let votreMonnaie = sommeDonnee - sommeDevoir;
+     let resVotreMonnaie = votreMonnaie;
+     let resultates = "";
+
+     if(votreMonnaie >= 10) {
+          while (votreMonnaie >= 10) {
+               nBillet10++;  
+               votreMonnaie -= 10;
+          }
+     }
+     if(votreMonnaie >= 5) {
+          nBillet5++;
+          votreMonnaie -= 5;
+     }
+     if(votreMonnaie >= 1) {
+          nBillet1 = votreMonnaie;
+     } 
+     resultates = `Votre monnaie est ${resVotreMonnaie}€: <br>`;
+     if(nBillet10 > 0) {
+          resultates += `- ${nBillet10} billet de 10€<br>`;     
+     }
+     if(nBillet5 > 0) {
+          resultates += `- ${nBillet5} billet de 5€<br>`;
+     }
+     if(nBillet1 > 0) {
+          resultates += `- ${nBillet1} billet de 1€`;
+     }
+     document.getElementById("resultat").innerHTML = resultates;
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myArticles_jq () {
+     let sommeDonnee = Number($("#sNombre").val());
+     let sommeDevoir = window.sommeDevoir;
+     let nBillet10 = 0;
+     let nBillet5 = 0;
+     let nBillet1 = 0;
+     let votreMonnaie = sommeDonnee - sommeDevoir;
+     let resVotreMonnaie = votreMonnaie;
+     let resultates = "";
+
+     if(votreMonnaie >= 10) {
+          while (votreMonnaie >= 10) {
+               nBillet10++;  
+               votreMonnaie -= 10;
+          }
+     }
+     if(votreMonnaie >= 5) {
+          nBillet5++;
+          votreMonnaie -= 5;
+     }
+     if(votreMonnaie >= 1) {
+          nBillet1 = votreMonnaie;
+     } 
+     resultates = `Votre monnaie est ${resVotreMonnaie}€: <br>`;
+     if(nBillet10 > 0) {
+          resultates += `- ${nBillet10} billet de 10€<br>`;     
+     }
+     if(nBillet5 > 0) {
+          resultates += `- ${nBillet5} billet de 5€<br>`;
+     }
+     if(nBillet1 > 0) {
+          resultates += `- ${nBillet1} billet de 1€`;
+     }
+     $("#resultat").html(`(jq) ${resultates}`);
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resultat= "";
+    
+    if(isset($_POST["sNombre"])) {
+        $sommeDonnee= $_POST["sNombre"];
+        $sommeDevoir= $_POST["sommeDevoir"];
+        $nBillet10 = 0;
+        $nBillet5 = 0;
+        $nBillet1 = 0;
+        $votreMonnaie = $sommeDonnee - $sommeDevoir;
+        $resVotreMonnaie = $votreMonnaie;
+        $resultates = "";
+
+        if($votreMonnaie >= 10) {
+            while ($votreMonnaie >= 10) {
+                $nBillet10++;  
+                $votreMonnaie -= 10;
+            }
+        }
+        if($votreMonnaie >= 5) {
+            $nBillet5++;
+            $votreMonnaie -= 5;
+        }
+        if($votreMonnaie >= 1) {
+            $nBillet1 = $votreMonnaie;
+        } 
+        $resultates = "Votre monnaie est " . $resVotreMonnaie . "€: <br>";
+        if($nBillet10 > 0) {
+            $resultates .= "- " . $nBillet10 . "billet de 10€<br>";     
+        }
+        if($nBillet5 > 0) {
+            $resultates .= "- " . $nBillet5 . "billet de 5€<br>";
+        }
+        if($nBillet1 > 0) {
+            $resultates .= "- " . $nBillet1 . "billet de 1€";
+        }
+            $resultat= "(php) " . $resultates; 
+    }
+    require "exo_5_10.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
@@ -88,12 +193,15 @@ de fois qu’il y a de coupures de chaque sorte à rendre.
         let fArticles = Number(document.getElementById("fArticles").value);
         let sHTMLvalue= "";
         let valueInputsArticles = document.querySelectorAll(`.input-articles`);
-        sommeDevoir = 0;
+        let sommeDevoir = 0;
             for (i=1; i<=fArticles; i++) {
                 sommeDevoir += Number(valueInputsArticles[i-1].value);
             }
+            window.sommeDevoir = sommeDevoir; /*pour func JS, JQ*/
+        
         sHTMLvalue = `<p>Vous devez: ${sommeDevoir}€</p>`;
-        sHTMLvalue+= `<p><input type="text" class="input-somme" name="sNombre" id="sNombre" placeholder="Somme donnée"><span>€</span></p>`;
+        sHTMLvalue += `<input type="hidden" name="sommeDevoir" id="sommeDevoir" value="${sommeDevoir}">`; /*pour php*/
+        sHTMLvalue += `<p><input type="text" class="input-somme" name="sNombre" id="sNombre" placeholder="Somme donnée"><span>€</span></p>`;
         document.getElementById("div_formulaire").innerHTML= sHTMLvalue;
     }
     </script>
