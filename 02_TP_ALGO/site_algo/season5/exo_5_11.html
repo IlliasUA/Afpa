@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_5.js"></script>
+        <script src="../JS/global.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 5.11
+                    </h5>
+                    <p>Écrire un algorithme qui permette de connaître ses chances de gagner au tiercé, quarté, quinté et autres impôts volontaires.<br>
+On demande à l’utilisateur le nombre de chevaux partants, et le nombre de chevaux joués. Les deux messages affichés devront être:<br>
+Dans l’ordre : une chance sur X de gagner<br>
+Dans le désordre : une chance sur Y de gagner<br>
+X et Y nous sont donnés par la formule suivante, si n est le nombre de chevaux partants et p le nombre de chevaux joués (on rappelle que le signe ! signifie "factorielle", comme dans l'exercice 5.7 ci-dessus):<br>
+X = n ! / (n - p) !<br>
+Y = n ! / (p ! * (n – p) !)<br>
+NB : cet algorithme peut être écrit d’une manière simple, mais relativement peu performante. Ses performances peuvent être singulièrement augmentées par une petite astuce. Vous commencerez par écrire la manière la plus simple, puis vous identifierez le problème, et écrirez une deuxième version permettant de le résoudre.<br>
+</p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES chevPart, chevPlay, enOrdre, enDesordre
+DEBUT
+    ECRIRE "Saisie le nombre de chevaux partants"
+    LIRE chevPart
+    ECRIRE "Saisie le nombre de chevaux joués"
+    LIRE chevPlay
+
+    enOrdre = 1
+    POUR i=0 A i<chevPlay INCREMENT i++ FAIRE
+        enOrdre *= (chevPart - i)
+    FINPOUR
+
+    enDesordre = enOrdre
+    POUR i=1 A i<=chevPlay INCREMENT i++ FAIRE
+        enDesordre /= i
+    FINPOUR
+
+    ECRIRE "Nos chances de gagner en désordre est 1:" + enDesordre + "<br>
+            et nos chances de gagner dans le bon ordre est 1:" + enOrdre;
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function myChanses () {
+     let chevPart = document.getElementById("chevPart").value;
+     let chevPlay = document.getElementById("chevPlay").value;
+     let enOrdre = 1;
+     let enDesordre;
+     
+     for (i=0; i<chevPlay; i++) {
+          enOrdre *= chevPart - i;
+     }
+     enDesordre = enOrdre;
+     for (i=1; i<=chevPlay; i++) {
+          enDesordre /= i;
+     }
+     enDesordre = Math.round(enDesordre);
+     document.getElementById("resultat").innerHTML= `Nos chances de gagner en désordre est 1:${enDesordre}<br>
+      et nos chances de gagner dans le bon ordre est 1:${enOrdre}`;
+}</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function myChanses_jq () {
+     let chevPart = Number($("#chevPart").val());
+     let chevPlay = Number($("#chevPlay").val());
+     let enOrdre = 1;
+     let enDesordre;
+     
+     for (i=0; i<chevPlay; i++) {
+          enOrdre *= chevPart - i;
+     }
+     enDesordre = enOrdre;
+     for (i=1; i<=chevPlay; i++) {
+          enDesordre /= i;
+     }
+     enDesordre = Math.round(enDesordre);
+      $("#resultat").html(`(jq) Nos chances de gagner en désordre est 1:${enDesordre}<br>
+      et nos chances de gagner dans le bon ordre est 1:${enOrdre}`);
+}</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder="">$resultat= "";
+    
+    if(isset($_POST["chevPart"])) {
+        $chevPart = $_POST["chevPart"];
+        $chevPlay = $_POST["chevPlay"];  
+        $enOrdre = 1;
+        $enDesordre;
+        for ($i=0; $i<$chevPlay; $i++) {
+          $enOrdre *= $chevPart - $i;
+        }
+        
+        $enDesordre = $enOrdre;
+
+        for ($i=1; $i<=$chevPlay; $i++) {
+            $enDesordre /= $i;
+        }
+        $enDesordre = round($enDesordre);
+        $resultat= "(php) Nos chances de gagner en désordre est 1:" . $enDesordre . 
+        "<br> et nos chances de gagner dans le bon ordre est 1:" . $enOrdre;
+    }
+
+    require "exo_5_11.html";    </textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_5_11.php" name="formPHP">
+                    <p>Saisie le nombre de chevaux partants<input id="chevPart" name="chevPart" placeholder="nombre"></p>
+                    <p>Saisie le nombre de chevaux joués<input id="chevPlay" name="chevPlay" placeholder="nombre"></p>
+                    <button class="button_age" onclick="myChanses ()" type="button">Nos chances en JavaScript</button>
+                    <button class="button_age" onclick="myChanses_jq ()" type="button">Nos chances en jQuery</button>
+                    <button class="button_age" onclick="exec_php()">Nos chances en PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resultat"><?php echo $resultat ?></span>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

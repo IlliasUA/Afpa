@@ -39,7 +39,39 @@ de fois qu’il y a de coupures de chaque sorte à rendre.
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">VARIABLES sommeDonnee, sommeDevoir, votreMonnaie, resVotreMonnaie, nBillet10, nBillet5, nBillet1, resultates
+DEBUT
+    votreMonnaie = sommeDonnee - sommeDevoir
+    resVotreMonnaie = votreMonnaie
+    
+    SI(votreMonnaie >= 10) ALORS
+          TANTQUE (votreMonnaie >= 10) FAIRE
+               nBillet10++;  
+               votreMonnaie -= 10;
+          FINTANTQUE
+    SI(votreMonnaie >= 5) ALORS
+          nBillet5++;
+          votreMonnaie -= 5;
+    FINSI
+    SI(votreMonnaie >= 1) ALORS
+          nBillet1 = votreMonnaie;
+    FINSI
+    
+    resultates = `Votre monnaie est ${resVotreMonnaie}€: <br>`;
+
+    SI(nBillet10 > 0) ALORS
+          resultates += `- ${nBillet10} billet de 10€<br>`;     
+    FINSI
+    SI(nBillet5 > 0) ALORS
+          resultates += `- ${nBillet5} billet de 5€<br>`;
+    FINSI
+    SI(nBillet1 > 0) ALORS
+          resultates += `- ${nBillet1} billet de 1€`;
+    FINSI
+    
+    ECRIRE resultates
+    
+FIN</textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
@@ -194,10 +226,10 @@ de fois qu’il y a de coupures de chaque sorte à rendre.
         let sHTMLvalue= "";
         let valueInputsArticles = document.querySelectorAll(`.input-articles`);
         let sommeDevoir = 0;
+            
             for (i=1; i<=fArticles; i++) {
                 sommeDevoir += Number(valueInputsArticles[i-1].value);
             }
-            window.sommeDevoir = sommeDevoir; /*pour func JS, JQ*/
         
         sHTMLvalue = `<p>Vous devez: ${sommeDevoir}€</p>`;
         sHTMLvalue += `<input type="hidden" name="sommeDevoir" id="sommeDevoir" value="${sommeDevoir}">`; /*pour php*/

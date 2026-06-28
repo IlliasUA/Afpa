@@ -677,20 +677,59 @@ DEBUT
 FIN
 
 5.10
-VARIABLES iNombre, fNombre, max, iCount
+VARIABLES sommeDonnee, sommeDevoir, votreMonnaie, resVotreMonnaie, nBillet10, nBillet5, nBillet1, resultates
 DEBUT
-    ECRIRE "Combien des nombre vous souhaites saisir"
-    LIRE fNombre    
-    ECRIRE "Saise nombre 1"
-        LIRE max
-        iCount = 1
-    POUR (i=1) A (i<=fNombre) INCREMENT (i++) FAIRE
-        ECRIRE "Saise nombre + i"
-            LIRE iNombre + i
-            SI max < iNombre + i ALORS
-                max = iNombre + i
-                iCount = i
-        FINSI
+    votreMonnaie = sommeDonnee - sommeDevoir
+    resVotreMonnaie = votreMonnaie
+    
+    SI(votreMonnaie >= 10) ALORS
+          TANTQUE (votreMonnaie >= 10) FAIRE
+               nBillet10++;  
+               votreMonnaie -= 10;
+          FINTANTQUE
+    SI(votreMonnaie >= 5) ALORS
+          nBillet5++;
+          votreMonnaie -= 5;
+    FINSI
+    SI(votreMonnaie >= 1) ALORS
+          nBillet1 = votreMonnaie;
+    FINSI
+    
+    resultates = `Votre monnaie est ${resVotreMonnaie}€: <br>`;
+
+    SI(nBillet10 > 0) ALORS
+          resultates += `- ${nBillet10} billet de 10€<br>`;     
+    FINSI
+    SI(nBillet5 > 0) ALORS
+          resultates += `- ${nBillet5} billet de 5€<br>`;
+    FINSI
+    SI(nBillet1 > 0) ALORS
+          resultates += `- ${nBillet1} billet de 1€`;
+    FINSI
+    
+    ECRIRE resultates
+
+FIN
+
+5.11
+
+VARIABLES chevPart, chevPlay, enOrdre, enDesordre
+DEBUT
+    ECRIRE "Saisie le nombre de chevaux partants"
+    LIRE chevPart
+    ECRIRE "Saisie le nombre de chevaux joués"
+    LIRE chevPlay
+
+    enOrdre = 1
+    POUR i=0 A i<chevPlay INCREMENT i++ FAIRE
+        enOrdre *= (chevPart - i)
     FINPOUR
-        ECRIRE max + "est plus grand numéro avec le champ de saisie n°" + iCount 
+
+    enDesordre = enOrdre
+    POUR i=1 A i<=chevPlay INCREMENT i++ FAIRE
+        enDesordre /= i
+    FINPOUR
+
+    ECRIRE "Nos chances de gagner en désordre est 1:" + enDesordre + "<br>
+            et nos chances de gagner dans le bon ordre est 1:" + enOrdre;
 FIN
