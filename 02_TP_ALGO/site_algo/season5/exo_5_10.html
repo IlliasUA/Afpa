@@ -228,7 +228,8 @@ FIN</textarea>
         let sommeDevoir = 0;
             
             for (i=1; i<=fArticles; i++) {
-                sommeDevoir += Number(valueInputsArticles[i-1].value);
+                sommeDevoir += Number(document.getElementById("iNombre"+i).value);
+                // sommeDevoir += Number(valueInputsArticles[i-1].value);
             }
         
         sHTMLvalue = `<p>Vous devez: ${sommeDevoir}€</p>`;

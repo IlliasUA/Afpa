@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_6.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 6.3</h5>
+                    <p>Ecrire un algorithme qui déclare un tableau de 9 notes, dont on fait ensuite saisir les valeurs par l’utilisateur. </p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES arrNotes = [], iNote
+DEBUT
+    POUR i=1 A i<=9 INCREMENT i++ FAIRE
+        ECRIRE "Saise note"
+        LIRE iNote
+        arrNotes += iNote + 1
+    FINPOUR
+    ECRIRE arrNotes
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function myNotes () {
+    let arrNotes = [];
+    
+    for(i=1; i<=9; i++) {
+        arrNotes.push(document.getElementById("iNote" + i).value);
+        /*arrNotes += document.getElementById("iNote" + i).value;  -  (marche pas)  */ 
+    }
+    document.getElementById("resulta").innerHTML= `Votre tableau de notes est: ${arrNotes.join(" ")}`;    
+}</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function myNotes_jq () {
+    let arrNotes = [];
+    
+    for(i=1; i<=9; i++) {
+        arrNotes.push($("#iNote" + i).val());
+    }
+    $("#resulta").html(`(jq) Votre tableau de notes est: ${arrNotes.join(" ")}`);
+}</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder=""></textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_6_3.php" name="formPHP">
+                        <div id="div_formulaire"></div>
+                    <button class="button_age" onclick="myNotes()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myNotes_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"><?php echo $resulta ?></span>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script>
+    let sHTML= "";
+    for (i=1; i<=9; i++) {
+        sHTML+= `<p>Saisie de note n° ${i}</p>`;
+        sHTML+= `<p><input type="text" name="iNote${i}" id="iNote${i}"></p>`;
+    }
+
+    document.getElementById("div_formulaire").innerHTML= sHTML;
+</script>     
+</html>

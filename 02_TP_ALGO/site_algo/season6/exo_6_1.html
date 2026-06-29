@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_6.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 6.1</h5>
+                    <p>Ecrire un algorithme qui déclare et remplisse un tableau de 7 valeurs numériques en les mettant toutes à zéro.  </p>
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES arrNum[7]
+DEBUT
+    POUR i=0 A i<7 INCREMENT i++ FAIRE
+         arrNum[i] = 0
+    FINPOUR
+    ECRIRE "arrNum(7) = [" + arrNum + "]"
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function myArrNombreZero () {
+    let arrNum = [];
+    for(let i = 0; i < 7; i++) {
+        arrNum[i] = 0;
+    }
+        document.getElementById("resulta").innerHTML=`arrNum(7) =  [${arrNum.join(" ")}] `; 
+}</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function myArrNombreZero_jq () {
+    let arrNum = [];
+    for(let i = 0; i < 7; i++) {
+        arrNum[i] = 0;
+    }
+        $("#resulta").html(`(jq) arrNum(7) =  [${arrNum.join(" ")}] `);
+}</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder="">$resulta= "";
+$arrNum = [];
+    for($i = 0; $i < 7; $i++) {
+        $arrNum[$i] = 0;
+    }
+
+    $resulta= "(php) arrNum(7) = [" . implode(" ", $arrNum) . "]";
+
+    require "exo_6_1.html";</textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_6_1.php" name="formPHP">
+                    <p>Cliquez sur le bouton</p>
+                    <button class="button_age" onclick="myArrNombreZero()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myArrNombreZero_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"><?php echo $resulta ?></span>
+                </div>
+            </div>
+        </section>
+
+    </body>    
+</html>

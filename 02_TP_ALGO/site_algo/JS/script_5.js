@@ -272,14 +272,13 @@ function myNomberMax_b_jq () {
 function myNomberMax59 () {
      let max = Number(document.getElementById("iNombre1").value);
      let fNombre = Number(document.getElementById("fNombre").value);
-     let iCount;
+     let iCount= 1;
      for (i=1; i <= fNombre; i++) {
           let iNombre = Number(document.getElementById("iNombre" + i).value);
-          iCount = 1;
           if (max < iNombre) {
-                 max = iNombre;
-                 iCount = i;
-               }
+               max = iNombre;
+               iCount = i;
+          }
      }
      document.getElementById("resultat").innerHTML=`${max} est plus grand numéro avec le champ de saisie n° ${iCount}`;
 }
@@ -289,14 +288,13 @@ function myNomberMax59 () {
 function myNomberMax59_jq () {
      let max = Number($("#iNombre1").val());
      let fNombre = Number($("#fNombre").val());
-     let iCount;
+     let iCount= 1;
      for (i=1; i <= fNombre; i++) {
           let iNombre = Number($("#iNombre" + i).val());
-          iCount = 1;
           if (max < iNombre) {
-                 max = iNombre;
-                 iCount = i;
-               }
+               max = iNombre;
+               iCount = i;
+          }
      }
      $("#resultat").html(`(jq) ${max} est plus grand numéro avec le champ de saisie n° ${iCount}`);
 }
@@ -307,25 +305,19 @@ function myArticles () {
      let sommeDevoir = Number(document.getElementById("sommeDevoir").value);
      let nBillet10 = 0;
      let nBillet5 = 0;
-     let nBillet1 = 0;
      let votreMonnaie = sommeDonnee - sommeDevoir;
      let resVotreMonnaie = votreMonnaie;
      let resultates = "";
 
-     if(votreMonnaie >= 10) {
-          while (votreMonnaie >= 10) {
-               nBillet10++;  
-               votreMonnaie -= 10;
-          }
+     while (votreMonnaie >= 10) {
+          nBillet10++;  
+          votreMonnaie -= 10;
      }
      if(votreMonnaie >= 5) {
-          nBillet5++;
+          nBillet5= 1;
           votreMonnaie -= 5;
      }
-     if(votreMonnaie >= 1) {
-          nBillet1 = votreMonnaie;
-     } 
-     
+    
      resultates = `Votre monnaie est ${resVotreMonnaie}€: <br>`;
      
      if(nBillet10 > 0) {
@@ -334,8 +326,8 @@ function myArticles () {
      if(nBillet5 > 0) {
           resultates += `- ${nBillet5} billet de 5€<br>`;
      }
-     if(nBillet1 > 0) {
-          resultates += `- ${nBillet1} billet de 1€`;
+     if(votreMonnaie > 0) {
+          resultates += `- ${votreMonnaie} billet de 1€`;
      }
      document.getElementById("resultat").innerHTML = resultates;
 }
@@ -383,18 +375,13 @@ function myChanses () {
      let chevPart = document.getElementById("chevPart").value;
      let chevPlay = document.getElementById("chevPlay").value;
      let enOrdre = 1;
-     let enDesordre;
+     let diviseur= 1;
      
      for (i=0; i<chevPlay; i++) {
           enOrdre *= chevPart - i;
+          diviseur*= (i+1);
      }
-     enDesordre = enOrdre;
-     for (i=1; i<=chevPlay; i++) {
-          enDesordre /= i;
-     }
-     enDesordre = Math.round(enDesordre);
-     document.getElementById("resultat").innerHTML= `Nos chances de gagner en désordre est 1:${enDesordre}<br>
-      et nos chances de gagner dans le bon ordre est 1:${enOrdre}`;
+     document.getElementById("resultat").innerHTML= "Nos chances de gagner en désordre est 1:" + Math.round(enOrdre/diviseur) + "<br>et nos chances de gagner dans le bon ordre est 1:" + enOrdre;
 }
 
 /* 5.11 jq*/

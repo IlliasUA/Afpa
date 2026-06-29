@@ -563,13 +563,12 @@ FIN
 
 
 5.4
-VARIABLES iNombre; resultat = ""; iCompteur = 0;
+VARIABLES iNombre; resultat = "";
 DEBUT 
     ECRIRE "Saise un nombre de départ"
     LIRE iNombre
-    iCompteur = 0
 
-    POUR (i = iNombre) A (i < 10) INCREMENT (i++) FAIRE
+    POUR (i = 0) A (i < 10) INCREMENT (i++) FAIRE
         iNombre ++;
         resultat += iNombre + " ";
     ECRIRE    
@@ -732,4 +731,40 @@ DEBUT
 
     ECRIRE "Nos chances de gagner en désordre est 1:" + enDesordre + "<br>
             et nos chances de gagner dans le bon ordre est 1:" + enOrdre;
+FIN
+
+
+
+
+6.1
+VARIABLES arrNum = []
+DEBUT
+    POUR i=0 A i<7 INCREMENT i++ FAIRE
+         arrNum[i] = 0
+    FINPOUR
+    ECRIRE "arrNum(7) = [" + arrNum + "]"
+FIN
+
+
+6.2
+VARIABLES arrVoyelles = []
+DEBUT
+    arrVoyelles[0] = "A";
+    arrVoyelles[1] = "E";
+    arrVoyelles[2] = "I";
+    arrVoyelles[3] = "O";
+    arrVoyelles[4] = "U";
+    arrVoyelles[5] = "Y";
+    ECRIRE arrVoyelles
+FIN 
+
+6.3
+VARIABLES arrNotes = [], iNote
+DEBUT
+    POUR i=1 A i<=9 INCREMENT i++ FAIRE
+        ECRIRE "Saise note"
+        LIRE iNote
+        arrNotes += iNote + 1
+    FINPOUR
+    ECRIRE arrNotes
 FIN
