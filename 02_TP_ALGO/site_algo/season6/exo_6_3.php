@@ -1,5 +1,6 @@
 <?php
 $resulta = "";
+if(isset($_POST["iNote1"])) {
 $arrNotes = [];
 for ($i = 1; $i <= 9; $i++) {
     $arrNotes[] = $_POST["iNote" . $i];
