@@ -161,14 +161,14 @@ function myValNegPos () {
     let negatif = 0;
     let positif = 0;
     let nul = 0;
-    for(let i=1; i<=fArticles; i++) {
-        arrValeurs[i] = document.getElementById("iNombre"+i).value;
-        /*     meme chose: arrValeurs[i].push(document.getElementById("iNombre"+i).value);    */
+    for(let i=0; i<fArticles; i++) {
+        arrValeurs[i] = Number(document.getElementById("iNombre"+(i+1)).value);
+        /*     meme chose: arrValeurs[i].push(document.getElementById("iNombre"+(i+1)).value);    */
     }
     for(i=0; i<fArticles; i++) {
-        if(arrValeurs[i-1] < 0) {
+        if(arrValeurs[i] < 0) {
             negatif++;
-        } else if (arrValeurs[i-1] > 0) {
+        } else if (arrValeurs[i] > 0) {
             positif++;
         }else {
             nul++
