@@ -5,7 +5,7 @@ function myArrNombreZero () {
     for(let i = 0; i < 7; i++) {
         arrNum[i] = 0;
     }
-        document.getElementById("resulta").innerHTML=`arrNum =  [${arrNum.join(" ")}] `; 
+        document.getElementById("resulta").innerHTML=`arrNum =  [${arrNum.join(", ")}] `; 
 }
 
 /*6.1 jq*/
@@ -14,7 +14,7 @@ function myArrNombreZero_jq () {
     for(let i = 0; i < 7; i++) {
         arrNum[i] = 0;
     }
-        $("#resulta").html(`(jq) arrNum =  [${arrNum.join(" ")}] `);
+        $("#resulta").html(`(jq) arrNum =  [${arrNum.join(", ")}] `);
 }
 
 /*6.2 js */
@@ -26,7 +26,7 @@ function myArrVoyelles () {
         arrVoyelles[3] = "O";
         arrVoyelles[4] = "U";
         arrVoyelles[5] = "Y";
-    document.getElementById("resulta").innerHTML= `arrVoyelles = [${arrVoyelles.join(" ")}] `;
+    document.getElementById("resulta").innerHTML= `arrVoyelles = [${arrVoyelles.join(", ")}] `;
 }
 
 /*6.2 jq */
@@ -38,26 +38,163 @@ function myArrVoyelles_jq () {
         arrVoyelles[3] = "O";
         arrVoyelles[4] = "U";
         arrVoyelles[5] = "Y";
-    $("#resulta").html(`(jq) arrVoyelles = [${arrVoyelles.join(" ")}] `);
+    $("#resulta").html(`(jq) arrVoyelles = [${arrVoyelles.join(", ")}] `);
 }
 
 /*6.3 js*/
 function myNotes () {
     let arrNotes = [];
     
-    for(i=1; i<=9; i++) {
+    for(let i=1; i<=9; i++) {
         arrNotes.push(document.getElementById("iNote" + i).value);
         /*arrNotes += document.getElementById("iNote" + i).value;  -  (marche pas)  */ 
     }
-    document.getElementById("resulta").innerHTML= `Votre tableau de notes est: ${arrNotes.join(" ")}`;    
+    document.getElementById("resulta").innerHTML= `Votre tableau de notes est: ${arrNotes.join(", ")}`;    
 }
 
 /*6.3 jq*/
 function myNotes_jq () {
     let arrNotes = [];
     
-    for(i=1; i<=9; i++) {
+    for(let i=1; i<=9; i++) {
         arrNotes.push($("#iNote" + i).val());
     }
-    $("#resulta").html(`(jq) Votre tableau de notes est: ${arrNotes.join(" ")}`);
+    $("#resulta").html(`(jq) Votre tableau de notes est: ${arrNotes.join(", ")}`);
 }
+
+/*6.4 js*/
+function myArrOneACinq () {
+    let nb = [];
+    let i;
+    for(i=0; i<5; i++) {
+        nb[i] = i * i;
+    }
+    document.getElementById("resulta").innerHTML= ` nb = [${nb.join(", ")}]`; 
+}
+
+/*6.4 jq */
+function myArrOneACinq_jq () {
+    let nb = [];
+
+    for(let i=0; i<5; i++) {
+        nb[i] = i * i;
+    }
+    $("#resulta").html(`(jq)  nb = [${nb.join(", ")}]`);
+}
+
+/*6.5 js */
+function myArrOneASix () {
+    let tabN = [1];
+    for(let k=1; k<6; k++) {
+        tabN[k] = tabN[k-1] + 2;
+    }
+    for(let i=0; i<6; i++) {
+        document.getElementById("resulta").innerHTML= `tabN = [${tabN.join(", ")}]`;
+    }
+}
+
+/*6.5 jq */
+function myArrOneASix_jq () {
+    let tabN = [1];
+    for(let k=1; k<6; k++) {
+        tabN[k] = tabN[k-1] + 2;
+    }
+    for(let i=0; i<6; i++) {
+        $("#resulta").html(`(jq) tabN = [${tabN.join(", ")}]`);
+    }
+}
+
+/*6.6 js */
+function tabSuite () {
+    let tabSuite = [1, 1];
+    for(i=2; i<7; i++) {
+        tabSuite[i] = tabSuite[i-1] + tabSuite[i-2];
+    }
+    for(i=0; i<7; i++) {
+        document.getElementById("resulta").innerHTML= `tabSuite = [${tabSuite.join(", ")}]`
+    }
+}
+
+/*6.6 jq */
+function tabSuite_jq () {
+    let tabSuite = [1, 1];
+    for(i=2; i<7; i++) {
+        tabSuite[i] = tabSuite[i-1] + tabSuite[i-2];
+    }
+    for(i=0; i<7; i++) {
+        $("#resulta").html(`(jq) tabSuite = [${tabSuite.join(", ")}]`);
+    }
+}
+
+/*6.7 js*/
+function myNotesMoyen () {
+    let arrNotesMoyen = [];
+    let sumMoyen = 0;
+    for(let i=1; i<10; i++) {
+        arrNotesMoyen.push($("#iNote" + i).val());
+    }
+    for(let i=0; i<9; i++) {
+        sumMoyen += Number(arrNotesMoyen[i] / 2);
+    }
+    document.getElementById("resulta").innerHTML= `La moyenne des votre notes est: ${sumMoyen}`
+}
+
+
+
+/*6.7 jq*/
+function myNotesMoyen_jq () {
+    let arrNotesMoyen = [];
+    let sumMoyen = 0;
+    for(let i=1; i<10; i++) {
+        arrNotesMoyen.push($("#iNote" + i).val());
+    }
+    for(let i=0; i<9; i++) {
+        sumMoyen += Number(arrNotesMoyen[i] / 2);
+    }        
+    $("#resulta").html(`(jq) La moyenne des votre notes est: ${sumMoyen}`);
+}
+
+/*6.8 js*/
+function myValNegPos () {
+    let arrValeurs = [];
+    let fArticles = document.getElementById("fArticles").value;
+    let negatif = 0;
+    let positif = 0;
+    let nul = 0;
+    for(let i=1; i<=fArticles; i++) {
+        arrValeurs[i] = document.getElementById("iNombre"+i).value;
+        /*     meme chose: arrValeurs[i].push(document.getElementById("iNombre"+i).value);    */
+    }
+    for(i=0; i<fArticles; i++) {
+        if(arrValeurs[i-1] < 0) {
+            negatif++;
+        } else if (arrValeurs[i-1] > 0) {
+            positif++;
+        }else {
+            nul++
+        }
+    }
+    document.getElementById("resulta").innerHTML= `Dans votre tableau il y a: <br> - ${positif} valeurs positiv <br> - ${negatif} valeurs negatif <br> - ${nul} valeur 0`
+}
+
+/*6.8 jq 
+function myValNegPos_jq () {
+    let arrValeurs = [];
+    let fArticles = ($("#fArticles" + i).val());
+    let negatif = 0;
+    let positif = 0;
+    let nul = 0;
+    for(let i=1; i<fArticles; i++) {
+        arrValeurs[i] = ($("#iNombre" + i).val());
+    }
+    for(i=0; i<fArticles; i++) {
+        if(arrValeurs[i-1] < 0) {
+            negatif++;
+        } else if (arrValeurs[i-1] > 0) {
+            positif++;
+        }else {
+            nul++
+        }
+    }
+    $("#resulta").html(`(jq) Dans votre tableau il y a: <br> - ${positif} valeurs positiv <br> - ${negatif} valeurs negatif <br> - ${nul} valeur 0`);
+}*/

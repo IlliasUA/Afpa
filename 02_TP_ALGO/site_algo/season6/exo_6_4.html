@@ -24,8 +24,19 @@
         <section>
             <div class="section_firstarea">
                 <div class="exercise_window">
-                    <h5>Exercice 6.3</h5>
-                    <p>Ecrire un algorithme qui déclare un tableau de 9 notes, dont on fait ensuite saisir les valeurs par l’utilisateur. </p>
+                    <h5>Exercice 6.4</h5>
+                    <p>Que produit l’algorithme suivant ?  <br>
+Tableau Nb(5) en Entier <br>
+Variable i en Entier <br>
+Début <br>
+Pour i ← 0 à 5 <br>
+Nb(i) ← i * i <br>
+i suivant <br>
+Pour i ← 0 à 5 <br>
+Ecrire Nb(i) <br>
+i suivant <br>
+Fin  <br>
+Peut-on simplifier cet algorithme avec le même résultat ? </p>
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -34,58 +45,52 @@
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder="">VARIABLES arrNotes = [], iNote
+                    <textarea class="text" placeholder="">VARIABLES Nb = []
 DEBUT
-    POUR i=1 A i<=9 INCREMENT i++ FAIRE
-        ECRIRE "Saise note"
-        LIRE iNote
-        arrNotes += iNote + 1
+    POUR i = 0 A i < 5 INCREMENT i++ FAIRE
+    Nb[i] = i * i
     FINPOUR
-    ECRIRE arrNotes
+    ECRIRE Nb
 FIN</textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder="">function myNotes () {
-    let arrNotes = [];
-    
-    for(i=1; i<=9; i++) {
-        arrNotes.push(document.getElementById("iNote" + i).value);
+                    <textarea class="text" placeholder="">function myArrOneACinq () {
+    let nb = [];
+
+    for(i=0; i<5; i++) {
+        nb[i] = i * i;
     }
-    document.getElementById("resulta").innerHTML= `Votre tableau de notes est: ${arrNotes.join(" ")}`;    
+    document.getElementById("resulta").innerHTML= ` nb = [${nb.join(", ")}]`; 
 }</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder="">function myNotes_jq () {
-    let arrNotes = [];
-    
-    for(i=1; i<=9; i++) {
-        arrNotes.push($("#iNote" + i).val());
+                    <textarea class="text" placeholder="">function myArrOneACinq_jq () {
+    let nb = [];
+
+    for(let i=0; i<5; i++) {
+        nb[i] = i * i;
     }
-    $("#resulta").html(`(jq) Votre tableau de notes est: ${arrNotes.join(" ")}`);
+    $("#resulta").html(`(jq)  nb = [${nb.join(", ")}]`);
 }</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
                     <textarea class="text" placeholder="">$resulta = "";
-if(isset($_POST["iNote1"])) {
-$arrNotes = [];
-for ($i = 1; $i <= 9; $i++) {
-    $arrNotes[] = $_POST["iNote" . $i];
+$nb = [];
+for ($i = 0; $i < 5; $i++) {
+    $nb[$i] = $i * $i;
 }
-
-$resulta = "(php) Votre tableau de notes est: " . implode(" ", $arrNotes);
-}
-require "exo_6_3.html";</textarea>
+$resulta = "(php) nb = " . implode(" ", $nb);
+require "exo_6_4.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
-                    <form method="post" action="exo_6_3.php" name="formPHP">
-                        <div id="div_formulaire"></div>
-                    <button class="button_age" onclick="myNotes()" type="button">OK JavaScript</button>
-                    <button class="button_age" onclick="myNotes_jq()" type="button">OK jQuery</button>
+                    <form method="post" action="exo_6_4.php" name="formPHP">
+                    <button class="button_age" onclick="myArrOneACinq()" type="button">OK JavaScript</button>
+                    <button class="button_age" onclick="myArrOneACinq_jq()" type="button">OK jQuery</button>
                     <button class="button_age" onclick="exec_php()">OK PHP</button>
                     </form>
                 </div>
@@ -94,14 +99,5 @@ require "exo_6_3.html";</textarea>
                 </div>
             </div>
         </section>
-    </body>
-    <script>
-    let sHTML= "";
-    for (i=1; i<=9; i++) {
-        sHTML+= `<p>Saisie de note n° ${i}</p>`;
-        sHTML+= `<p><input type="text" name="iNote${i}" id="iNote${i}"></p>`;
-    }
-
-    document.getElementById("div_formulaire").innerHTML= sHTML;
-</script>     
+    </body>     
 </html>
