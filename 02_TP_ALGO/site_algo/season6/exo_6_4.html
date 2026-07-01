@@ -78,11 +78,13 @@ FIN</textarea>
                 <div class="php_inp">
                     <p>PHP</p>
                     <textarea class="text" placeholder="">$resulta = "";
-$nb = [];
-for ($i = 0; $i < 5; $i++) {
-    $nb[$i] = $i * $i;
-}
-$resulta = "(php) nb = " . implode(" ", $nb);
+    if(isset($_POST["ArrOneACinq"])) {
+        $nb = [];
+        for ($i = 0; $i < 5; $i++) {
+            $nb[$i] = $i * $i;
+        }
+    $resulta = "(php) nb = [" . implode(", ", $nb) . "]";
+    }
 require "exo_6_4.html";</textarea>
                 </div>
             </div>
@@ -91,7 +93,7 @@ require "exo_6_4.html";</textarea>
                     <form method="post" action="exo_6_4.php" name="formPHP">
                     <button class="button_age" onclick="myArrOneACinq()" type="button">OK JavaScript</button>
                     <button class="button_age" onclick="myArrOneACinq_jq()" type="button">OK jQuery</button>
-                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    <button class="button_age" onclick="exec_php()" name="ArrOneACinq">OK PHP</button>
                     </form>
                 </div>
                 <div class="reponse_area">

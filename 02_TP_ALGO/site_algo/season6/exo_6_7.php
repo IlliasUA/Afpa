@@ -7,8 +7,8 @@
             $arrNotesMoyen[] = $_POST["iNote" . $i];
             }
         for($i=0; $i<9; $i++) {
-            $sumMoyen += $arrNotesMoyen[$i] / 2;
-            }
+            $sumMoyen += $arrNotesMoyen[$i] / 9;
+            } $sumMoyen = round($sumMoyen, 2);
     $resulta = "(php) La moyenne des votre notes est: " . $sumMoyen;       
     }
 require "exo_6_7.html";

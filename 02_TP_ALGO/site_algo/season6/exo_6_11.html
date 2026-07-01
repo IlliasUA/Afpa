@@ -42,26 +42,70 @@ Le « Toon » sera 3 * 4 + 3 * 8 + 3 * 7 + 3 * 12 + 6 * 4 + 6 * 8 + 6 * 7 + 6 * 
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">VARIABLES tab_1, tab_2, my_tab, somme
+DEBUT
+    my_tab= [];
+    somme= 0;
+    tab_1= [4, 8, 7, 12];
+    tab_2= [3, 6];
+    POUR i=0 A i<4 INCREMENT i++ FAIRE
+        my_tab[i] = tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+        somme += tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+    FINPOUR
+    ECRIRE my_tab
+FIN </textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myCalculeDeuxTab() {
+    let my_newTab= [];
+    let somme= 0;
+    let tab_1= [4, 8, 7, 12];
+    let tab_2= [3, 6];
+    for(i=0; i<tab_1.length; i++) {
+        my_newTab[i] = tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+        somme += tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+    }
+    document.getElementById("resulta").innerHTML= `Votre nouveau tableau est: [${my_newTab.join(", ")}] avec sommes total: ${somme}`
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myCalculeDeuxTab_jq() {
+    let my_newTab= [];
+    let somme= 0;
+    let tab_1= [4, 8, 7, 12];
+    let tab_2= [3, 6];
+    for(i=0; i<tab_1.length; i++) {
+        my_newTab[i] = tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+        somme += tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+    }
+    $("#resulta").html(`(jq) Votre nouveau tableau est: [${my_newTab.join(", ")}] avec sommes total: ${somme}`);
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">    $resulta = "";
+    if(isset($_POST["btnMyDeuxTab"])) {
+        $my_newTab= [];
+        $somme= 0;
+        $tab_1= [4, 8, 7, 12];
+        $tab_2= [3, 6];
+        
+        for($i=0; $i<count($tab_1); $i++) {
+        $my_newTab[$i] = $tab_1[$i] * $tab_2[0] + $tab_1[$i] * $tab_2[1];
+        $somme += $tab_1[$i] * $tab_2[0] + $tab_1[$i] * $tab_2[1];
+    }
+        $resulta = "(php) : Votre nouveau tableau est: [" . implode(", ", $my_newTab) . "] avec sommes total:" . $somme;       
+    }
+require "exo_6_11.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
                 <div class="question_area"> 
                     <form method="post" action="exo_6_11.php" name="formPHP">                    
-                    <button class="button_age" onclick="myDeuxTab()" type="button" >OK JavaScript</button>
-                    <button class="button_age" onclick="myDeuxTab_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="myCalculeDeuxTab()" type="button" >OK JavaScript</button>
+                    <button class="button_age" onclick="myCalculeDeuxTab_jq()" type="button">OK jQuery</button>
                     <button class="button_age" onclick="exec_php()" id="btnMyDeuxTab" name="btnMyDeuxTab">OK PHP</button>
                     </form>
                 </div>

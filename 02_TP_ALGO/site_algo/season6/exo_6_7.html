@@ -79,7 +79,7 @@ FIN</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder="">$resulta = "";
+                    <textarea class="text" placeholder="">    $resulta = "";
     if(isset($_POST["iNote1"])) {
         $arrNotesMoyen = [];
         $sumMoyen = 0;
@@ -87,8 +87,8 @@ FIN</textarea>
             $arrNotesMoyen[] = $_POST["iNote" . $i];
             }
         for($i=0; $i<9; $i++) {
-            $sumMoyen += $arrNotesMoyen[$i] / 2;
-            }
+            $sumMoyen += $arrNotesMoyen[$i] / 9;
+            } $sumMoyen = round($sumMoyen, 2);
     $resulta = "(php) La moyenne des votre notes est: " . $sumMoyen;       
     }
 require "exo_6_7.html";</textarea>

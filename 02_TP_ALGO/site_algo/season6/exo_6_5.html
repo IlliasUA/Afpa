@@ -83,13 +83,15 @@ FIN</textarea>
                 <div class="php_inp">
                     <p>PHP</p>
                     <textarea class="text" placeholder="">$resulta = "";
+if(isset($_POST["ArrOneASix"])) {
 $tabN = [1];
     for ($k = 1; $k < 6; $k++) {
         $tabN[$k] = $tabN[$k-1] + 2;
     }
     for($i=0; $i<6; $i++) {
-        $resulta = "(php) tabN =  " . implode(", ", $tabN);
+        $resulta = "(php) tabN =  [" . implode(", ", $tabN) . "]";
     }
+}
 require "exo_6_5.html";</textarea>
                 </div>
             </div>
@@ -98,7 +100,7 @@ require "exo_6_5.html";</textarea>
                     <form method="post" action="exo_6_5.php" name="formPHP">
                     <button class="button_age" onclick="myArrOneASix()" type="button">OK JavaScript</button>
                     <button class="button_age" onclick="myArrOneASix_jq()" type="button">OK jQuery</button>
-                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    <button class="button_age" onclick="exec_php()" name="ArrOneASix">OK PHP</button>
                     </form>
                 </div>
                 <div class="reponse_area">

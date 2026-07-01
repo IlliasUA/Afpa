@@ -49,7 +49,7 @@ function myNotes () {
         arrNotes.push(document.getElementById("iNote" + i).value);
         /*arrNotes += document.getElementById("iNote" + i).value;  -  (marche pas)  */ 
     }
-    document.getElementById("resulta").innerHTML= `Votre tableau de notes est: ${arrNotes.join(", ")}`;    
+    document.getElementById("resulta").innerHTML= `Votre tableau de notes est: [${arrNotes.join(", ")}]`;    
 }
 
 /*6.3 jq*/
@@ -59,7 +59,7 @@ function myNotes_jq () {
     for(let i=1; i<=9; i++) {
         arrNotes.push($("#iNote" + i).val());
     }
-    $("#resulta").html(`(jq) Votre tableau de notes est: ${arrNotes.join(", ")}`);
+    $("#resulta").html(`(jq) Votre tableau de notes est: [${arrNotes.join(", ")}]`);
 }
 
 /*6.4 js*/
@@ -134,8 +134,8 @@ function myNotesMoyen () {
         arrNotesMoyen.push($("#iNote" + i).val());
     }
     for(let i=0; i<9; i++) {
-        sumMoyen += Number(arrNotesMoyen[i] / 2);
-    }
+        sumMoyen += Number(arrNotesMoyen[i] / 9);
+    } sumMoyen = sumMoyen.toFixed(2);
     document.getElementById("resulta").innerHTML= `La moyenne des votre notes est: ${sumMoyen}`
 }
 
@@ -149,8 +149,8 @@ function myNotesMoyen_jq () {
         arrNotesMoyen.push($("#iNote" + i).val());
     }
     for(let i=0; i<9; i++) {
-        sumMoyen += Number(arrNotesMoyen[i] / 2);
-    }        
+        sumMoyen += Number(arrNotesMoyen[i] / 9);
+    } sumMoyen = sumMoyen.toFixed(2);
     $("#resulta").html(`(jq) La moyenne des votre notes est: ${sumMoyen}`);
 }
 
@@ -200,10 +200,14 @@ function myValNegPos_jq () {
 
 /*6.9 js*/
 function myCalculeSommeArr () {
-    let arrNombre = [n];
-    let sommeVal = "";
+    let arrNombre = [];
+    let iNbTableau= 5;
+    let sommeVal = 0;
 
-    for(let i=0; i<arrNombre.length; i++) {
+    for(let i=0; i<iNbTableau; i++) {
+        arrNombre[i] = Math.floor(Math.random() * 100) + 1;    
+    }
+    for(let i=0; i<iNbTableau; i++) {
         sommeVal += arrNombre[i];
     }
     document.getElementById("resulta").innerHTML=`la somme des valeurs d’un tableau est: ${sommeVal}`
@@ -226,7 +230,7 @@ function myDeuxTab() {
     let my_tab = [];
     let tab_1 = [4, 8, 7, 9, 1, 5, 4 ,6];
     let tab_2 = [7, 6, 5, 2, 1, 3, 7, 4];
-    for(i=0; i<tab_1.length; i++) {
+    for(let i=0; i<tab_1.length; i++) {
         my_tab[i] = tab_1[i] + tab_2[i];
     }
     document.getElementById("resulta").innerHTML= `Le nouveau tableau est my_tab = [${my_tab.join(", ")}]`
@@ -238,8 +242,62 @@ function myDeuxTab_jq() {
     let my_tab = [];
     let tab_1 = [4, 8, 7, 9, 1, 5, 4 ,6];
     let tab_2 = [7, 6, 5, 2, 1, 3, 7, 4];
-    for(i=0; i<tab_1.length; i++) {
+    for(let i=0; i<tab_1.length; i++) {
         my_tab[i] = tab_1[i] + tab_2[i];
     }
     $("#resulta").html(`(jq) Le nouveau tableau est my_tab = [${my_tab.join(", ")}]`);
+}
+
+/*6.11 js */
+function myCalculeDeuxTab() {
+    let my_newTab= [];
+    let somme= 0;
+    let tab_1= [4, 8, 7, 12];
+    let tab_2= [3, 6];
+    for(let i=0; i<tab_1.length; i++) {
+        my_newTab[i] = tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+        somme += tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+    }
+    document.getElementById("resulta").innerHTML= `Votre nouveau tableau est: [${my_newTab.join(", ")}] avec sommes total: ${somme}`
+}
+
+/*6.11 jq */
+function myCalculeDeuxTab_jq() {
+    let my_newTab= [];
+    let somme= 0;
+    let tab_1= [4, 8, 7, 12];
+    let tab_2= [3, 6];
+    for(let i=0; i<tab_1.length; i++) {
+        my_newTab[i] = tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+        somme += tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+    }
+    $("#resulta").html(`(jq) Votre nouveau tableau est: [${my_newTab.join(", ")}] avec sommes total: ${somme}`);
+}
+
+/*6.12 js*/
+function myAgmntDeUn () {
+    let arrValeurs=[]; 
+    let arrValeursNew=[]; 
+    let fArticles= document.getElementById("fArticles").value;
+    for(let i=0; i<fArticles; i++) {
+        arrValeurs[i] = Number(document.getElementById("iNombre"+(i+1)).value);
+    }
+    for(let i=0; i<fArticles; i++) {                 /*soit on utilise map(): arrValeursNew = arrValeurs.map(val => val + 1) */
+        arrValeursNew[i] = arrValeurs[i] + 1;
+    }
+    document.getElementById("resulta").innerHTML=`Votre nouveau tableau est: [${arrValeursNew.join(", ")}]<br> Il est augmentées de 1!`;    
+} 
+
+/*6.12 jq*/
+function myAgmntDeUn_jq () {
+    let arrValeurs=[]; 
+    let arrValeursNew=[];
+    let fArticles= $("#fArticles").val();
+    for(let i=0; i<fArticles; i++) {
+        arrValeurs[i] = Number($("#iNombre"+(i+1)).val());
+    }
+    for(let i=0; i<fArticles; i++) {
+        arrValeursNew[i] = arrValeurs[i] + 1;  
+    }
+    $("#resulta").html(`(jq) Votre nouveau tableau est: [${arrValeursNew.join(", ")}]<br> Il est augmentées de 1!`);
 }

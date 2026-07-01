@@ -1,11 +1,12 @@
 <?php
 $resulta= "";
-$arrNum = [];
-    for($i = 0; $i < 7; $i++) {
-        $arrNum[$i] = 0;
+    if(isset($_POST["ArrNombreZero"])) {
+        $arrNum = [];
+        for($i = 0; $i < 7; $i++) {
+            $arrNum[$i] = 0;
+        }
+
+        $resulta= "(php) arrNum = [" . implode(", ", $arrNum) . "]";
     }
-
-    $resulta= "(php) arrNum = [" . implode(" ", $arrNum) . "]";
-
-    require "exo_6_1.html";
+require "exo_6_1.html";
 ?>

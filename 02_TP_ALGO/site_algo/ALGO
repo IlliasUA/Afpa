@@ -835,9 +835,16 @@ VARIABLES arrValeurs=[], fArticles, negatif, positif, nul
 VARIABLES arrNombre = [], nomb_de_val = n, sommeVal
 DEBUT 
     sommeVal = 0
-    POUR i=0 A i<n INCREMENT i++ FAIRE
-        sommeVal += arrNombre[i]      
+    iNbTableau= 10
+    POUR i=0 A i<iNbTableau INCREMENT i++ FAIRE
+        arrNombre[i] = random(1..100)
+        ECRIRE arrNombre[i] 
     FINPOUR
+
+    POUR i=0 A i<iNbTableau INCREMENT i++ FAIRE
+        sommeVal+= arrNombre[i]
+    FINPOUR
+
     ECRIRE "Somme de la valeurs d'un tableau est " + sommeVal
 FIN   
 
@@ -854,12 +861,30 @@ DEBUT
 FIN 
 
 6.11
-VARIABLES tab_1, tab_2, my_tab
+VARIABLES tab_1, tab_2, my_tab, somme
 DEBUT
     my_tab= [];
+    somme= 0;
     tab_1= [4, 8, 7, 12];
     tab_2= [3, 6];
     POUR i=0 A i<4 INCREMENT i++ FAIRE
         my_tab[i] = tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
+        somme += tab_1[i] * tab_2[0] + tab_1[i] * tab_2[1];
     FINPOUR
-    
+    ECRIRE my_tab
+FIN 
+
+6.12
+VARIABLES arrValeurs=[], arrValeursNew=[], fArticles
+DEBUT
+    ECRIRE "Saise votre nombre de valeurs"
+    LIRE fArticles
+    ECRIRE "Saise votre valeurs"         
+    LIRE arrValeurs[i]
+    POUR i=0 A i<fArticles INCREMENT i++ FAIRE
+        arrValeursNew[i] +=  arrValeurs[i]+1
+    FINPOUR
+    ECRIRE arrValeursNew[]
+FIN
+
+6.13

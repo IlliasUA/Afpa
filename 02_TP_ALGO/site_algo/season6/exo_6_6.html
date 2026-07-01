@@ -83,6 +83,7 @@ FIN </textarea>
                 <div class="php_inp">
                     <p>PHP</p>
                     <textarea class="text" placeholder="">$resulta = "";
+if(isset($_POST["Suite"])) {
 $tabSuite = [1, 1];
     for ($i = 2; $i < 7; $i++) {
         $tabSuite[$i] = $tabSuite[$i-1] + $tabSuite[$i-2];
@@ -90,7 +91,9 @@ $tabSuite = [1, 1];
     for($i=0; $i<7; $i++) {
         $resulta = "(php) tabSuite = [" . implode(", ", $tabSuite) . "]";
     }
-require "exo_6_6.html";</textarea>
+}
+require "exo_6_6.html";
+</textarea>
                 </div>
             </div>
             <div class="dialogue_area">
@@ -98,7 +101,7 @@ require "exo_6_6.html";</textarea>
                     <form method="post" action="exo_6_6.php" name="formPHP">
                     <button class="button_age" onclick="tabSuite()" type="button">OK JavaScript</button>
                     <button class="button_age" onclick="tabSuite_jq()" type="button">OK jQuery</button>
-                    <button class="button_age" onclick="exec_php()">OK PHP</button>
+                    <button class="button_age" onclick="exec_php()" name="Suite">OK PHP</button>
                     </form>
                 </div>
                 <div class="reponse_area">

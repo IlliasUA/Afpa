@@ -1,13 +1,16 @@
 <?php
     $resulta = "";
     if(isset($_POST["btnMyDeuxTab"])) {
-        $my_tab = [];
-        $tab_1 = [4, 8, 7, 9, 1, 5, 4 ,6];
-        $tab_2 = [7, 6, 5, 2, 1, 3, 7, 4];
+        $my_newTab= [];
+        $somme= 0;
+        $tab_1= [4, 8, 7, 12];
+        $tab_2= [3, 6];
+        
         for($i=0; $i<count($tab_1); $i++) {
-           $my_tab[$i] = $tab_1[$i] + $tab_2[$i];  
-        }
-        $resulta = "(php) : Le nouveau tableau est my_tab = [" . implode(", ", $my_tab) . "]";       
+        $my_newTab[$i] = $tab_1[$i] * $tab_2[0] + $tab_1[$i] * $tab_2[1];
+        $somme += $tab_1[$i] * $tab_2[0] + $tab_1[$i] * $tab_2[1];
+    }
+        $resulta = "(php) : Votre nouveau tableau est: [" . implode(", ", $my_newTab) . "] avec sommes total:" . $somme;       
     }
 require "exo_6_11.html";
 ?>
