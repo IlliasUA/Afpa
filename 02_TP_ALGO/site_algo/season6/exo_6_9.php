@@ -20,5 +20,5 @@
         }    
         $resulta = "(php) : Dans votre tableau il y a: <br> - " . $positif . " valeurs positiv <br> - " . $negatif . "valeurs negatif <br> - " . $nul . " valeur 0";       
     }
-require "exo_6_8.html";
+require "exo_6_9.html";
 ?>

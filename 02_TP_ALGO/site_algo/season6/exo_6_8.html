@@ -28,7 +28,7 @@
                     <p>Ecrivez un algorithme permettant à l’utilisateur de saisir un nombre quelconque de valeurs, qui devront être 
 stockées dans un tableau. L’utilisateur doit donc commencer par entrer le nombre de valeurs qu’il compte saisir. Il 
 effectuera ensuite cette saisie. Enfin, une fois la saisie terminée, le programme affichera le nombre de valeurs 
-négatives et le nombre de valeurs positives.   
+négatives et le nombre de valeurs positives.</p>   
                 </div>
                 <div class="prof_img">
                     <img src="../img/prof.avif" alt="Image du professeur">
@@ -37,19 +37,92 @@ négatives et le nombre de valeurs positives.
             <div class="blocksarea">   
                 <div class="algo_inp">
                     <p>Algorithmes</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">VARIABLES arrValeurs=[], fArticles, negatif, positif, nul
+    POUR i=0 A i<fArticles INCREMENT i++ FAIRE
+        ECRIRE "Saise votre valeurs"         
+        LIRE arrValeurs[i]
+    FINPOUR
+    POUR i=0 A i<fArticles INCREMENT i++ FAIRE 
+        SI (arrValeurs[i]) < 0 ALORS
+            negatif++
+        SINON SI (arrValeurs[i] > 0) ALORS
+            positif++
+        SINON 
+            nul++
+        FINSI   
+    FINPOUR
+    ECRIRE `Dans votre tableau il y a: <br> - ${positif} valeurs positiv <br> - ${negatif} valeurs negatif <br> - ${nul} valeur 0`</textarea>
                 </div>
                 <div class="js_inp">
                     <p>JavaScript</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myValNegPos () {
+    let arrValeurs = [];
+    let fArticles = document.getElementById("fArticles").value;
+    let negatif = 0;
+    let positif = 0;
+    let nul = 0;
+    for(let i=0; i<fArticles; i++) {
+        arrValeurs[i] = Number(document.getElementById("iNombre"+(i+1)).value);
+    }
+    for(i=0; i<fArticles; i++) {
+        if(arrValeurs[i] < 0) {
+            negatif++;
+        } else if (arrValeurs[i] > 0) {
+            positif++;
+        }else {
+            nul++
+        }
+    }
+    document.getElementById("resulta").innerHTML= `Dans votre tableau il y a: <br> - ${positif} valeurs positiv <br> - ${negatif} valeurs negatif <br> - ${nul} valeur 0`
+}</textarea>
                 </div>
                 <div class="jq_inp">
                     <p>jQuery</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">function myValNegPos_jq () {
+    let arrValeurs = [];
+    let fArticles = ($("#fArticles").val());
+    let negatif = 0;
+    let positif = 0;
+    let nul = 0;
+    for(let i=0; i<fArticles; i++) {
+        arrValeurs[i] = ($("#iNombre" + (i+1)).val());
+    }
+    for(i=0; i<fArticles; i++) {
+        if(arrValeurs[i] < 0) {
+            negatif++;
+        } else if (arrValeurs[i] > 0) {
+            positif++;
+        }else {
+            nul++
+        }
+    }
+    $("#resulta").html(`(jq) Dans votre tableau il y a: <br> - ${positif} valeurs positiv <br> - ${negatif} valeurs negatif <br> - ${nul} valeur 0`);
+}</textarea>
                 </div>
                 <div class="php_inp">
                     <p>PHP</p>
-                    <textarea class="text" placeholder=""></textarea>
+                    <textarea class="text" placeholder="">$resulta = "";
+    if(isset($_POST["fArticles"])) {
+        $fArticles = $_POST["fArticles"];
+        $arrValeurs = [];
+        $negatif = 0;
+        $positif = 0;
+        $nul = 0;
+        for($i=0; $i<$fArticles; $i++) {
+            $arrValeurs[$i] = $_POST["iNombre" . ($i+1)];    
+        }
+        for($i=0; $i<$fArticles; $i++) {
+            if($arrValeurs[$i] < 0) {
+                $negatif++;
+            } else if ($arrValeurs[$i] > 0) {
+                $positif++;
+            }else {
+                $nul++;
+            }
+        }    
+        $resulta = "(php) : Dans votre tableau il y a: <br> - " . $positif . " valeurs positiv <br> - " . $negatif . "valeurs negatif <br> - " . $nul . " valeur 0";       
+    }
+require "exo_6_8.html";</textarea>
                 </div>
             </div>
             <div class="dialogue_area">

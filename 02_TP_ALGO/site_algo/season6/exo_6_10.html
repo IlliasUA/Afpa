@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr" class="full_background">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/css_algo.css">
+        <script src="../JS/jquery.min.js"></script>
+        <script src="../JS/script_6.js"></script>
+        <script>function exec_php() {document.formPHP.submit();}</script>
+        <title>Site algo</title>
+    </head>
+    
+    <body>
+            
+        <header>
+            <?php include "../commun/header.html" ?>
+        </header>  
+        
+        <nav>
+            <?php include "../commun/nav.html" ?>
+        </nav>
+
+        <section>
+            <div class="section_firstarea">
+                <div class="exercise_window">
+                    <h5>Exercice 6.10</h5>
+                    <p>Ecrivez un algorithme constituant un tableau, à partir de deux tableaux de même longueur préalablement saisis. Le 
+nouveau tableau sera la somme des éléments des deux tableaux de départ.  
+Tableau 1 :  
+[4, 8, 7, 9, 1, 5, 4, 6]<br>
+Tableau 2 : 
+[7, 6, 5, 2, 1, 3, 7, 4 ]<br>
+Tableau à constituer :  
+[11, 14, 12, 11, 2, 8, 11, 10]</p>   
+                </div>
+                <div class="prof_img">
+                    <img src="../img/prof.avif" alt="Image du professeur">
+                </div>
+            </div>
+            <div class="blocksarea">   
+                <div class="algo_inp">
+                    <p>Algorithmes</p>
+                    <textarea class="text" placeholder="">VARIABLES my_tab, tab_1, tab_2
+DEBUT 
+    my_tab = [];
+    tab_1 = [4, 8, 7, 9, 1, 5, 4 ,6];
+    tab_2 = [7, 6, 5, 2, 1, 3, 7, 4];
+    POUR i=0 A i<8 INCREMENT i++ FAIRE
+        my_tab[i] = tab_1[i] + tab_2[i];
+    FINPOUR
+FIN</textarea>
+                </div>
+                <div class="js_inp">
+                    <p>JavaScript</p>
+                    <textarea class="text" placeholder="">function myDeuxTab() {
+    let my_tab = [];
+    let tab_1 = [4, 8, 7, 9, 1, 5, 4 ,6];
+    let tab_2 = [7, 6, 5, 2, 1, 3, 7, 4];
+    for(i=0; i<tab_1.length; i++) {
+        my_tab[i] = tab_1[i] + tab_2[i];
+    }
+    document.getElementById("resulta").innerHTML= `Le nouveau tableau est my_tab = [${my_tab.join(", ")}]`
+}
+</textarea>
+                </div>
+                <div class="jq_inp">
+                    <p>jQuery</p>
+                    <textarea class="text" placeholder="">function myDeuxTab_jq() {
+    let my_tab = [];
+    let tab_1 = [4, 8, 7, 9, 1, 5, 4 ,6];
+    let tab_2 = [7, 6, 5, 2, 1, 3, 7, 4];
+    for(i=0; i<tab_1.length; i++) {
+        my_tab[i] = tab_1[i] + tab_2[i];
+    }
+    $("#resulta").html(`(jq) Le nouveau tableau est my_tab = [${my_tab.join(", ")}]`);
+}
+</textarea>
+                </div>
+                <div class="php_inp">
+                    <p>PHP</p>
+                    <textarea class="text" placeholder="">    $resulta = "";
+    if(isset($_POST["btnMyDeuxTab"])) {
+        $my_tab = [];
+        $tab_1 = [4, 8, 7, 9, 1, 5, 4 ,6];
+        $tab_2 = [7, 6, 5, 2, 1, 3, 7, 4];
+        for($i=0; $i<count($tab_1); $i++) {
+           $my_tab[$i] = $tab_1[$i] + $tab_2[$i];  
+        }
+        $resulta = "(php) : Le nouveau tableau est my_tab = [" . implode(", ", $my_tab) . "]";       
+    }
+require "exo_6_10.html";</textarea>
+                </div>
+            </div>
+            <div class="dialogue_area">
+                <div class="question_area"> 
+                    <form method="post" action="exo_6_10.php" name="formPHP">                    
+                    <button class="button_age" onclick="myDeuxTab()" type="button" >OK JavaScript</button>
+                    <button class="button_age" onclick="myDeuxTab_jq()" type="button">OK jQuery</button>
+                    <button class="button_age" onclick="exec_php()" id="btnMyDeuxTab" name="btnMyDeuxTab">OK PHP</button>
+                    </form>
+                </div>
+                <div class="reponse_area">
+                    <span id="resulta"><?php echo $resulta ?></span>
+                </div>
+            </div>
+        </section>
+    </body>     
+</html>

@@ -163,7 +163,6 @@ function myValNegPos () {
     let nul = 0;
     for(let i=0; i<fArticles; i++) {
         arrValeurs[i] = Number(document.getElementById("iNombre"+(i+1)).value);
-        /*     meme chose: arrValeurs[i].push(document.getElementById("iNombre"+(i+1)).value);    */
     }
     for(i=0; i<fArticles; i++) {
         if(arrValeurs[i] < 0) {
@@ -177,24 +176,70 @@ function myValNegPos () {
     document.getElementById("resulta").innerHTML= `Dans votre tableau il y a: <br> - ${positif} valeurs positiv <br> - ${negatif} valeurs negatif <br> - ${nul} valeur 0`
 }
 
-/*6.8 jq 
+/*6.8 jq */
 function myValNegPos_jq () {
     let arrValeurs = [];
-    let fArticles = ($("#fArticles" + i).val());
+    let fArticles = ($("#fArticles").val());
     let negatif = 0;
     let positif = 0;
     let nul = 0;
-    for(let i=1; i<fArticles; i++) {
-        arrValeurs[i] = ($("#iNombre" + i).val());
+    for(let i=0; i<fArticles; i++) {
+        arrValeurs[i] = ($("#iNombre" + (i+1)).val());
     }
     for(i=0; i<fArticles; i++) {
-        if(arrValeurs[i-1] < 0) {
+        if(arrValeurs[i] < 0) {
             negatif++;
-        } else if (arrValeurs[i-1] > 0) {
+        } else if (arrValeurs[i] > 0) {
             positif++;
         }else {
             nul++
         }
     }
     $("#resulta").html(`(jq) Dans votre tableau il y a: <br> - ${positif} valeurs positiv <br> - ${negatif} valeurs negatif <br> - ${nul} valeur 0`);
+}
+
+/*6.9 js*/
+function myCalculeSommeArr () {
+    let arrNombre = [n];
+    let sommeVal = "";
+
+    for(let i=0; i<arrNombre.length; i++) {
+        sommeVal += arrNombre[i];
+    }
+    document.getElementById("resulta").innerHTML=`la somme des valeurs d’un tableau est: ${sommeVal}`
+}
+
+/*6.9 jq
+function myCalculeSommeArr () {
+    let arrNombre = [n];
+    let sommeVal = "";
+
+    for(let i=0; i<arrNombre.length; i++) {
+        sommeVal += arrNombre[i];
+    }
+    document.getElementById("resulta").innerHTML=`la somme des valeurs d’un tableau est: ${sommeVal}`
 }*/
+
+
+/*6.10 js */
+function myDeuxTab() {
+    let my_tab = [];
+    let tab_1 = [4, 8, 7, 9, 1, 5, 4 ,6];
+    let tab_2 = [7, 6, 5, 2, 1, 3, 7, 4];
+    for(i=0; i<tab_1.length; i++) {
+        my_tab[i] = tab_1[i] + tab_2[i];
+    }
+    document.getElementById("resulta").innerHTML= `Le nouveau tableau est my_tab = [${my_tab.join(", ")}]`
+}
+
+
+/*6.10 jq */
+function myDeuxTab_jq() {
+    let my_tab = [];
+    let tab_1 = [4, 8, 7, 9, 1, 5, 4 ,6];
+    let tab_2 = [7, 6, 5, 2, 1, 3, 7, 4];
+    for(i=0; i<tab_1.length; i++) {
+        my_tab[i] = tab_1[i] + tab_2[i];
+    }
+    $("#resulta").html(`(jq) Le nouveau tableau est my_tab = [${my_tab.join(", ")}]`);
+}
